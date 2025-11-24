@@ -44,16 +44,16 @@ func App() *buffalo.App {
 		authKeyOne := []byte("securecookie.GenerateRandomKey(64)")
 
 		// Fix session store - use absolute path and ensure directory exists
-		// sessionStoreDir := envy.Get("GH_SESSION_STORE_DIR", "C:/TEMP/SCB/STMT_SESSIONS/NG")
+		// sessionStoreDir := envy.Get("GH_SESSION_STORE_DIR", "C:/TEMP/SCB/STMT_SESSIONS/")
 
-		store := sessions.NewFilesystemStore(envy.Get("GH_SESSION_STORE_DIR", "C:/TEMP/SCB/STMT_SESSIONS/NG"), authKeyOne)
+		store := sessions.NewFilesystemStore(envy.Get("GH_SESSION_STORE_DIR", "C:/TEMP/SCB/STMT_SESSIONS/GH"), authKeyOne)
 		store.MaxLength(1000000000) // set session limit to 1000MB
 		store.MaxAge(86400 * 3)     // keeps session for 3days
 
 		app = buffalo.New(buffalo.Options{
 			Env:          ENV,
 			SessionStore: store,
-			SessionName:  "_ng_statement_app_session",
+			SessionName:  "_gh_statement_app_session",
 		})
 
 		// Log request parameters (filters apply).

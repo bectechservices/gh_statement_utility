@@ -570,7 +570,7 @@ func HandlePDFStatementGeneration(c buffalo.Context) error {
 	TOTAL_CREDITS[hashKey] = fnData["totalCredit"]
 	TOTAL_DEBITS[hashKey] = fnData["totalDebit"]
 
-	useStampifyAPI, _ := strconv.ParseBool(envy.Get("USE_STAMPIFYPDF_API", "false"))
+	useStampifyAPI, _ := strconv.ParseBool(envy.Get("GH_STAMPIFYPDF_API", "false"))
 	// userPosition := "Dummy Role"
 
 	if useStampifyAPI {

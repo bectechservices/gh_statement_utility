@@ -65,7 +65,7 @@ func StampOtherPDFDocumentsRequest(c buffalo.Context) error {
 		return c.Render(http.StatusBadRequest, r.JSON("no file uploaded"))
 	}
 
-	useStampApi, _ := strconv.ParseBool(envy.Get("USE_STAMPIFYPDF_API", "false"))
+	useStampApi, _ := strconv.ParseBool(envy.Get("GH_STAMPIFYPDF_API", "false"))
 
 	if !useStampApi {
 		return c.Render(http.StatusUnauthorized, r.JSON("Cannot generate stamp on pdf. Please ask the administrator to check whether this service is authorize to communicate with the stampify api service"))
