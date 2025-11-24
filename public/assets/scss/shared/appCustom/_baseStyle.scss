@@ -1,0 +1,22 @@
+// @define LIVESTREAM 
+.event {
+  & .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-right: 10px;
+
+
+    &[data-control-action="telephone"] {
+      background-color: var(--bg-gray-300);
+    }
+
+    &[data-control-action="highnet"] {
+      background-color: var(--blue-900);
+    }
+
+  }
+}
+
+//@end LIVESTREAM 

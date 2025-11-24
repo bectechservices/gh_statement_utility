@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>GHCARD-VERIFY ~ Permissions ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico"/>
+</head>
+
+<body data-theme="absa-default">
+<div class="container-scroller" id="appRoot">
+    <!-- partial:partials/_navbar.html -->
+    <%= partial("partials/navbar.html") %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel no-siderBar-fullWidth" tabindex="-1">
+            <div class="content-wrapper">
+                <div class="box-root padding-top--8 padding-bottom--12">
+                    <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                        <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                <div class="breadcrumb-item Is--pressable">
+                                    <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                       href="/settings">
+                      <span
+                              class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                        <span>Settings</span>
+                      </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                <div class="breadcrumb-item Is--disabled">
+                    <span
+                            class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                      <span>Access Policy</span>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-root">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- SETTINGS WIDGETS -->
+                            <div class="box-root pb-2">
+                                <div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                    <div
+                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                        <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                            <div class="contentHeader-start box-root margin-right--16 d-flex align-items-center"
+                                                 style="margin-left:-8px;margin-top: -8px;">
+                                                
+                                                <!-- <div class="margin-top--8 margin-left--8">
+                                                  <div class="pressureButton cursor-pointer mw-100 border-radius--all">
+                                                    <div class="pressureBase">
+                                                      <select
+                                                        class="selectButton font-size--14 padding-right--24 padding-left--8 padding-vertical--4 line-height--20 select-table-filter"
+                                                        data-not-used="unstyledSelect" data-table="order-table">
+                                                        <option value="">All roles</option>
+                                                        <option value="manager">Manager</option>
+                                                        <option value="controller">Controller</option>
+                                                        <option value="admin">Admininistrator</option>
+                                                        <option value="super_admin">Super Admininistrator</option>
+                                                      </select>
+                                                    </div>
+                                                  </div>
+                                                </div> -->
+                                            </div>
+                                            <div class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                <div class="ButtonGroup box-root">
+                                                    <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                         style="margin-left:-8px;margin-top:-8px;">
+                                                        <div class="margin-top--8 margin-left--8">
+                                                            <div class="box-root">
+                                                                <button class="btn btn-light btn-fw pressureButton"
+                                                                        data-toggle="modal"
+                                                                        data-target="#manageAP">
+                                                                    <i class="mdi mdi-plus"></i>
+                                                                    <span class="font-weight-medium text-color--dark">Add access policy</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="margin-top--8 margin-left--8">
+                                                            <div class="box-root">
+                                                                <a class="btn btn-light btn-fw pressureButton" href="/export-permissions">
+                                                                    <i class="mdi mdi-file-excel"></i>
+                                                                    <span class="font-weight-medium text-color--dark">Export access policy</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                        <table class="table table-hover db-objectListTable order-table">
+                                            <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th style="width:12%">&nbsp;</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="permissionListElement">
+                                            <%= for(permission) in pagination.Rows { %>
+                                            <tr>
+                                                <td><%= permission.Name %></td>
+                                                <td><%= permission.Description %></td>
+                                                <td>
+                                                    <div class="box-root">
+                                                        <button class="btn dbTableActionButton" data-toggle="modal" data-target="#viewAP" onclick='loadDetailsIntoViewModal(<% json(permission) %>)'>
+                                                            <span>View</span>
+                                                        </button>
+                                                        <button class="btn dbTableActionButton"  data-toggle="modal" data-target="#editAP" onclick='loadDetailsIntoEditModal(<% json(permission) %>)'>
+                                                            <span>Edit</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                            class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                        <div
+                                                class="box-hideIfEmpty contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                            <span></span>
+                                        </div>
+                                        <%= custom_paginator(pagination) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SETTINGS WIDGET -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- MODALS -->
+    <div class="modal fade " id="manageAP" tabindex="-1" role="dialog" aria-labelledby="Manage access policy"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form class="box-root" method="post">
+                    <%= csrf() %>
+                    <div class="modal-header">
+                        <h5
+                                class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                                id="adduserLabel">Manage Access Policy
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="box-root">
+                        <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                             style="max-height:calc(100vh - 196px)">
+                            <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                                <div class="box-root">
+                                    <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                    <span
+                            class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                        <span>Access Policy Details</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="ap[name]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="ap[name]"
+                                                           placeholder="Enter permission name" name="name"
+                                                           value='<%= old_input("name") %>'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="ap[description]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="ap[description]"
+                                                           placeholder="Enter permission description"
+                                                           name="description" value='<%= old_input("description") %>'>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="box-root padding-vertical--2">
+                                                <div class="card card-root box--bg--white border border-primary">
+                                                    <div
+                                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                        <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                            <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                                 style="margin-left:-8px;margin-top: -8px;">
+                                                                <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                                    <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                           placeholder="Filter" type="search"
+                                                                           data-table="order-table"
+                                                                           oninput="searchPolicyRoutes(this.value)">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="contentBlock box-root box--bg--white"
+                                                         style="max-height:200px;overflow-y:scroll">
+                                                        <table class="table order-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="position:sticky;top:0;">Permssion
+                                                                </th>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="width: 25%;position:sticky;top:0;">Access
+                                                                    Grant
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="accessPolicyRoutesList">
+                                                            <%= for(policyRoute) in load_routes_for_permissions() {%>
+                                                            <tr>
+                                                                <td><%= policyRoute.Alias %></td>
+                                                                <td><input type="checkbox" name="routes[]"
+                                                                           value="<%= policyRoute.Path %>|<%= policyRoute.Alias %>"/>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save access
+                            policy
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " id="viewAP" tabindex="-1" role="dialog" aria-labelledby="View access policy"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="box-root">
+                    <div class="modal-header">
+                        <h5
+                                class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                                id="adduserLabel">View Access Policy
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="box-root">
+                        <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                             style="max-height:calc(100vh - 196px)">
+                            <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                                <div class="box-root">
+                                    <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                    <span
+                            class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                        <span>Access Policy Details</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="view_ap[name]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="view_ap[name]"
+                                                           placeholder="Enter permission name" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="view_ap[description]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="view_ap[description]"
+                                                           placeholder="Enter permission description" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="box-root padding-vertical--2">
+                                                <div class="card card-root box--bg--white border border-primary">
+                                                    <div
+                                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                        <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                            <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                                 style="margin-left:-8px;margin-top: -8px;">
+                                                                <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                                    <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                           placeholder="Filter" type="search"
+                                                                           data-table="order-table"
+                                                                           oninput="searchPolicyRoutes(this.value)">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="contentBlock box-root box--bg--white"
+                                                         style="max-height:200px;overflow-y:scroll">
+                                                        <table class="table order-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="position:sticky;top:0;">Permssion
+                                                                </th>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="width: 25%;position:sticky;top:0;">Access
+                                                                    Grant
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="viewAccessPolicyRoutesList">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " id="editAP" tabindex="-1" role="dialog" aria-labelledby="Edit access policy"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <form class="box-root" method="post">
+                    <%= csrf() %>
+                    <input type="hidden" name="_method" value="PATCH" />
+                    <input type="hidden" name="id" id="permission_id"/>
+                    <div class="modal-header">
+                        <h5
+                                class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                                id="adduserLabel">Edit Access Policy
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="box-root">
+                        <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                             style="max-height:calc(100vh - 196px)">
+                            <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                                <div class="box-root">
+                                    <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                    <span
+                            class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                        <span>Access Policy Details</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="edit_ap[name]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                            </label>
+
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="edit_ap[name]"
+                                                           placeholder="Enter permission name" name="name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium" for="edit_ap[description]">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="cursor-text">
+                                                <div class="box-root pressureBase">
+                                                    <input type="text" class="form-control" id="edit_ap[description]"
+                                                           placeholder="Enter permission description"
+                                                           name="description">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="font-size--13 font-weight-medium">
+                          <span
+                                  class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="box-root padding-vertical--2">
+                                                <div class="card card-root box--bg--white border border-primary">
+                                                    <div
+                                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                        <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                            <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                                 style="margin-left:-8px;margin-top: -8px;">
+                                                                <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                                    <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                           placeholder="Filter" type="search"
+                                                                           data-table="order-table"
+                                                                           oninput="searchPolicyRoutes(this.value)">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="contentBlock box-root box--bg--white"
+                                                         style="max-height:200px;overflow-y:scroll">
+                                                        <table class="table order-table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="position:sticky;top:0;">Permssion
+                                                                </th>
+                                                                <th class="box--bg--white box-divider--light-bottom-1"
+                                                                    style="width: 25%;position:sticky;top:0;">Access
+                                                                    Grant
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="editAccessPolicyRoutesList">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save access
+                            policy
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- END AP MODAL -->
+    <!-- MODALS -->
+    <!-- container-scroller -->
+    <%= partial("partials/logout.html") %>
+
+    <!-- plugins:js -->
+    
+    
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="/assets/js/shared/off-canvas.js"></script>
+    <script src="/assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/assets/js/app/dashboard.js"></script>
+    <!-- End custom js for this page-->
+    <%= partial("partials/show_modals.html") %>
+    <script>
+        const accessPolicyListElement = document.getElementById('accessPolicyRoutesList');
+        const routes = JSON.parse(`<%= json(load_routes_for_permissions()) %>`);
+
+        function searchPolicyRoutes(value) {
+            const searchText = value.trim(' ');
+            let html = '';
+            routes.filter(route => route.alias.toLowerCase().includes(searchText.toLowerCase())).forEach((route, index) => {
+                html += `
+                    <tr>
+                        <td>${route.alias}</td>
+                        <td><input type="checkbox" name="routes[]" value="${route.path}|${route.alias}"/></td>
+                    </tr>
+                    `
+            });
+            accessPolicyListElement.innerHTML = html;
+        }
+
+        const permissions = JSON.parse(`<%= json(pagination.Rows) %>`);
+        const permissionListTableElement = document.getElementById('permissionListElement');
+
+        function filterPermissions(permission) {
+            let html = '';
+            permissions.filter((perm) => {
+                return perm.name.toLowerCase().includes(permission.toLowerCase()) || perm.description.toLowerCase().includes(permission.toLowerCase())
+            }).forEach((perm) => {
+                html += `<tr>
+                            <td>${perm.name}</td>
+                            <td>${perm.description}</td>
+                            <td>
+                                <div class="box-root">
+                                    <button class="btn dbTableActionButton" data-toggle="modal" data-target="#viewAP" onclick='loadDetailsIntoViewModal(${JSON.stringify(perm)})'>
+                                        <span>View</span>
+                                    </button>
+                                    <button class="btn dbTableActionButton">
+                                        <span>Edit</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>`
+            });
+            permissionListTableElement.innerHTML = html;
+        }
+
+        function loadDetailsIntoViewModal(permission) {
+            document.getElementById('view_ap[name]').value = permission.name;
+            document.getElementById('view_ap[description]').value = permission.description;
+            document.getElementById('viewAccessPolicyRoutesList').innerHTML = permission.permission_routes.map(each => {
+                return `<tr>
+                            <td>${each.alias}</td>
+                            <td><input type="checkbox" checked disabled/>
+                            </td>
+                        </tr>`;
+            }).join('');
+        }
+
+        function loadDetailsIntoEditModal(permission) {
+            document.getElementById('permission_id').value = permission.id;
+            document.getElementById('edit_ap[name]').value = permission.name;
+            document.getElementById('edit_ap[description]').value = permission.description;
+            let html = permission.permission_routes.map(each => {
+                return `<tr>
+                            <td>${each.alias}</td>
+                            <td><input type="checkbox" checked name="routes[]" value="/${each.path}/|${each.alias}"/>
+                            </td>
+                        </tr>`;
+            }).join('');
+            let aliases = permission.permission_routes.map(each => `${each.alias}`);
+            html += routes.filter(each=>{
+                return !aliases.includes(each.alias);
+            }).map(each => {
+                return `<tr>
+                            <td>${each.alias}</td>
+                            <td><input type="checkbox" name="routes[]" value="${each.path}|${each.alias}"/>
+                            </td>
+                        </tr>`;
+            }).join('');
+
+            document.getElementById('editAccessPolicyRoutesList').innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>

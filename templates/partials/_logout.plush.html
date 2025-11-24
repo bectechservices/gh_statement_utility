@@ -1,0 +1,27 @@
+<form id="logoutForm" method="POST" action="/logout" style="display: none">
+    <%= csrf() %>
+    <input type="hidden" name="action_type" id="logout_action_type" value="USER LOGOUT">
+</form>
+<script>
+    const logoutForm = document.getElementById('logoutForm');
+    let time;
+
+    function logout(type) {
+        document.getElementById("logout_action_type").value = type;
+        logoutForm.submit();
+    }
+
+    function resetTimer() {
+        clearTimeout(time);
+        time = setTimeout(function () {
+            logout("<%= SYSTEM_LOGOUT %>")
+        }, 900000) //15 minutes
+    }
+
+    (function () {
+        window.addEventListener('load', resetTimer, true);
+        ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(function (name) {
+            document.addEventListener(name, resetTimer, true);
+        });
+    })()
+</script>

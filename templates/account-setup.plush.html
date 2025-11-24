@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ First Time Login ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    
+    
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body class="box--bg--white" data-theme="absa-default">
+    <div class="container mc-content w-100 box--bg--white" id="appRoot">
+        <div class="box-root">
+            <div class="c-content" id="content">
+                <div
+                    class="authFirstTime_wrapper [ mx-auto margin-top--48 mb-0 pb-0 padding-top--28 padding-right--36 padding-left--36 ]">
+                    <div class="authFirstTime_content [ mx-auto ]">
+                        <div class="box-root row ">
+                            <div class="container col-md-4">
+                                <div class="box-root">
+                                    <div class="org_logo [ ml-0 mr-0 margin-bottom--12 margin-top--22 ]"></div>
+                                </div>
+                            </div>
+                            <div class="container col-md-7">
+                                <div class="overflow-hidden box-root">
+                                    <div class="margin-bottom--48 authFirstTime_form">
+                                        <div class="box-root">
+                                            <div class="authFirstTime_formWrapper w-auto">
+                                                <div class="container w-auto overflow-hidden">
+                                                    <div
+                                                        class="text-numericSpacing--proportional text-color--dark text-wrap--wrap font-size--42 line-height--46 margin-bottom--18">
+                                                        <span>Setup your account</span>
+                                                    </div>
+                                                    <p
+                                                        class="text-numericSpacing--proportional text-color--default text-wrap--wrap font-size--16 line-height--20 margin-bottom--24">
+                                                        <span>Enter a new password to gain access. Password must follow
+                                                            policy specified.</span>
+                                                    </p>
+                                                    <form class="authForm authFirstTime_form box-root"
+                                                        id="authFirstTimeForm" method="POST" novalidate="novalidate">
+                                                        <%= csrf() %>
+                                                        <fieldset class="padding-vertical--10 m-0 border-0">
+                                                            <div class="form-group mb-0 padding-vertical--16">
+                                                                <div clas="box-root">
+                                                                    <div
+                                                                        class="d-flex flex-row justify-content-between align-items-center mb-2">
+                                                                        <label
+                                                                            class="font-size--14 font-weight-medium mb-0"
+                                                                            for="auth[passwordhasVisibility]">
+                                                                            <span
+                                                                                class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Password</span>
+                                                                        </label>
+                                                                        <div class="box-root">
+                                                                            <div class="d-flex align-items-center">
+                                                                                <div class="padding-horizontal--4">
+                                                                                    <input type="checkbox"
+                                                                                        id="auth[togglePasswordVisible]"
+                                                                                        onclick="toggleVisible()" />
+                                                                                </div>
+                                                                                <label
+                                                                                    class="font-size--14 font-weight-medium mb-0"
+                                                                                    for="auth[togglePasswordVisible]">
+                                                                                    <span
+                                                                                        class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap user-select--none">Show
+                                                                                        password</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cursor-text">
+                                                                    <div class="box-root pressureBase">
+                                                                        <input type="password"
+                                                                            class="password form-control form-control-lg br--0"
+                                                                            name="password"
+                                                                            id="auth[passwordhasVisibility]" value='<%= old_input("password") %>'>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="box-root margin-bottom--8">
+                                                                <ul class="helper-text column-count--2">
+                                                                    <li class="length position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">10
+                                                                            characters minimum</span></li>
+                                                                    <li class="lowercase position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">One
+                                                                            lowercase letter.</span></li>
+                                                                    <li class="uppercase position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">One
+                                                                            uppercase letter.</span></li>
+                                                                    <li class="special position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">One
+                                                                            special character.</span></li>
+                                                                    <li class="hasNumber position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">A
+                                                                            number.</span></li>
+                                                                    <li class="match position-relative"><span
+                                                                            class="d-flex align-items-center text-numericSpacing--proportional text-color--default text-wrap--wrap line-height--20 font-size--13 user-select--none">Passwords
+                                                                            must match.</span></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="form-group mb-0 padding-vertical--16">
+                                                                <div clas="box-root">
+                                                                    <div
+                                                                        class="d-flex flex-row justify-content-between align-items-center mb-2">
+                                                                        <label
+                                                                            class="font-size--14 font-weight-medium mb-0"
+                                                                            for="auth[passwordConfirm]">
+                                                                            <span
+                                                                                class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Confirm
+                                                                                password</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cursor-text">
+                                                                    <div class="box-root pressureBase">
+                                                                        <input type="password"
+                                                                            class="form-control form-control-lg br--0 password_confirm"
+                                                                            id="auth[passwordConfirm]"
+                                                                            placeholder="repeat password">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="box-root padding-bottom--12">
+                                                                <div class="ButtonGroup box-root">
+                                                                    <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                        style="margin-left:-8px;margin-top:-8px;">
+                                                                        <div class="margin-top--8 margin-left--8">
+                                                                            <div class="box-root">
+                                                                                <button
+                                                                                    class="btn btn-sm btn-primary pressureButton pressureButton-primary">
+                                                                                    <span
+                                                                                        class="font-weight-medium">Save
+                                                                                        and Sign in</span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<%= partial("partials/logout.html") %>
+
+<!-- plugins:js -->
+
+
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="/assets/js/shared/off-canvas.js"></script>
+<script src="/assets/js/shared/misc.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="/assets/js/app/dashboard.js"></script>
+<script src="/assets/js/app/Passwordpolicy.js"></script>
+<script src="/assets/js/app/passwordVisibilityToggle.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

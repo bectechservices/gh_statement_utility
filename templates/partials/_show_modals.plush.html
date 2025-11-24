@@ -1,0 +1,7 @@
+<%= if(should_show_modal()){ %>
+    <script>
+        $(document).ready(function () {
+            $('#<%= modal_id() %>').modal('show');
+        });
+    </script>
+<% } %>

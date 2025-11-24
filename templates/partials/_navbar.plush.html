@@ -1,0 +1,111 @@
+<nav
+  class="navbar default-layout col-lg-12 col-12 py-0 fixed-top d-flex flex-row box--bg--white no-siderBar-fullWidth-navbar"
+>
+  <div
+    class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-start"
+  >
+    <div
+      class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-start"
+    >
+      <a class="navbar-brand brand-logo" href="/">
+        <img
+          class="img-fluid"
+          src="../assets/images/scb.png"
+          alt="logo"
+        />
+        
+      </a>
+      <b class="d-flex align-items-end">NG</b>
+    </div>
+  </div>
+  <div
+    class="navbar-menu-wrapper d-flex align-items-center simple_verticalSeperator position-relative"
+  >
+    <ul class="navbar-nav">
+      <%= if(user_can_access("dashboard")) {%>
+      <li class="nav-item d-none d-xl-inline-block">
+        <a
+          class='nav-link position-relative line-height--20 padding-vertical--24 padding-horizontal--4 <%= set_active_if_url_is("dashboard") %> font-size--16'
+          href="/dashboard"
+        >
+          <span class="text-numericSpacing--proportional">Dashboard</span>
+        </a>
+      </li>
+      <% } %>
+      <%= if(user_can_access("statements")) {%>
+      <li class="nav-item d-none d-xl-inline-block">
+        <a
+          class='nav-link position-relative line-height--20 padding-vertical--24 padding-horizontal--4 <%= set_active_if_url_is("statements") %> font-size--16'
+          href="/statements"
+        >
+          <span class="text-numericSpacing--proportional">Statements</span>
+        </a>
+      </li>
+      <% } %>
+  
+      <%= if(user_can_access("settings")) {%>      
+      <li class="nav-item d-none d-xl-inline-block">
+        <a
+          class='nav-link position-relative line-height--20 padding-vertical--24 padding-horizontal--4 <%= set_active_if_url_is("settings") %> font-size--16'
+          href="/settings"
+        >
+          <span class="text-numericSpacing--proportional">Settings</span>
+        </a>
+      </li>
+      <% } %>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+        <a
+            class="dropdown-toggle text-decoration--none"
+            id="UserDropdown"
+            href="#"
+            data-toggle="dropdown"
+            aria-expanded="true"
+            >
+            <span
+              class="text-color--dark font-size--16 text-nowrap padding-horizontal--4 text-numericSpacing--proportional"
+              ><%= auth_user.Name() %></span
+            >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 0 24 24"
+              width="24px"
+              fill="#000000"
+             >
+              <path d="M24 24H0V0h24v24z" fill="none" opacity=".87" />
+              <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z" />
+            </svg>
+        </a>
+        <div
+          class="dropdown-menu dropdown-menu-right navbar-dropdown"
+          aria-labelledby="UserDropdown"
+        >
+          <!-- <a class="dropdown-item">Account</a> -->
+          <a
+            class="dropdown-item"
+            onclick="document.getElementById('logoutForm').submit()"
+            >Sign Out<i class="dropdown-item-icon ti-power-off"></i
+          ></a>
+            <form method="POST" action="/logout" id="logoutForm">
+              <%= csrf() %>
+              <input
+                type="hidden"
+                name="action_type"
+                id="logout_action_type"
+                value="USER LOGOUT"
+              />
+            </form>
+        </div>
+      </li>
+    </ul>
+    <button
+      class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+      type="button"
+      data-toggle="offcanvas"
+    >
+      <span class="mdi mdi-menu"></span>
+    </button>
+  </div>
+</nav>

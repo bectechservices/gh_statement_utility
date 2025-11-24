@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ Create User ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <!-- <link rel="stylesheet" href="assets/vendors/iconfonts/ionicons/css/ionicons.css"> -->
+    <!-- <link rel="stylesheet" href="assets/vendors/iconfonts/typicons/src/font/typicons.css"> -->
+    <!-- <link rel="stylesheet" href="assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css"> -->
+    <!-- <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.addons.css"> -->
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body data-theme="absa-default">
+    <div class="container-scroller" id="appRoot">
+        <!-- partial:partials/_navbar.html -->
+        <%= partial("partials/navbar.html") %>
+        <!-- partial -->
+
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial -->
+            <div class="main-panel no-siderBar-fullWidth">
+                <div class="content-wrapper">
+                    <div class="box-root padding-top--8 padding-bottom--12">
+                        <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                            <div class="d-flex align-items-center flex-row position-relative">
+                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                    <div class="breadcrumb-item Is--pressable">
+                                        <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                            href="/settings">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>Settings</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-row position-relative">
+                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                    <div class="breadcrumb-item Is--pressable">
+                                        <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                            href="users.html">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>Users</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-row position-relative">
+                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                    <div class="breadcrumb-item Is--disabled">
+                                        <span
+                                            class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                            <span>Create Users</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-root">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- CREATE USER WIDGETS -->
+                                <div class="box-root pb-2">
+                                    <div
+                                        class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                        <div
+                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                            <div
+                                                class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                <div
+                                                    class="box-root d-flex flex-column justify-content-center flex-100">
+                                                    <span
+                                                        class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap">
+                                                        <span>Create User</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="create_user_form" method="POST">
+                                        <%= csrf() %>
+                                            <div
+                                                class="contentBlock box-root box--bg--offset box-divider--light-bottom-1">
+                                                <div
+                                                    class="formLayout box-root box--bg--offset mw-0 m-0 box-divider--light-bottom-1">
+                                                    <div class="box-root margin-bottom--16">
+                                                        <div class="box-root padding-bottom--8">
+                                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link box--bg--offset text-color--gray position-relative active box-divider--light-right-1"
+                                                                        id="account-tab" data-toggle="tab"
+                                                                        href="#account" role="tab"
+                                                                        aria-controls="account" aria-selected="true">
+                                                                        <span
+                                                                            class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional">
+                                                                            <span class="tabtext-context">Account
+                                                                                details</span>
+                                                                        </span>
+                                                                        <div
+                                                                            class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box--bg--blue">
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link box--bg--offset text-color--gray position-relative box-divider--light-right-1"
+                                                                        id="access-policy-tab" data-toggle="tab"
+                                                                        href="#access-policy" role="tab"
+                                                                        aria-controls="access-policy"
+                                                                        aria-selected="false">
+                                                                        <span
+                                                                            class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional">
+                                                                            <span class="tabtext-context">Roles and
+                                                                                permissions</span>
+                                                                        </span>
+                                                                        <div
+                                                                            class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box--bg--blue">
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-content" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="account"
+                                                            role="tabpanel" aria-labelledby="account-tab">
+                                                            <div class="box-root">
+                                                                <div
+                                                                    class="form-group padding-horizontal--18 padding-vertical--4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[firstname]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">First Name</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="cursor-text">
+                                                                                <div class="box-root pressureBase">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        id="user[firstname]"
+                                                                                        placeholder="Enter first name"
+                                                                                        name="first_name"
+                                                                                        value='<%= old_input("first_name") %>'>
+                                                                                </div>
+                                                                                <%= if(input_has_error("first_name")) {%>
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                    <div class="padding-top--4">
+                                                                                        <div
+                                                                                            class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                            <div
+                                                                                                class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                <div
+                                                                                                    class="padding-right--8">
+                                                                                                    <span
+                                                                                                        class="text-color--red600">
+                                                                                                        <i
+                                                                                                            class="mdi mdi-alert"></i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                    <%= input_error_message("first_name") %>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="form-group padding-horizontal--18 padding-vertical--4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[lastname]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Last Name</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="cursor-text">
+                                                                                <div class="box-root pressureBase">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        id="user[lastname]"
+                                                                                        placeholder="Enter last name"
+                                                                                        name="last_name"
+                                                                                        value='<%= old_input("last_name") %>'>
+                                                                                </div>
+                                                                                <%= if(input_has_error("last_name")) {%>
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                    <div class="padding-top--4">
+                                                                                        <div
+                                                                                            class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                            <div
+                                                                                                class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                <div
+                                                                                                    class="padding-right--8">
+                                                                                                    <span
+                                                                                                        class="text-color--red600">
+                                                                                                        <i
+                                                                                                            class="mdi mdi-alert"></i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                    <%= input_error_message("last_name") %>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="form-group padding-horizontal--18 padding-vertical--4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[email]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Email</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="cursor-text">
+                                                                                <div class="box-root pressureBase">
+                                                                                    <input type="email"
+                                                                                        class="form-control"
+                                                                                        id="user[email]"
+                                                                                        placeholder="Enter email address" name="email" value='<%= old_input("email") %>'>
+                                                                            </div>
+                                                                            <%= if(input_has_error("email")) {%>
+                                                                            <div
+                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                <div class="padding-top--4">
+                                                                                    <div
+                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                        <div
+                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                            <div
+                                                                                                class="padding-right--8">
+                                                                                                <span
+                                                                                                    class="text-color--red600">
+                                                                                                    <i
+                                                                                                        class="mdi mdi-alert"></i>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                            <span
+                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                <%= input_error_message("email") %>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="form-group padding-horizontal--18 padding-vertical--4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[ABNumber]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Staff ID</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-3">
+                                                                            <div class="cursor-text">
+                                                                        <!-- Make sure Vue is loaded in your HTML head or before your code -->
+                                                                        <div class="box-root pressureBase">
+                                                                            <div id="app" class="form-row">
+                                                                                <div class="input-group">
+                                                                                    <div class="input-with-feedback">
+                                                                                        <!-- Removed the 'value' attribute to avoid conflict with v-model -->
+                                                                                        <input type="text"
+                                                                                            class="form-control"
+                                                                                            id="user[ABNumber]"
+                                                                                            v-model="ab_number"
+                                                                                            @input="validateAbNumber"
+                                                                                            placeholder="Enter Staff ID" 
+                                                                                            name="ab_number">
+                                                                                        <div class="feedback-message" :class="feedbackClass">{{ feedbackMessage }}</div>
+                                                                                    </div>
+                                                                                    
+                                                                                    <div class="checkbox-group">
+                                                                                        <input type="checkbox" 
+                                                                                            id="user[privileged]" 
+                                                                                            name="privileged"
+                                                                                            v-model="isPrivilegedConfirmed"
+                                                                                            :disabled="!canConfirmPrivileged" />
+                                                                                        <label for="privileged"><b>Privileged ID ?</b></label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <%= if(input_has_error("ab_number")) {%>
+                                                                        <div
+                                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                            <div class="padding-top--4">
+                                                                                <div
+                                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                    <div
+                                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                        <div class="padding-right--8">
+                                                                                            <span
+                                                                                                class="text-color--red600">
+                                                                                                <i
+                                                                                                    class="mdi mdi-alert"></i>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                        <span
+                                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                            <%= input_error_message("ab_number") %>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="form-group mb-0 padding-horizontal--18 padding-vertical--4 padding-bottom--16">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[branch]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Branch</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="cursor-text">
+                                                                                <div class="box-root pressureBase">
+                                                                                    <div
+                                                                                        class="pressureButton cursor-pointer mw-100 border-radius--all">
+                                                                                        <div class="pressureBase">
+                                                                                            <select
+                                                                                                class="w-100 selectButton font-size--14 padding-right--24 padding-left--8 padding-vertical--4 line-height--20 select-table-filter"
+                                                                                                data-not-used="unstyledSelect"
+                                                                                                id="user[branch]" name="branch_id">
+                                                                                                <option selected>Select
+                                                                                                    Branch</option>
+                                                                                                <%= for (branch) in branches {%>
+                                                                        <option value="<%= branch.ID %>">
+                                                                            <%= branch.Name %> |
+                                                                            <%= branch.Code %>
+                                                                        </option>
+                                                                        <% } %>
+                                                                        </select>
+                                                                    </div>
+                                                                    <%= if(input_has_error("branch_id")) {%>
+                                                                    <div
+                                                                        class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                        <div class="padding-top--4">
+                                                                            <div
+                                                                                class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                <div
+                                                                                    class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                    <div class="padding-right--8">
+                                                                                        <span
+                                                                                            class="text-color--red600">
+                                                                                            <i
+                                                                                                class="mdi mdi-alert"></i>
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <span
+                                                                                        class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                        <%= input_error_message("branch_id") %>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <%}%>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="form-group mb-0 padding-horizontal--18 padding-vertical--4 padding-bottom--16">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center justify-content-end h-100">
+                                                                                <label
+                                                                                    class="font-size--13 font-weight-medium"
+                                                                                    for="user[locked]">
+                                                                                    <span
+                                                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Locked</span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="cursor-text">
+                                                                                <div class="box-root pressureBase">
+                                                                                    <div
+                                                                                        class="pressureButton cursor-pointer mw-100 border-radius--all">
+                                                                                        <div class="pressureBase">
+                                                                                            <select
+                                                                                                class="w-100 selectButton font-size--14 padding-right--24 padding-left--8 padding-vertical--4 line-height--20 select-table-filter"
+                                                                                                data-not-used="unstyledSelect"
+                                                                                                id="user[locked]" name="locked">
+                                                                                                <option value="0">No
+                                                                                                </option>
+                                                                                                <option value="1">Yes
+                                                                                                </option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="access-policy" role="tabpanel"
+                                                            aria-labelledby="access-policy-tab">
+                                                            <div class="box-root box-divider--light-bottom-1">
+                                                                <div
+                                                                    class="form-group mb-0 padding-horizontal--18 padding-vertical--4">
+                                                                    <div class="row">
+                                                                        <div class="col-md-2">
+                                                                            <label
+                                                                                class="font-size--13 font-weight-medium">
+                                                                                <span
+                                                                                    class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Roles</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="box-root padding-vertical--2">
+                                                                                <div
+                                                                                    class="card card-root box--bg--white border">
+                                                                                    <div
+                                                                                        class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                                                        <div
+                                                                                            class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                                                            <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                                                                style="margin-left:-8px;margin-top: -8px;">
+                                                                                                <div
+                                                                                                    class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                                                                    <input
+                                                                                                        class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                                                        placeholder="Filter"
+                                                                                                        type="search"
+                                                                                                        data-table="order-table">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="contentBlock box-root box--bg--white"
+                                                                                        style="max-height:200px;overflow-y:auto">
+                                                                                        <table
+                                                                                            class="table order-table">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th class="box--bg--white box-divider--light-bottom-1"
+                                                                                                        style="position:sticky;top:0;">
+                                                                                                        Role</th>
+                                                                                                    <th class="box--bg--white box-divider--light-bottom-1"
+                                                                                                        style="width: 25%;position:sticky;top:0;">
+                                                                                                        Access Grant
+                                                                                                    </th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <%= for (role) in roles {%>
+                                                                    <tr>
+                                                                        <td><%= role.Name %>
+                                                                        </td>
+                                                                        <td><input type="radio" name="roles[]"
+                                                                                value="<%= role.ID %>" />
+                                                                        </td>
+                                                                    </tr>
+                                                                    <% } %>
+                                                                    </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <!----------------
+                                    <div class="box-root">
+                                        <div class="form-group mb-0 padding-horizontal--18 padding-vertical--4">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label class="font-size--13 font-weight-medium">
+                                                        <span
+                                                            class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="box-root padding-vertical--2">
+                                                        <div class="card card-root box--bg--white border">
+                                                            <div
+                                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                                <div
+                                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                                    <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                                        style="margin-left:-8px;margin-top: -8px;">
+                                                                        <div
+                                                                            class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                                            <input
+                                                                                class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                                placeholder="Filter" type="search"
+                                                                                data-table="order-table">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="contentBlock box-root box--bg--white"
+                                                                style="max-height:200px;overflow-y:auto">
+                                                                <table class="table order-table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="box--bg--white box-divider--light-bottom-1"
+                                                                                style="position:sticky;top:0;">
+                                                                                Permssion</th>
+                                                                            <th class="box--bg--white box-divider--light-bottom-1"
+                                                                                style="width: 25%;position:sticky;top:0;">
+                                                                                Access Grant
+                                                                            </th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <%= for (permission) in permissions {%>
+                                                                        <tr>
+                                                                            <td><%= permission.Name %>
+                                                                            </td>
+                                                                            <td><input type="checkbox"
+                                                                                    name="permissions[]"
+                                                                                    value="<%= permission.ID %>" />
+                                                                            </td>
+                                                                        </tr>
+                                                                        <% } %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    ----------------->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                        <div class="contentFooter-end d-flex align-items-center justify-content-start flex-0-0--auto">
+                            <div class="ButtonGroup box-root">
+                                <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                    style="margin-left:-8px;margin-top:-8px;">
+                                    <div class="margin-top--8 margin-left--8">
+                                        <div class="box-root">
+                                            <a class="btn btn-sm btn-light pressureButton" href="/users">
+                                                <span class="font-weight-medium text-color--dark">Cancel</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="margin-top--8 margin-left--8">
+                                        <div class="box-root">
+                                            <button type="button" onclick="nextTab()" id="next_btn"
+                                                class="btn btn-sm btn-primary pressureButton pressureButton-primary">
+                                                <span class="font-weight-medium" id="control_text">Next</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <!-- CREATE USER WIDGET -->
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- content-wrapper ends -->
+    </div>
+    <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <%= partial("partials/logout.html") %>
+
+    <!-- plugins:js -->
+     <!-- <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script> -->
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script> 
+    
+    
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="/assets/js/shared/off-canvas.js"></script>
+    <script src="/assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/assets/js/app/dashboard.js"></script>
+    <script src="/assets/js/app/simpleFilter.js"></script>
+    <!-- End custom js for this page-->
+    <script>
+    document.getElementById("user[branch]").value = '<%= old_input("branch_id") %>'||'Select Branch';
+        function nextTab() {
+            $('.nav-tabs a[href="#access-policy"]').tab('show');
+            document.getElementById('control_text').innerText = 'Submit';
+            document.getElementById('next_btn').onclick = function () {
+                document.getElementById('create_user_form').submit();
+            }
+        }
+    </script>
+<script>
+new Vue({
+    el: '#app',
+    data: {
+        ab_number: '', // Start with a clear reactive state
+        isPrivilegedConfirmed: false,
+        canConfirmPrivileged: false,
+        feedbackMessage: '',
+        feedbackClass: ''
+    },
+    methods: {
+        validateAbNumber() {
+            const value = this.ab_number.trim();
+            const hasLetters = /[a-zA-Z]/.test(value);
+            
+            this.canConfirmPrivileged = value.length > 0 && hasLetters;
+            
+            if (!this.canConfirmPrivileged) {
+                this.isPrivilegedConfirmed = false;
+            }
+            
+            this.updateFeedback(value, hasLetters);
+        },
+        
+        updateFeedback(value, hasLetters) {
+            if (value.length === 0) {
+                this.feedbackMessage = 'Enter Staff ID';
+                this.feedbackClass = 'feedback-neutral';
+            } else if (hasLetters) {
+                this.feedbackMessage = '✓ Privilege option available';
+                this.feedbackClass = 'feedback-valid';
+            } else {
+                this.feedbackMessage = '✗ Numbers only - no privilege access';
+                this.feedbackClass = 'feedback-invalid';
+            }
+        }
+    }
+});
+</script>
+
+<style>
+    .form-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.form-control {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* Visual feedback classes */
+.valid-privilege {
+    border-color: #28a745;
+    background-color: #f8fff9;
+}
+
+.invalid-privilege {
+    border-color: #6c757d;
+    background-color: #f8f9fa;
+}
+
+.neutral {
+    border-color: #ddd;
+    background-color: white;
+}
+
+/* Feedback messages */
+.input-with-feedback {
+    position: relative;
+    flex: 1;
+}
+
+.feedback-message {
+    font-size: 12px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.feedback-valid {
+    color: #28a745;
+}
+
+.feedback-invalid {
+    color: #6c757d;
+}
+
+.feedback-neutral {
+    color: #6c757d;
+}
+
+/* Checkbox states */
+input[type="checkbox"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+input[type="checkbox"]:disabled + label {
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+}
+</style>
+</body>
+
+</html>

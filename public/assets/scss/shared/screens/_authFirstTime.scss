@@ -1,0 +1,14 @@
+.mc-content {
+  height: calc(100vh - 60px);
+  padding: 0 15px;
+  margin: 0 auto;
+  max-width: 1300px;
+
+  & .authFirstTime_wrapper {
+    height: calc(100vh - 140px);
+  }
+
+  & .authFirstTime_content {
+    max-width: 820px;
+  }
+}

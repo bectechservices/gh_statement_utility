@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>STMT UTILITY ~ User Activity Audit ~ SCB</title>
+    <!-- plugins:css -->
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css"
+    />
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css" />
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css" />
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+  </head>
+
+  <body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+      <%= partial("partials/navbar.html") %>
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel no-siderBar-fullWidth">
+          <div class="content-wrapper">
+            <div class="box-root padding-top--8 padding-bottom--12">
+              <div
+                class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap"
+              >
+                <div
+                  class="d-flex align-items-center flex-row position-relative"
+                >
+                  <div
+                    class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                  >
+                    <div class="breadcrumb-item Is--pressable">
+                      <a
+                        class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                        href="/settings"
+                      >
+                        <span
+                          class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block"
+                        >
+                          <span>Settings</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-center flex-row position-relative"
+                >
+                  <div
+                    class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                  >
+                    <div class="breadcrumb-item Is--disabled">
+                      <span
+                        class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block"
+                      >
+                        <span>Users</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-root">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- USERS-->
+                  <div class="box-root pb-2">
+                    <div
+                      class="card-root card--radius--all card--shadow--medium box-root box--bg--white"
+                    >
+                      <div
+                        class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20"
+                      >
+                        <div
+                          class="box-root d-flex flex-row justify-content-between flex-1-1--auto"
+                        >
+                          <%= partial("partials/search.html") %>
+                          <div
+                            class="contentHeader-end box-root margin-left--16 d-flex align-items-center"
+                          >
+                            <div class="ButtonGroup box-root">
+                              <div
+                                class="d-flex align-items-center justify-content-start flex-nowrap"
+                                style="margin-left:-8px;margin-top:-8px;"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="contentBlock box-root box--bg--white box-divider--light-bottom-1"
+                      >
+                        <div
+                          class="h-100 slickscroll--2 box-root table-responsive overflow-y--auto dataTableResponsive"
+                        >
+                          <table
+                            class="table table-hover db-objectListTable order-table"
+                          >
+                            <thead>
+                              <tr>
+                                <th>User</th>
+                                <th>User ID</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Branch</th>
+                                <th>Last Password Change</th>
+                                <th>Status</th>
+                                <th>&nbsp;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <%= for(user) in pagination.Rows { %>
+                              <tr>
+                                <td><%= user.Name() %></td>
+                                <td><%= user.ABNumber %></td>
+                                <td><%= user.Email %></td>
+                                <td><%= user.RolesToString() %></td>
+                                <td><%= user.Branch.Name %></td>
+                                <td>
+                                  <%= if(user.PasswordLastChanged.IsZero()) { %>
+                                  N/A <%} else {%> <%=
+                                  user.PasswordLastChanged.Format("January 02,
+                                  2006 3:04PM") %> <% } %>
+                                </td>
+                                <%= if(user.Locked){ %>
+                                <td>Locked</td>
+                                <% } else { %>
+                                <td>Active</td>
+                                <% } %>
+                                <td>
+                                  <div
+                                    class="box-root d-flex justify-content-end"
+                                  >
+                                  <a
+                                  href="/user?user=<%= user.ID %>"
+                                  class="btn dbTableActionButton"
+                                >
+                                  <span>View</span>
+                                </a>                                  
+                                    <a
+                                      href="/userdelete?user=<%= user.ID %>"
+                                      class="btn dbTableActionButton"
+                                    >
+                                      <span>Remove</span>
+                                    </a>
+
+                                    <%= if(user.Deleted.Valid) { %>
+                                    <button
+                                      onclick="restoreUser('<%= user.ID %>')"
+                                      class="btn dbTableActionButton box--bg--danger"
+                                    >
+                                    <span>Restore</span>
+                                    </button>
+                                    <%} else { %>
+                                    <button
+                                      onclick="deleteUser('<%= user.ID %>')"
+                                      class="btn dbTableActionButton dbTableActionButton-danger box--bg--danger"
+                                    >
+                                      <span>Delete</span>
+                                    </button>
+                                    <% } %>
+                                  </div>
+                                </td>
+                              </tr>
+                              <% } %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <div
+                        class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16"
+                      >
+                        <div
+                          class="contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto"
+                        >
+
+                          >
+                        </div>
+                        <%= custom_paginator(pagination) %>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- USERS-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+      <form method="post" id="deleteUserForm">
+        <%= csrf() %>
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="id" id="deleteUserID" />
+      </form>
+
+      <form method="post" id="removeUserForm">
+        <%= csrf() %>
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="hidden" name="id" id="removeUserID" />
+      </form>
+
+      <form method="post" id="restoreUserForm">
+        <%= csrf() %>
+        <input type="hidden" name="_method" value="PATCH" />
+        <input type="hidden" name="id" id="restoreUserID" />
+      </form>
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    
+    
+    <script>
+      function deleteUser(id) {
+        if (window.confirm("Are you sure?")) {
+          document.getElementById("deleteUserID").value = id;
+          document.getElementById("deleteUserForm").submit();
+        }
+      }
+
+      function restoreUser(id) {
+        if (window.confirm("Are you sure?")) {
+          document.getElementById("restoreUserID").value = id;
+          document.getElementById("restoreUserForm").submit();
+        }
+      }
+      function removeUser(id) {
+        if (window.confirm("Are you sure?")) {
+          document.getElementById("removeUserID").value = id;
+          document.getElementById("removeUserForm").submit();
+        }
+      }
+    </script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

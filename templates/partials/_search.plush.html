@@ -1,0 +1,27 @@
+<form>
+    <div class="contentHeader-start box-root margin-right--16 d-flex align-items-center"
+      style="margin-left:-8px;margin-top: -8px;">
+      <div class="margin-left--8">
+        <div class="box-root margin-bottom--8">
+          <label class="mb-0" for="filter[live_search]">
+            <span
+              class="text-color--def font-size--14 font-weight--medium line-height--20 text-numericSpacing--proportional text-numericSpacing--proportional text-wrap--wrap d-inline">
+              <span class="text-capitalize">Filter records</span>
+            </span>
+          </label>
+        </div>
+        <input class="db-objectSearch form-control font-size--14 db-tableFilter"
+          placeholder="Filter on...account name & number..." type="search" data-table="order-table"
+          style="padding: 0 .75rem;" id="filter[live_search]" name="search" value="<%= search %>">
+      </div>
+      <div class="cursor-text">
+        <div class="box-root pressureBase">
+          <button
+            class="btn btn-sm btn-primary pressureButton pressureButton-primary in-lineButton"
+            type="submit" style="margin-top: 33px; border-radius: 20px; margin-left: 10px;">
+            <span class="font-weight-medium text-capitalize">search</span>
+          </button>
+        </div>
+      </div>
+    </div>
+</form>

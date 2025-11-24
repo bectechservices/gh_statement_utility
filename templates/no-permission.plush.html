@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+  <title>GHCARD-VERIFY ~ No Permissions ~ SCB</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/css/shared/style.css">
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="/assets/css/app/style.css">
+  <!-- End Layout styles -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body class="box--bg--white chequeAuth" data-theme="absa-default">
+  <div class="box--bg--white" id="appRoot">
+    <div class="box container-full h-100--vh d-flex align-items-center justify-content-center">
+      <div class="d-flex flex-column">
+        <div class="w-100">
+        <h2>You have no permission</h2>
+        </div>
+         <form method="POST" action="/logout">
+            <button class="w-100" type="submit">Logout</button>
+            <%= csrf() %>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</body>
+
+<!-- plugins:js -->
+
+
+<!-- endinject -->
+<!-- End custom js for this page-->
+</body>
+
+</html>

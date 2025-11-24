@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>S.Utility ~ Home ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
+    <style>
+        #ImSticky {
+            position: fixed;
+            bottom: 500;
+            right: 10000;
+          }
+        </style>
+</head>
+
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <div class="main-panel no-siderBar-fullWidth">
+                    <div class="content-wrapper">
+                        <div class="box-root padding-top--8 padding-bottom--12">
+                            <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--pressable">
+                                            <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                                href="/settings">
+                                                <span
+                                                    class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                    <span>Stampify</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--disabled">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>PDF Stampify User Setup</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--EMAIL WIDGETS -->
+                                    <form class="box-root pb-2" method="POST">
+                                        <%= csrf() %>
+                                        <input type="hidden" name="_method" value="PATCH" />
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium card--shadow--none border box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <div
+                                                        class="box-root d-flex flex-column justify-content-center flex-100">
+                                                        <span
+                                                            class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap font-weight-medium">
+                                                            <span>Configure User for PDF Stampify Usage</span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="Form">
+                                                <div
+                                                    class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                                    <div
+                                                        class="border-0 m-0 p-0 box-root box--bg--offset box-divider--light-bottom-1">
+                                                        <div class="box-root">
+                                                            <div
+                                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                                <div
+                                                                    class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                    <div class="padding-right--12 padding-vertical--4"
+                                                                        style="flex: 1 0 25%">
+                                                                        <div class="box-root d-flex">
+                                                                            <div class="box-root">
+                                                                                <span
+                                                                                    class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                    <label class="mb-0">
+                                                                                        <span>PDF Stampify User Name</span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root" style="flex: 1 1 75%">
+                                                                        <div class="box-root pointer-events--none">
+                                                                            <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                                style="margin-left:-16px;margin-top:-16px;">
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                    <div class="padding-vertical--4">
+                                                                                        <div
+                                                                                            class="form-group padding-vertical--4">
+                                                                                            <label
+                                                                                                class="font-size--14 font-weight-medium"
+                                                                                                for="user_id">
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Stampify User </span>
+                                                                                            </label>
+                                                                                            <div class="cursor-text">
+                                                                                                <div
+                                                                                                    class="box-root pressureBase">
+                                                                                                    <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        <div class="d-flex margin-bottom--6 w-50">
+                                                                                                            <input type="text"  class="form-control" placeholder="" id="user_id" name="user_id" value="<%= stampify.User.FirstName %> - <%= stampify.User.LastName %>" readonly/>
+                                                                                                        </div>
+                                                                                                        <%= if(input_has_error("user_id")) {%>
+                                                                                                            <div
+                                                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                                <div class="padding-top--4">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                        <div
+                                                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                            <div class="padding-right--8">
+                                                                                                                                <span class="text-color--red600">
+                                                                                                                                    <i class="mdi mdi-alert"></i>
+                                                                                                                                </span>
+                                                                                                                            </div>
+                                                                                                                            <span
+                                                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                                <%= input_error_message("user_id") %>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        <% } %>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div
+                                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                                <div
+                                                                    class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                    <div class="padding-right--12 padding-vertical--4"
+                                                                        style="flex: 1 0 25%">
+                                                                        <div class="box-root d-flex">
+                                                                            <div class="box-root">
+                                                                                <span
+                                                                                    class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                    <label class="mb-0">
+                                                                                        <span>Stampify User Position</span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root" style="flex: 1 1 75%">
+                                                                        <div class="box-root pointer-events--none">
+                                                                            <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                                style="margin-left:-16px;margin-top:-16px;">
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                    <div class="padding-vertical--4">
+                                                                                        <div
+                                                                                            class="form-group padding-vertical--4">
+                                                                                            <label
+                                                                                                class="font-size--14 font-weight-medium"
+                                                                                                for="position">
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Position</span>
+                                                                                            </label>
+                                                                                            <div class="cursor-text">
+                                                                                                <div
+                                                                                                    class="box-root pressureBase">
+                                                                                                    <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        <div class="d-flex margin-bottom--6 w-50">
+                                                                                                            <input type="text" class="form-control" placeholder="" id="position" name="position" value="<%= stampify.Position %>" required/>
+                                                                                                        </div>
+                                                                                                        <%= if(input_has_error("position")) {%>
+                                                                                                            <div
+                                                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                                <div class="padding-top--4">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                        <div
+                                                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                            <div class="padding-right--8">
+                                                                                                                                <span class="text-color--red600">
+                                                                                                                                    <i class="mdi mdi-alert"></i>
+                                                                                                                                </span>
+                                                                                                                            </div>
+                                                                                                                            <span
+                                                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                                <%= input_error_message("position") %>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        <% } %>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div
+                                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                                <div
+                                                                    class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                    <div class="padding-right--12 padding-vertical--4"
+                                                                        style="flex: 1 0 25%">
+                                                                        <div class="box-root d-flex">
+                                                                            <div class="box-root">
+                                                                                <span
+                                                                                    class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                    <label class="mb-0">
+                                                                                        <span>Bank Name</span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root" style="flex: 1 1 75%">
+                                                                        <div class="box-root pointer-events--none">
+                                                                            <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                                style="margin-left:-16px;margin-top:-16px;">
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                    <div class="padding-vertical--4">
+                                                                                        <div
+                                                                                            class="form-group padding-vertical--4">
+                                                                                            <label
+                                                                                                class="font-size--14 font-weight-medium"
+                                                                                                for="bank_name">
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Bank Name</span>
+                                                                                            </label>
+                                                                                            <div class="cursor-text">
+                                                                                                <div
+                                                                                                    class="box-root pressureBase">
+                                                                                                    <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        <div class="d-flex margin-bottom--6 w-50">
+                                                                                                            <input type="text" class="form-control" placeholder="" id="bank_name" name="bank_name" value="<%= stampify.Branch.BankName %>" readonly/>
+                                                                                                        </div>
+                                                                                                        <%= if(input_has_error("bank_name")) {%>
+                                                                                                            <div
+                                                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                                <div class="padding-top--4">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                        <div
+                                                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                            <div class="padding-right--8">
+                                                                                                                                <span class="text-color--red600">
+                                                                                                                                    <i class="mdi mdi-alert"></i>
+                                                                                                                                </span>
+                                                                                                                            </div>
+                                                                                                                            <span
+                                                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                                <%= input_error_message("bank_name") %>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        <% } %>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div
+                                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                                <div
+                                                                    class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                    <div class="padding-right--12 padding-vertical--4"
+                                                                        style="flex: 1 0 25%">
+                                                                        <div class="box-root d-flex">
+                                                                            <div class="box-root">
+                                                                                <span
+                                                                                    class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                    <label class="mb-0">
+                                                                                        <span>Branch/Unit Name</span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root" style="flex: 1 1 75%">
+                                                                        <div class="box-root pointer-events--none">
+                                                                            <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                                style="margin-left:-16px;margin-top:-16px;">
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                    <div class="padding-vertical--4">
+                                                                                        <div
+                                                                                            class="form-group padding-vertical--4">
+                                                                                            <label
+                                                                                                class="font-size--14 font-weight-medium"
+                                                                                                for="branch_or_unit_name">
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Branch/Unit Name</span>
+                                                                                            </label>
+                                                                                            <div class="cursor-text">
+                                                                                                <div
+                                                                                                    class="box-root pressureBase">
+                                                                                                    <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        <div class="d-flex margin-bottom--6 w-50">
+                                                                                                            <input type="text" class="form-control" placeholder="" id="branch_or_unit_name" name="branch_or_unit_name" value="<%= stampify.Branch.Name %>" readonly/>
+                                                                                                        </div>
+                                                                                                        <%= if(input_has_error("branch_or_unit_name")) {%>
+                                                                                                            <div
+                                                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                                <div class="padding-top--4">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                        <div
+                                                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                            <div class="padding-right--8">
+                                                                                                                                <span class="text-color--red600">
+                                                                                                                                    <i class="mdi mdi-alert"></i>
+                                                                                                                                </span>
+                                                                                                                            </div>
+                                                                                                                            <span
+                                                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                                <%= input_error_message("branch_or_unit_name") %>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        <% } %>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div
+                                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                                <div
+                                                                    class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                    <div class="padding-right--12 padding-vertical--4"
+                                                                        style="flex: 1 0 25%">
+                                                                        <div class="box-root d-flex">
+                                                                            <div class="box-root">
+                                                                                <span
+                                                                                    class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                    <label class="mb-0">
+                                                                                        <span>Street Name</span>
+                                                                                    </label>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root" style="flex: 1 1 75%">
+                                                                        <div class="box-root pointer-events--none">
+                                                                            <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                                style="margin-left:-16px;margin-top:-16px;">
+                                                                                <div
+                                                                                    class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                    <div class="padding-vertical--4">
+                                                                                        <div
+                                                                                            class="form-group padding-vertical--4">
+                                                                                            <label
+                                                                                                class="font-size--14 font-weight-medium"
+                                                                                                for="branch_id">
+                                                                                                <span
+                                                                                                    class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Street Name</span>
+                                                                                            </label>
+                                                                                            <div class="cursor-text">
+                                                                                                <div
+                                                                                                    class="box-root pressureBase">
+                                                                                                    <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        <div class="d-flex margin-bottom--6 w-50">
+                                                                                                            <input type="text" class="form-control" placeholder="" id="branch_id" name="branch_id" value="<%= stampify.Branch.StreetName %>" readonly/>
+                                                                                                        </div>
+                                                                                                        <%= if(input_has_error("branch_id")) {%>
+                                                                                                            <div
+                                                                                                                class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                                <div class="padding-top--4">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                        <div
+                                                                                                                            class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                            <div class="padding-right--8">
+                                                                                                                                <span class="text-color--red600">
+                                                                                                                                    <i class="mdi mdi-alert"></i>
+                                                                                                                                </span>
+                                                                                                                            </div>
+                                                                                                                            <span
+                                                                                                                                class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                                <%= input_error_message("branch_id") %>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        <% } %>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+ <!-------------------------------------------------------------------->
+ <div class="form-group padding-horizontal--18 padding-vertical--4">
+    <div class="row">
+        <div class="col-md-3">
+            <label class="font-size--13 font-weight-medium" for="branch_stamp">
+                <span
+                    class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Branch Stamp?  </span> 
+            </label>
+        </div>
+        <div class="col-md-9">
+            <div class="cursor-text">
+                <div class="box-root pressureBase">
+                    <div class="pressureButton cursor-pointer mw-100 border-radius--all">
+                        <div class="pressureBase">
+                            <select
+                                class="selectButton font-size--14 padding-right--24 padding-left--8 padding-vertical--4 line-height--20 w-50"
+                                id="branch_stamp" name="branch_stamp" >
+                                <option value="<%= stampify.BranchStamp %>"> <%= stampify.BranchStamp %> </option> 
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <%= if(input_has_error("branch_stamp")) {%>
+                    <div
+                        class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                        <div class="padding-top--4">
+                            <div
+                                class="box-root d-flex flex-row align-items-center position-relative">
+                                <div
+                                    class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                    <div class="padding-right--8">
+                                        <span class="text-color--red600">
+                                            <i class="mdi mdi-alert"></i>
+                                        </span>
+                                    </div>
+                                    <span
+                                        class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                        <%= input_error_message("branch_stamp") %>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+            </div>
+        </div>
+    </div>  
+ <!-------------------------------------------------------------------->
+                                                            <div
+                                                            class="box-root padding-horizontal--8 padding-vertical--4">
+                                                            <div
+                                                                class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                                <div class="padding-right--12 padding-vertical--4"
+                                                                    style="flex: 1 0 25%">
+                                                                    <div class="box-root d-flex">
+                                                                        <div class="box-root">
+                                                                            <span
+                                                                                class="text-color--dark font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                <label class="mb-0">
+                                                                                    <span>Signature Upload of Stampify User</span>
+                                                                                </label>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="box-root" style="flex: 1 1 75%">
+                                                                    <div class="box-root pointer-events--none">
+                                                                        <div class="box-root d-flex flex-column justify-content-start flex-nowrap"
+                                                                            style="margin-left:-16px;margin-top:-16px;">
+                                                                            <div
+                                                                                class="box-root box-hideIfEmpty margin-top--16 margin-left--16 pointer-events--auto">
+                                                                                <div class="padding-vertical--4">
+                                                                                    <div
+                                                                                        class="form-group padding-vertical--4">
+                                                                                        <label
+                                                                                            class="font-size--14 font-weight-medium"
+                                                                                            for="stamp_signature">
+                                                                                            <span
+                                                                                                class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Signature</span>
+                                                                                        </label>
+                                                                                        <div class="cursor-text">
+                                                                                            <div
+                                                                                                class="box-root pressureBase">
+                                                                                                <div class="padding-horizontal--4 padding-vertical--8">
+                                                                                                        
+                                                                                                        <input type="file"  style="width: 50%" class="form-control" placeholder="" id="file" name="signature_location" value="<%= stampify.SignatureLocation %>" onchange="previewFile()" /><br />    
+                                                                                                        <input type="hidden" id ="file_base64id" name="file_base64"/>                                                                                                 
+                                                                                                        <figure> <img  style="width: 200px; height: 165px" src= "data:image/jpg;base64, <%= imageBytes %>" alt="load img"  id="imgsrc" > <figcaption class="text-center"><span class="font-size--16text-color--def text-numericSpacing--proportional text-wrap--wrap" style="font-weight: 500"></span> </figcaption>  </figure>
+                                                                                                    </div>
+                                                                                                    <%= if(input_has_error("signature_location")) {%>
+                                                                                                        <div 
+                                                                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                                                                            <div class="padding-top--4">
+                                                                                                                <div
+                                                                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                                                                    <div
+                                                                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                                                                        <div class="padding-right--8">
+                                                                                                                            <span class="text-color--red600">
+                                                                                                                                <i class="mdi mdi-alert"></i>
+                                                                                                                            </span>
+                                                                                                                        </div>
+                                                                                                                        <span
+                                                                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                                                                            <%= input_error_message("signature_location") %>
+                                                                                                                        </span>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    <% } %>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                                <div
+                                                    class="contentFooter-end d-flex align-items-center justify-content-start flex-0-0--auto">
+                                                    <div class="ButtonGroup box-root">
+                                                        <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                            style="margin-left:-8px;margin-top:-8px;">
+                                                            <div class="margin-top--8 margin-left--8">
+                                                                <div class="box-root">
+                                                                    <button
+                                                                        class="btn btn-sm btn-primary pressureButton">
+                                                                        <span
+                                                                            class="font-weight-medium text-white">Save</span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- EMAIL WIDGET -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    
+    
+    <script src="/assets/js/app/simpleFilter.js"></script>
+    <script>
+
+        function previewFile() {
+            console.log("Any good thing exist in NG?")
+            const preview = document.querySelector("#imgsrc");
+            const file = document.querySelector("input[type=file]").files[0];
+            const reader = new FileReader();
+            console.log(reader)
+            reader.addEventListener(
+                "load",
+                () => {
+                // convert image file to base64 string
+                document.getElementById('file_base64id').value=removeDataURLSignature(reader.result);
+                preview.src = reader.result;
+                },
+                false,
+            );
+            console.log("####### Preview Image ##########",preview.src )
+           
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+            console.log(file)
+        };
+
+
+
+        function loadImageFileAsURL() {
+            var filesSelected = document.getElementById("inputFileToLoad").files;
+            if (filesSelected.length > 0)
+            {
+                var fileToLoad = filesSelected[0];
+
+                if (fileToLoad.type.match("image.*"))
+                {
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(fileLoadedEvent) 
+                    {
+                        var imageLoaded = document.createElement("img");
+                        imageLoaded.src = fileLoadedEvent.target.result;
+                        document.body.appendChild(imageLoaded);
+                    };
+                    fileReader.readAsDataURL(fileToLoad);
+                    }
+                }
+            };
+
+            function readURL(input) {
+
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            jQuery('#target').attr('src', e.target.result);
+
+                        }
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                    }
+
+                    jQuery("#inputTypeFile").change(function(){
+                    readURL(this);
+            });
+            function removeDataURLSignature(dataURL) {
+                // Find the position of the comma which separates metadata from the base64 data
+                const commaIndex = dataURL.indexOf(',');
+                if (commaIndex !== -1) {
+                    // Extract and return only the base64 data part
+                    return dataURL.slice(commaIndex + 1);
+                }
+                // Return the original dataURL if no signature found (though this should not happen for valid data URLs)
+                return dataURL;
+            }
+
+
+    </script>
+   
+    <!-- End custom js for this page-->
+</body>
+
+</html>

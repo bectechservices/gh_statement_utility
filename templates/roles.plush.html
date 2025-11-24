@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>SRS ~ Roles ~ Absa</title>
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/typicons/src/font/typicons.css">
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
+    
+    
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico"/>
+</head>
+
+<body data-theme="absa-default">
+<div class="container-scroller" id="appRoot">
+    <!-- partial:partials/_navbar.html -->
+    <%= partial("partials/navbar.html") %>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel no-siderBar-fullWidth" tabindex="-1">
+            <div class="content-wrapper">
+                <div class="box-root padding-top--8 padding-bottom--12">
+                    <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                        <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                <div class="breadcrumb-item Is--pressable">
+                                    <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                       href="/settings">
+                      <span
+                              class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                        <span>Settings</span>
+                      </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                <div class="breadcrumb-item Is--disabled">
+                    <span
+                            class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                      <span>Roles</span>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-root">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- SETTINGS WIDGETS -->
+                            <div class="box-root pb-2">
+                                <div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                    <div
+                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                        <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                            <div class="contentHeader-start box-root margin-right--16 d-flex align-items-center"
+                                                 style="margin-left:-8px;margin-top: -8px;">
+                                                
+                                            </div>
+                                            <div class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                <div class="ButtonGroup box-root">
+                                                    <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                         style="margin-left:-8px;margin-top:-8px;">
+                                                        <div class="margin-top--8 margin-left--8">
+                                                            <div class="box-root">
+                                                                <button class="btn btn-light btn-fw pressureButton"
+                                                                        data-toggle="modal"
+                                                                        data-target="#manageRBAC">
+                                                                    <i class="mdi mdi-plus"></i>
+                                                                    <span class="font-weight-medium text-color--dark">Add role</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="margin-top--8 margin-left--8">
+                                                            <div class="box-root">
+                                                                <a class="btn btn-light btn-fw pressureButton" href="/export-roles">
+                                                                    <i class="mdi mdi-file-excel"></i>
+                                                                    <span class="font-weight-medium text-color--dark">Export roles</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                        <table class="table table-hover db-objectListTable order-table">
+                                            <thead>
+                                            <tr>
+                                                <th>Role</th>
+                                                <th>Description</th>
+                                                <th style="width:10%;">&nbsp;</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="rolesListElement">
+                                            <%= for(role) in pagination.Rows{ %>
+                                            <tr>
+                                                <td><%= role.Name %></td>
+                                                <td><%= role.Description %></td>
+                                                <td>
+                                                    <div class="box-root">
+
+                                                        <button class="btn dbTableActionButton" data-toggle="modal" data-target="#viewRBAC" onclick='loadDetailsIntoViewModal(<%= json(role) %>)'>
+                                                            <span>View</span>
+                                                        </button>
+                                                        <button class="btn dbTableActionButton" data-toggle="modal" data-target="#editRBAC" onclick='loadDetailsIntoEditModal(<%= json(role) %>)'>
+                                                            <span>Edit</span>
+                                                        </button>
+                                                        <%= if (role.ActivityAccess.ID.IsNil()) { %>
+                                                            <button class="btn dbTableActionButton" data-toggle="modal" style="color:red" data-target="#addRR" onclick='AddRoleRestriction(<%= json(activity) %>, <%= json(role.ID) %> )'>
+                                                                <span>Add Restriction</span>
+                                                            </button>
+                                                            <% } else  { %>
+                                                        <button id = "activitysListElement" class="btn dbTableActionButton" data-toggle="modal" data-target="#saveRR" onclick='loadTimeRestrictionModal(<%= json(role) %>)'>
+                                                            <span>Time Restriction</span>
+                                                        </button>
+                                                        <% } %>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div
+                                            class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                        <div
+                                                class="box-hideIfEmpty contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                            <span></span>
+                                        </div>
+                                        <%= custom_paginator(pagination) %>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- SETTINGS WIDGET -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- MODALS -->
+
+<div class="modal fade" id="addRR" tabindex="-1" role="dialog"
+    aria-labelledby="Manage Role Restrictions" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <form  class="box-root" method="POST" action="/add-roles-restriction">
+               <%= csrf() %>
+               <input type="hidden" name="add_role_id" id="add_role_id" />
+               <div class="modal-header">
+                   <h5
+                           class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                           id="adduserLabel">Manage Roles Restrictions
+                   </h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+                   </div>
+                                 <div
+                                     class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                     <div
+                                         class="border-0 m-0 p-0 box-root box--bg--offset box-divider--light-bottom-1">
+                                         <div class="box-root">
+                                             <div
+                                                 class="box-root padding-horizontal--8 padding-vertical--4">
+                                                 <div class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                     <label class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center; text-decoration-thickness:inherit" > <b>Permissible Working Days : </b></label>
+                                                     <div  class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto align-items-start">
+                                                       <div class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center">
+                                                     
+                                                         <input class="form-check-input" type="checkbox" id="monday" name="monday" value= 'true'  />
+                                                         <label class="form-check-label" for="monday">Mon</label>
+                                                       </div>
+ 
+                                                       <div class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="tuesday" name="tuesday" value= 'true'  />
+                                                         <label class="form-check-label" for="tuesday">Tue</label>
+                                                       </div>
+                                                       
+                                                       <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="wednesday" name="wednesday"  value= 'true'  />
+                                                         <label class="form-check-label" for="wednesday">Wed</label>
+                                                       </div>
+ 
+                                                       <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="thursday" name="thursday" value= 'true'  />
+                                                         <label class="form-check-label" for="thursday">Thurs</label>
+                                                       </div>
+                                                       
+                                                       <div class="d-flex align-items-center flex-row position-relative"  width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="friday" name="friday" value= 'true'  />
+                                                         <label class="form-check-label" for="friday">Fri</label>
+                                                       </div>
+ 
+                                                       <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="saturday" name="saturday" value= 'true'  />
+                                                         <label class="form-check-label" for="saturday">Sat</label>
+                                                       </div>
+                                                       
+                                                       <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                         <input class="form-check-input" type="checkbox" id="sunday" name="sunday" value= 'true'  />
+                                                         <label class="form-check-label" for="sunday">Sun </label>
+                                                       </div>                                                                      
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <div class="padding-horizontal--20 padding-vertical--2">
+                                                 <div class="row mb-2 margin-left--8">
+                                                     <div class="col-md-2">
+                                                         <div class="d-flex align-items-center">
+                                                             <label for="start_time" class="w-50"><b>Start Time</b></label>
+                                                             <input type="time" id="start_time" name="start_time" value="" class="form-control"/>
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-2">
+                                                         <div class="d-flex align-items-center">
+                                                             <label for="end_time" class="w-50"><b>End Time</b></label> 
+                                                             <input type="time" id="end_time" name="end_time" value="" class="form-control"/>
+                                                         </div>
+                                                     </div>
+                                                    
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+               <div class="modal-footer border-0">
+                   <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Cancel</button>
+                   <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Add role Restriction
+                   </button>
+               </div>
+           </form>
+       </div>
+   </div>
+</div>  
+
+    <div class="modal fade" id="manageRBAC" tabindex="-1" role="dialog"
+    aria-labelledby="Manage Role Base Access Control" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <form class="box-root" method="POST">
+               <%= csrf() %>
+               <div class="modal-header">
+                   <h5
+                           class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                           id="adduserLabel">Manage Roles
+                   </h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="box-root">
+                   <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                        style="max-height:calc(100vh - 196px)">
+                       <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                           <div class="box-root">
+                               <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                                   <span class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                       <span>Role Details</span>
+                                   </span>
+                               </div>
+                           </div>
+                           <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3"><label class="font-size--13 font-weight-medium"
+                                                                for="rbac[name]">
+                   <span
+                           class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                   </label></div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="rbac[name]"
+                                                      placeholder="Enter role name" name="name"
+                                                      value='<%= old_input("name") %>'>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium" for="rbac[description]">
+                 <span
+                         class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="rbac[description]"
+                                                      placeholder="Enter role description" name="description"
+                                                      value='<%= old_input("description") %>'>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium">
+                     <span
+                             class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="box-root padding-vertical--2">
+                                           <div class="card card-root box--bg--white border border-primary">
+                                               <div
+                                                       class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                   <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                       <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                            style="margin-left:-8px;margin-top: -8px;">
+                                                           <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                               <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                      placeholder="Filter" type="search"
+                                                                      data-table="order-table"
+                                                                      oninput="searchPermissions(this.value)">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="contentBlock box-root box--bg--white"
+                                                    style="max-height:200px;overflow-y:scroll">
+                                                   <table class="table order-table">
+                                                       <thead>
+                                                       <tr>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="position:sticky;top:0;">Permssion
+                                                           </th>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="width: 25%;position:sticky;top:0;">Access
+                                                               Grant
+                                                           </th>
+                                                       </tr>
+                                                       </thead>
+                                                       <tbody id="permissionsList">
+                                                       <%= for(permission) in permissions {%>
+                                                       <tr>
+                                                           <td><%= permission.Name %></td>
+                                                           <td><input type="checkbox" name="permissions[]" value="<%= permission.ID %>"/>
+                                                           </td>
+                                                       </tr>
+                                                       <% } %>
+                                                       </tbody>
+                                                   </table>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="modal-footer border-0">
+                   <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Cancel</button>
+                   <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save role
+                   </button>
+               </div>
+           </form>
+       </div>
+   </div>
+</div>
+
+<div class="modal fade" id="viewRBAC" tabindex="-1" role="dialog"
+    aria-labelledby="View Role Base Access Control" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <form class="box-root" method="POST">
+               <%= csrf() %>
+               <div class="modal-header">
+                   <h5
+                           class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                           id="adduserLabel">View Roles
+                   </h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="box-root">
+                   <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                        style="max-height:calc(100vh - 196px)">
+                       <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                           <div class="box-root">
+                               <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                                   <span class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                       <span>Role Details</span>
+                                   </span>
+                               </div>
+                           </div>
+                           <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3"><label class="font-size--13 font-weight-medium"
+                                                                for="view_rbac[name]">
+                   <span
+                           class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                   </label></div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="view_rbac[name]"
+                                                      placeholder="Enter role name" disabled>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium" for="view_rbac[description]">
+                 <span
+                         class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="view_rbac[description]"
+                                                      placeholder="Enter role description" disabled>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium">
+                     <span
+                             class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="box-root padding-vertical--2">
+                                           <div class="card card-root box--bg--white border border-primary">
+                                               <div
+                                                       class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                   <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                       <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                            style="margin-left:-8px;margin-top: -8px;">
+                                                           <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                               <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                      placeholder="Filter" type="search"
+                                                                      data-table="order-table">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="contentBlock box-root box--bg--white"
+                                                    style="max-height:200px;overflow-y:scroll">
+                                                   <table class="table order-table">
+                                                       <thead>
+                                                       <tr>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="position:sticky;top:0;">Permssion
+                                                           </th>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="width: 25%;position:sticky;top:0;">Access
+                                                               Grant
+                                                           </th>
+                                                       </tr>
+                                                       </thead>
+                                                       <tbody id="viewPermissionsList">
+                                                       </tbody>
+                                                   </table>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="modal-footer border-0">
+                   <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Close</button>
+               </div>
+           </form>
+       </div>
+   </div>
+</div>
+
+<div class="modal fade" id="editRBAC" tabindex="-1" role="dialog"
+    aria-labelledby="Edit Role Base Access Control" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+           <form class="box-root" method="POST">
+               <%= csrf() %>
+               <input type="hidden" name="_method" value="PATCH" />
+               <input type="hidden" id="role_id" name="id" />
+               <div class="modal-header">
+                   <h5
+                           class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                           id="adduserLabel">Manage Roles
+                   </h5>
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+               </div>
+               <div class="box-root">
+                   <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                        style="max-height:calc(100vh - 196px)">
+                       <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                           <div class="box-root">
+                               <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                                   <span class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                       <span>Role Details</span>
+                                   </span>
+                               </div>
+                           </div>
+                           <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3"><label class="font-size--13 font-weight-medium"
+                                                                for="edit_rbac[name]">
+                   <span
+                           class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                   </label></div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="edit_rbac[name]"
+                                                      placeholder="Enter role name" name="name">
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium" for="edit_rbac[description]">
+                 <span
+                         class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Description</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="cursor-text">
+                                           <div class="box-root pressureBase">
+                                               <input type="text" class="form-control" id="edit_rbac[description]"
+                                                      placeholder="Enter role description" name="description">
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group padding-horizontal--18 padding-vertical--4">
+                               <div class="row">
+                                   <div class="col-md-3">
+                                       <label class="font-size--13 font-weight-medium">
+                     <span
+                             class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Permissions</span>
+                                       </label>
+                                   </div>
+                                   <div class="col-md-9">
+                                       <div class="box-root padding-vertical--2">
+                                           <div class="card card-root box--bg--white border border-primary">
+                                               <div
+                                                       class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--8 padding-horizontal--6">
+                                                   <div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                       <div class="contentHeader-start box-root d-flex align-items-center flex-1-1--auto"
+                                                            style="margin-left:-8px;margin-top: -8px;">
+                                                           <div class="d-flex flex-1-1--auto margin-top--8 margin-left--8">
+                                                               <input class="db-objectSearch db-objectSearch-Full font-size--14 db-tableFilter"
+                                                                      placeholder="Filter" type="search"
+                                                                      data-table="order-table">
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                               <div class="contentBlock box-root box--bg--white"
+                                                    style="max-height:200px;overflow-y:scroll">
+                                                   <table class="table order-table">
+                                                       <thead>
+                                                       <tr>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="position:sticky;top:0;">Permssion
+                                                           </th>
+                                                           <th class="box--bg--white box-divider--light-bottom-1"
+                                                               style="width: 25%;position:sticky;top:0;">Access
+                                                               Grant
+                                                           </th>
+                                                       </tr>
+                                                       </thead>
+                                                       <tbody id="editPermissionsList">
+                                                       </tbody>
+                                                   </table>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div class="modal-footer border-0">
+                   <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">Cancel</button>
+                   <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save role
+                   </button>
+               </div>
+           </form>
+       </div>
+   </div>
+</div>
+
+<div class="modal fade" id="saveRR" tabindex="-1" role="dialog"
+    aria-labelledby="Edit Time Restriction Access Control" aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+       <div class="modal-content">
+        <div class="box-root">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--EMAIL WIDGETS -->
+                      
+                    <form class="box-root pb-2" method="POST" action="/save-roles-restriction">
+                        <%= csrf() %>
+                        <input type="hidden" name="_method" value="PATCH" />
+                        <input type="hidden" name="id" id="time_role_id" />
+                        <div
+                            class="card-root card--radius--all card--shadow--medium card--shadow--none border box-root box--bg--white">
+                            <div
+                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                <div
+                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                    <div
+                                        class="box-root d-flex flex-column justify-content-center flex-100">
+                                        <span
+                                            class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap font-weight-medium">
+                                            <span>Configure Working Days & Hours Policy</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Form">
+                                <div
+                                    class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                    <div
+                                        class="border-0 m-0 p-0 box-root box--bg--offset box-divider--light-bottom-1">
+                                        <div class="box-root">
+                                        
+                                            <div
+                                                class="box-root padding-horizontal--8 padding-vertical--4">
+                                                <div class="d-flex align-items-start flex-row padding-horizontal--20 padding-vertical--2">
+                                                    <label class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center; text-decoration-thickness:inherit" > <b>Permissible Working Days : </b></label>
+                                                    <div  class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto align-items-start">
+                                                      <div class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center">
+                                                    
+                                                        <input class="form-check-input" type="checkbox" id="#monday" name="monday" value='true' />
+                                                        <label class="form-check-label" for="monday">Mon</label>
+                                                      </div>
+
+                                                      <div class="d-flex align-items-center flex-row position-relative" style="margin: 20px; line-height: 2.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#tuesday" name="tuesday" value='true' />
+                                                        <label class="form-check-label" for="tuesday">Tue</label>
+                                                      </div>
+                                                      
+                                                      <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#wednesday" name="wednesday" value='true' />
+                                                        <label class="form-check-label" for="wednesday">Wed</label>
+                                                      </div>
+
+                                                      <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#thursday" name="thursday" value='true' />
+                                                        <label class="form-check-label" for="thursday">Thurs</label>
+                                                      </div>
+                                                      
+                                                      <div class="d-flex align-items-center flex-row position-relative"  width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#friday" name="friday" value='true' />
+                                                        <label class="form-check-label" for="friday">Fri</label>
+                                                      </div>
+
+                                                      <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#saturday" name="saturday" value='true' />
+                                                        <label class="form-check-label" for="saturday">Sat</label>
+                                                      </div>
+                                                      
+                                                      <div class="d-flex align-items-center flex-row position-relative" width="2px" style="margin: 20px; line-height: 1.5; text-align: center">
+                                                        <input class="form-check-input" type="checkbox" id="#sunday" name="sunday" value='true' />
+                                                        <label class="form-check-label" for="sunday">Sun </label>
+                                                      </div>                                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="padding-horizontal--20 padding-vertical--2">
+                                                <div class="row mb-2 margin-left--8">
+                                                    <div class="col-md-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <label for="start_time" class="w-50"><b>Start Time</b></label>
+                                                            <input type="time" id="#start_time" name="start_time" value="" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <label for="end_time" class="w-50"><b>End Time</b></label> 
+                                                            <input type="time" id="#end_time" name="end_time" value="" class="form-control"/>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                <div
+                                    class="contentFooter-end d-flex align-items-center justify-content-start flex-0-0--auto">
+                                    <div class="ButtonGroup box-root">
+                                        <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                            style="margin-left:-8px;margin-top:-8px;">
+                                            <div class="margin-top--8 margin-left--8">
+                                                <div class="box-root">
+                                                    <button
+                                                        class="btn btn-sm btn-primary pressureButton">
+                                                        <span
+                                                            class="font-weight-medium text-white">Save</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                
+                </div>
+                <!-- EMAIL WIDGET -->
+            </div>
+        </div>
+
+       </div>
+   </div>
+</div>
+<!-- END RBAC MODAL -->
+<!-- MODALS -->
+    <!-- END RBAC MODAL -->
+    <!-- MODALS -->
+    <!-- container-scroller -->
+    <%= partial("partials/logout.html") %>
+
+    <!-- plugins:js -->
+    
+    
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="/assets/js/shared/off-canvas.js"></script>
+    <script src="/assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/assets/js/app/dashboard.js"></script>
+    <!-- End custom js for this page-->
+    <%= partial("partials/show_modals.html") %>
+    <script>
+        const rolesListElem = document.getElementById('rolesListElement');
+        const roles = JSON.parse(`<%= json(pagination.Rows) %>`);
+
+        function searchRoles(role) {
+            let html = '';
+            roles.filter((_role) => {
+                return _role.name.toLowerCase().includes(role.toLowerCase()) || _role.description.toLowerCase().includes(role.toLowerCase())
+            }).forEach((_role) => {
+                html += `
+                         <tr>
+                            <td>${_role.name}</td>
+                            <td>${_role.description}</td>
+                            <td>
+                                <div class="box-root">
+                                    <button class="btn dbTableActionButton">
+                                        <span>View</span>
+                                    </button>
+                                    <button class="btn dbTableActionButton">
+                                        <span>Edit</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                `
+            });
+            rolesListElem.innerHTML = html;
+        }
+
+        //------------------------------------------------------
+       const activitysListElement = document
+               .getElementById('activitysListElement');
+           const activity = JSON.parse('<%= json(activity) %>');
+
+            function searchActivityAccess(activity) {
+                let html = '';
+                activity.filter((_activity) => {
+                    return _activity.monday
+                        .toLowerCase().includes(
+                            activity.toLowerCase()
+                        ) || _activity.tuesday
+                            .toLowerCase().includes(
+                                activity.toLowerCase()
+                            ) || _activity.wednesday
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.thursday
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.friday
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.saturday
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.sunday
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.start_time
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                ) || _activity.end_time
+                                .toLowerCase().includes(
+                                    activity.toLowerCase()
+                                )
+								
+                }).forEach((_activity) => {
+                    html += `
+                     <tr>
+                        <td>${_activity.monday}</td>
+                        <td>${_activity.tuesday}</td>
+                        <td>${_activity.wednesday}</td>
+						<td>${_activity.thursday}</td>
+						<td>${_activity.friday}</td>
+						<td>${_activity.saturday}</td>
+						<td>${_activity.sunday}</td>
+						<td>${_activity.start_time}</td>
+						<td>${_activity.end_time}</td>
+                        <td>
+                            <div class="box-root">
+                                <button class="btn dbTableActionButton" onclick='loadTimeRestrictionModal(${JSON.stringify(_activity)})' data-toggle="modal" data-target="#saveRR">
+                                    <span>Edit</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+            `
+                });
+                activitysListElement.innerHTML = html;
+            }
+
+
+        //------------------------------------------------------
+
+        const permissions = JSON.parse(`<%= json(permissions) %>`);
+        const permissionsListElement = document.getElementById('permissionsList');
+
+        function searchPermissions(permission) {
+            let html = '';
+            permissions.filter((perm) => {
+                return perm.name.toLowerCase().includes(permission.toLowerCase())
+            }).forEach((perm) => {
+                html += `
+                         <tr>
+                            <td>${perm.name}</td>
+                            <td><input type="checkbox" name="permissions[]"
+                                       value="${permission.id}"/>
+                            </td>
+                        </tr>
+            `
+            });
+            permissionsListElement.innerHTML = html;
+        }
+
+        function loadDetailsIntoViewModal(role) {
+            document.getElementById('view_rbac[name]').value = role.name;
+            document.getElementById('view_rbac[description]').value = role.description;
+            document.getElementById('viewPermissionsList').innerHTML = role.role_permissions.map(each => {
+                return `<tr>
+                            <td>${each.Permission.name}</td>
+                            <td><input type="checkbox" checked disabled/>
+                            </td>
+                        </tr>`;
+            }).join('');
+        }
+
+        function loadDetailsIntoEditModal(role) {
+            document.getElementById('role_id').value = role.id;
+            document.getElementById('edit_rbac[name]').value = role.name;
+            document.getElementById('edit_rbac[description]').value = role.description;
+            let html = role.role_permissions.map(each => {
+                return `<tr>
+                        <td>${each.Permission.name}</td>
+                        <td><input type="checkbox" name="permissions[]" checked value="${each.Permission.id}"/>
+                        </td>
+                    </tr>`;
+            }).join('');
+            let permissionIds = role.role_permissions.map(each => each.Permission.id);
+            html += permissions.filter(each=>{
+                return !permissionIds.includes(each.id);
+            }).map(each => {
+                return `
+                    <tr>
+                        <td>${each.name}</td>
+                        <td><input type="checkbox" name="permissions[]" value="${each.id}"/>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('editPermissionsList').innerHTML = html;
+        }
+
+       
+
+        function AddRoleRestriction(activity, role_id) {
+            activity.monday = document.getElementById('monday').checked;
+            activity.tuesday = document.getElementById('tuesday').checked;
+            activity.wednesday = document.getElementById('wednesday').checked;
+            activity.thursday = document.getElementById('thursday').checked;
+            activity.friday = document.getElementById('friday').checked;
+            activity.saturday = document.getElementById('saturday').checked;
+            activity.sunday = document.getElementById('sunday').checked;
+            activity.start_time = document.getElementById('start_time').value;
+            activity.end_time = document.getElementById('end_time').value;
+            document.getElementById('add_role_id').value = role_id;          
+        }
+
+
+        function loadTimeRestrictionModal(role) {
+        console.log(role);
+        if (role.ActivityAccess) {
+            document.getElementById('time_role_id').value = role.ActivityAccess.id;
+            console.log("ActivityAccess ID , populating fields...");
+            console.log(role.ActivityAccess.id);
+            // FIXED: Remove # from IDs
+            const mondayCheckbox = document.getElementById('#monday');
+            const tuesdayCheckbox = document.getElementById('#tuesday');
+            const wednesdayCheckbox = document.getElementById('#wednesday');
+            const thursdayCheckbox = document.getElementById('#thursday');
+            const fridayCheckbox = document.getElementById('#friday');
+            const saturdayCheckbox = document.getElementById('#saturday');
+            const sundayCheckbox = document.getElementById('#sunday');
+            // const startTimeInput = document.getElementById('#start_time');
+            // const endTimeInput = document.getElementById('#end_time');
+            
+            if (mondayCheckbox) mondayCheckbox.checked = role.ActivityAccess.monday || false;
+            if (tuesdayCheckbox) tuesdayCheckbox.checked = role.ActivityAccess.tuesday || false;
+            if (wednesdayCheckbox) wednesdayCheckbox.checked = role.ActivityAccess.wednesday || false;
+            if (thursdayCheckbox) thursdayCheckbox.checked = role.ActivityAccess.thursday || false;
+            if (fridayCheckbox) fridayCheckbox.checked = role.ActivityAccess.friday || false;
+            if (saturdayCheckbox) saturdayCheckbox.checked = role.ActivityAccess.saturday || false;
+            if (sundayCheckbox) sundayCheckbox.checked = role.ActivityAccess.sunday || false;
+            // if (startTimeInput) startTimeInput.value = role.ActivityAccess.start_time || '';
+            // if (endTimeInput) endTimeInput.value = role.ActivityAccess.end_time || '';
+
+
+
+
+            // Time fields
+            let startTime = role.ActivityAccess.start_time || '';
+            let endTime = role.ActivityAccess.end_time || '';
+            console.log(role.ActivityAccess.start_time)
+            console.log(role.ActivityAccess.end_time)
+            // Convert time format if needed
+            if (startTime.includes('T')) {
+                startTime = startTime.split('T')[1].substring(0, 5);
+            }
+            if (endTime.includes('T')) {
+                endTime = endTime.split('T')[1].substring(0, 5);
+            }
+            
+            document.getElementById('#start_time').value = startTime;
+            document.getElementById('#end_time').value = endTime;
+
+        }
+    }
+
+          
+
+    </script>
+</body>
+
+</html>

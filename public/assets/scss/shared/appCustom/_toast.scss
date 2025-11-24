@@ -1,0 +1,57 @@
+/** @define Toast; */
+
+.Toast {
+    max-width: 656px;
+    color: #fff;
+    background-color: #3c4257;
+    border-radius: 4px;
+    box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.12),
+        0 3px 6px 0 rgba(0, 0, 0, 0.12);
+    transition: all 0.5s;
+    pointer-events: all;
+}
+
+.Toast+.Toast {
+    margin-top: 8px;
+}
+
+/** @define ToastLayer; */
+
+.ToastLayer {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 500;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.ToastLayer--top {
+    top: 8px;
+}
+
+.ToastLayer--bottom {
+    bottom: 5%;
+}
+
+/* Toast animation */
+
+.Toast.ToastLayer-animate-enter-active,
+.Toast.ToastLayer-animate-exit-active {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.Toast.ToastLayer-animate-enter,
+.Toast.ToastLayer-animate-exit.ToastLayer-animate-exit-active {
+    opacity: var(--j);
+}
+
+.Toast.ToastLayer-animate-enter.ToastLayer-animate-enter-active,
+.Toast.ToastLayer-animate-exit {
+    opacity: var(--notj);
+}

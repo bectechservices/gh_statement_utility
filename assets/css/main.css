@@ -1,0 +1,142 @@
+body {
+    background: #f2f8f9 !important;
+}
+
+.bs-container {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb a {
+    font-size: 1.2em;
+    color: rgb(0, 0, 128);
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    font-size: 1.2em;
+    color: rgb(0, 0, 128);
+    font-weight: normal;
+}
+
+.st-form-table,
+.st-info-table {
+    width: 100%;
+}
+
+.st-form-table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.st-form-table input {
+    border-radius: 0;
+    background-color: white;
+}
+
+.st-form-table .cell-label {
+    width: 180px;
+    font-weight: bold;
+}
+
+.st-form-table .cell-input {
+    width: 80%;
+}
+
+.st-form-table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.st-info-table .cell-title {
+    font-size: 1.2em;
+    color: gray;
+    font-weight: bold;
+    width: 20%;
+}
+
+.st-action-btn {
+    background-color: hsl(128, 41%, 58%);
+    color: white;
+    min-height: 40px;
+    border-radius: 3px;
+    width: 100%;
+    border: none;
+    font-size: 1.1em;
+    box-shadow: 0px 12px 38px 0px rgba(137, 3, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.st-action-btn:hover {
+    background: hsl(128, 41%, 48%);
+    color: white;
+}
+
+.st-action-btn:active {
+    box-shadow: 0px 9px 38px 0px rgba(137, 3, 0, 0.12);
+    transform: translateY(1.2px);
+}
+
+#usersTable{
+    /*border: 1px solid black;*/
+    width: 100%;
+}
+
+#usersTable_length{
+    display: flex !important;
+}
+
+#usersTable_filter,#usersTable_paginate{
+    float: inline-end !important;
+}
+
+.form-table tr{
+    display: flex;
+    align-items: center;
+}
+
+.cell-title{
+    width: 20%;
+}
+
+.cell-title .form-label{
+    font-weight: bold;
+}
+
+.cell-input{
+    width: 70%;
+}
+
+.form-table input{
+    height: 40px !important;
+    border-radius: 0;
+}
+
+
+.form-btn{
+    color: black;
+    height: 43px;
+    width: 150px;
+    font-size: 1.2em;
+    padding: 5px;
+    border: none;
+    text-decoration: none;
+}
+
+.form-btn-success {
+    background-color: hsl(128, 41%, 58%);
+    color: white;
+}
+
+.form-btn-success:hover {
+    background: hsl(128, 41%, 48%);
+}

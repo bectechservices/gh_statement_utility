@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT Utility ~ User Activity Audit ~ SCB</title>
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <main class="main-panel no-siderBar-fullWidth" tabindex="-1">
+                    <div class="content-wrapper">
+                        <div class="box-root padding-top--8 padding-bottom--12">
+                            <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--pressable">
+                                            <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                                href="/settings">
+                                                <span
+                                                    class="breadcrumb-itemLabel text-color--default font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                    <span>Settings</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--disabled">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--blue font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>User Activity Audit</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- BRANCHES-->
+                                    <div class="box-root pb-2">
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <div class="contentHeader-start box-root margin-right--16 d-flex align-items-center"
+                                                        style="margin-left:-8px;margin-top: -8px;">
+                                                        <!-- <div class="margin-top--8 margin-left--8">
+                                                        <input class="db-objectSearch font-size--14 db-tableFilter"
+                                                        placeholder="Filter"
+                                                        type="search" data-table="order-table" oninput="searchBranch(this.value)"/>
+                                                    </div> -->
+                                                    </div>
+                                                    <div class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                        <div class="ButtonGroup box-root">
+                                                            <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                style="margin-left:-8px;margin-top:-8px;">
+                                                                <div class="margin-top--8 margin-left--8">
+                                                                    <div class="box-root">
+                                                                        <a class="btn btn-light btn-fw pressureButton"
+                                                                            href="/export-user-activity-audit">
+                                                                            <i class="mdi mdi-file-excel"></i>
+                                                                            <span class="font-weight-medium text-color--dark">Export audit</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div
+                                                class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                                <div
+                                                    class="h-100 slickscroll--2 box-root table-responsive overflow-y--auto dataTableResponsive">
+                                                    <table
+                                                        class="h-100 table table-hover db-objectListTable order-table sticky-tblHeader">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-capitalize">Date-Time</th>
+                                                                <th class="text-capitalize">User</th>
+                                                                <th class="text-capitalize">Activity</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <%= for(audit) in pagination.Rows {%>
+                                                                <tr>
+                                                                    <td>
+                                                                        <span>
+                                                                            <%= audit.CreatedAt.Format("02.01.2006") %>
+                                                                        </span><span class="text-color--gray">&nbsp;
+                                                                            <%= audit.CreatedAt.Format("3:04 PM") %>
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="text-capitalize">
+                                                                        <%= audit.User.FirstName %>-  <%= audit.User.LastName %>
+                                                                    </td>
+                                                                    <td class="text-capitalize font-weight-medium">
+                                                                        <%= audit.Activity %>
+                                                                    </td>
+                                                                </tr>
+                                                                <% } %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <div
+                                                class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                                <div
+                                                    class="contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                                    <span></span>
+                                                </div>
+                                                <%= custom_paginator(pagination) %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- BRANCHES-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    
+    
+</body>
+
+</html>

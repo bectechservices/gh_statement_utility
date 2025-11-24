@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ Reports ~ SCB</title>
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" href="assets/images/scb.png" />
+    <meta name="msapplication-TileImage" content="assets/images/scb.png">
+</head>
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <div class="main-panel no-siderBar-fullWidth">
+                    <div class="content-wrapper">
+                        <!-- <div class="box-root padding-top--8 padding-bottom--12">
+                        <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                          <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                              <div class="breadcrumb-item Is--pressable">
+                                <a class="unstyledLink breadcrumb-item--target d-flex align-items-center" href="settings.html">
+                                  <span
+                                    class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                    <span>Report</span>
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                              <div class="breadcrumb-item Is--disabled">
+                                <span
+                                  class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                  <span>Report Summary</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--WIDGETS -->
+                                    <div class="box-root pb-2">
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <%= partial("partials/search.html") %>
+                                                        <div
+                                                            class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                            <div class="ButtonGroup box-root">
+                                                                <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                    style="margin-left:-8px;margin-top:-8px;">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div
+                                                class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                                <div
+                                                    class="h-100 slickscroll--2 box-root table-responsive overflow-y--auto dataTableResponsive">
+                                                    <table class="table table-hover db-objectListTable order-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-capitalize">National ID</th>
+                                                                <th class="text-capitalize">Card ID</th>
+                                                                <th class="text-capitalize">Name</th>
+                                                                <th class="text-capitalize">Card Valid To</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <%= for(data) in pagination.Rows { %>
+                                                                <tr role="button" data-toggle="modal"
+                                                                    data-target="#detailsModal"
+                                                                    onclick='showDetails(<%= json(data) %>)'>
+                                                                    <td>
+                                                                        <%= data.NationalID %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= data.Client.CardID %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= data.Client.Name() %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= data.Client.CardValidTo.Format("02 January
+                                                                            2006") %>
+                                                                    </td>
+                                                                </tr>
+                                                                <% } %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <div
+                                                class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                                <div
+                                                    class="contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                                    <span>
+                                                        <%= len(pagination.Rows) %><span>
+                                                                <%= if(len(pagination.Rows)==1) { %> Report <% }else{ %>
+                                                                        Reports <% } %>
+                                                            </span>
+                                                    </span>
+                                                </div>
+                                                <%= custom_paginator(pagination) %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- WIDGET -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <div class="modal fade pr-0" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="Decline Alert"
+        aria-hidden="true">
+        <div class="
+          ModalLayer-wash ModalLayer-wash--entered
+          box-root
+          d-grid
+          w-100
+          h-100
+          overflow-hidden
+        ">
+            <div tabindex="-1" class="ModalLayer-content box-root">
+                <div class="modal-dialog card--shadow--medium mx-auto" role="dialog" data-size="alert">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="
+                    modal-title
+                    text-color--dark
+                    line-height--24
+                    d-inline
+                    text-wrap--wrap
+                    text-numericSpacing--proportional
+                    font-size--16
+                    font-weight-medium
+                  " id="customerUpdateLabel">
+                                Details
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="box-root">
+                            <div class="
+                    modal-body
+                    contentBlock
+                    padding-bottom--12
+                    padding-top--4
+                    box--bg--offset
+                    overflow-y--auto
+                  " style="max-height: calc(100vh - 196px)">
+                                <div class="
+                      form-group
+                      padding-vertical--4
+                    ">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="box-root pressureBase id-details">
+                                                <style>
+                                                    .id-details img {
+                                                        max-width: 100%;
+                                                        box-shadow: 1px 1px 20px 2px rgba(0, 0, 0, .3);
+                                                        margin: 10px;
+                                                    }
+
+                                                    .id-details h2,
+                                                    .id-details h4 {
+                                                        margin-bottom: 2px;
+                                                    }
+
+                                                    .id-details h4 {
+                                                        margin-top: 0;
+                                                        font-weight: 300;
+                                                        color: rgb(0, 160, 209);
+                                                        text-transform: uppercase;
+                                                        letter-spacing: .2em;
+                                                        font-size: 1.1em;
+                                                    }
+
+                                                    .id-details .rounded {
+                                                        border-radius: 20px;
+                                                    }
+
+                                                    .id-details .round {
+                                                        border-radius: 50%;
+                                                        width: 80px;
+                                                        height: 80px;
+                                                    }
+
+                                                    .id-details .id-card {
+                                                        position: relative;
+                                                    }
+
+                                                    .id-details .id-card::before,
+                                                    .id-details .id-card::after {
+                                                        content: "";
+                                                        display: table;
+                                                    }
+
+                                                    .id-details .id-card::after {
+                                                        clear: both;
+                                                    }
+
+                                                    .id-details .float-left {
+                                                        float: left;
+                                                        padding: 10px;
+                                                    }
+
+                                                    .id-details .avatar-wrap {
+                                                        width: 35%;
+                                                    }
+
+                                                    .id-details .bio-wrap {
+                                                        width: 65%;
+                                                        padding-left: 12px;
+                                                        padding-right: 12px;
+                                                    }
+                                                </style>
+
+                                                <div class="wrapper w-100 h-100">
+                                                    <div class="id-card rounded">
+                                                        <div class="avatar-wrap float-left">
+                                                            <img class="round" id="detailsPhoto"
+                                                                src="/assets/images/photo-1611432579699-484f7990b127.jpeg"
+                                                                alt="Person Profile" />
+                                                        </div>
+                                                        <div class="bio-wrap float-left">
+                                                            <h2 style="font-size:1.2rem" id="detailsName"></h2>
+                                                            <h4 id="detailsNationalID"></h4>
+                                                            <p>Gender: <span id="detailsGender"></span></p>
+                                                            <p>DOB: <span id="detailsDOB"></span></p>
+                                                            <p>Phone: <span id="detailsPhone"></span></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-light pressureButton" data-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container-scroller -->
+
+    
+    
+    <script>
+        function showDetails(data) {
+            document.getElementById("detailsPhoto").setAttribute("src", "/images/" + data.Client.Picture);
+            document.getElementById("detailsName").innerText = `${data.Client.Forenames} ${data.Client.Surname}`;
+            document.getElementById("detailsNationalID").innerText = data.national_id;
+            document.getElementById("detailsGender").innerText = data.Client.Gender;
+            document.getElementById("detailsDOB").innerText = data.Client.BirthDate;
+            document.getElementById("detailsPhone").innerText = data.Client.Phone;
+        }
+    </script>
+</body>
+
+</html>

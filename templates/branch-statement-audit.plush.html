@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ Reports ~ SCB</title>
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" href="assets/images/scb.png" />
+    <meta name="msapplication-TileImage" content="assets/images/scb.png">
+</head>
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <div class="main-panel no-siderBar-fullWidth">
+                    <div class="content-wrapper">
+                        <!-- <div class="box-root padding-top--8 padding-bottom--12">
+                        <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                          <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                              <div class="breadcrumb-item Is--pressable">
+                                <a class="unstyledLink breadcrumb-item--target d-flex align-items-center" href="settings.html">
+                                  <span
+                                    class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                    <span>Report</span>
+                                  </span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex align-items-center flex-row position-relative">
+                            <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                              <div class="breadcrumb-item Is--disabled">
+                                <span
+                                  class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                  <span>Report Summary</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!--WIDGETS -->
+                                    <div class="box-root pb-2">
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+           
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <div>
+                                                    </div>
+                                                    <div
+                                                        class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                        <div class="ButtonGroup box-root">
+                                                            <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                style="margin-left:-8px;margin-top:-8px;">
+
+                                                                <div class="margin-top--8 margin-left--8">
+                                                                    <div class="box-root">
+                                                                        <a class="btn btn-light btn-fw pressureButton"
+                                                                            href="/export-statement-print-audit?search=<%= search %>&from=<%= from %>&to=<%= to %>">
+                                                                            <i class="mdi mdi-file-excel"></i>
+                                                                            <span
+                                                                                class="font-weight-medium text-color--dark">Export
+                                                                                Statement Audit</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                        <div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <form class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <div>
+                                                        <div class="contentHeader-start box-root margin-right--16 d-flex align-items-center"
+                                                        style="margin-left:-8px;margin-top: -8px;">
+                                                        <div class="margin-left--8">
+                                                            <div class="box-root margin-bottom--8">
+                                                            <label class="mb-0" for="filter[live_search]">
+                                                                <span
+                                                                class="text-color--def font-size--14 font-weight--medium line-height--20 text-numericSpacing--proportional text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                <span class="text-capitalize">Filter records</span>
+                                                                </span>
+                                                            </label>
+                                                            </div>
+                                                            <input class="db-objectSearch form-control font-size--14 db-tableFilter"
+                                                            placeholder="Filter on...Name etc......." type="search" data-table="order-table"
+                                                            style="padding: 0 .75rem;" id="filter[live_search]" name="search" value="<%= search %>">
+                                                        </div>
+                                                        <div class="cursor-text">
+                                                            <div class="box-root pressureBase">
+                                                            <button
+                                                                class="btn btn-sm btn-primary pressureButton pressureButton-primary in-lineButton"
+                                                                type="submit" style="margin-top: 33px; border-radius: 20px; margin-left: 10px;">
+                                                                <span class="font-weight-medium text-capitalize">search</span>
+                                                            </button>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                    <div class="ButtonGroup box-root">
+                                                        <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                        style="margin-left:-8px;margin-top:-8px;">
+                                                        <div class="box-root ml-1">
+                                                            <div class="d-flex align-items-center buttonBarrange_Context">
+                                                                <div class="box-root">
+                                                                    <div
+                                                                        class="box-root margin-top--4 margin-bottom--8">
+                                                                        <label class="mb-0"
+                                                                            for="statement[start_date]">
+                                                                            <span
+                                                                                class="text-color--def font-size--14 font-weight--medium line-height--20 text-numericSpacing--proportional text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                <span
+                                                                                    class="text-capitalize">start
+                                                                                    date</span>
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="cursor-text">
+                                                                        <div class="box-root pressureBase">
+                                                                            <input type="date"
+                                                                                class="form-control form-control-lg br--0 in-lineSelect buttonBarrange_Context--1"
+                                                                                id="statement[start_date]"
+                                                                                style="width:154px"
+                                                                                name="from"
+                                                                                value="<%= from %>">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="box-root">
+                                                                    <div
+                                                                        class="box-root margin-top--4 margin-bottom--8">
+                                                                        <label class="mb-0"
+                                                                            for="statement[end_date]">
+                                                                            <span
+                                                                                class="text-color--def font-size--14 font-weight--medium line-height--20 text-numericSpacing--proportional text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                <span
+                                                                                    class="text-capitalize">end
+                                                                                    date</span>
+                                                                            </span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="cursor-text">
+                                                                        <div class="box-root pressureBase">
+                                                                            <input type="date"
+                                                                                class="form-control form-control-lg br--0 in-lineSelect buttonBarrange_Context--2"
+                                                                                id="statement[end_date]"
+                                                                                style="width:154px"
+                                                                                name="to"
+                                                                                value="<%= to %>">
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="box-root ml-1">
+                                                                    <div
+                                                                        class="box-root margin-top--4 margin-bottom--8">
+                                                                        <label class="mb-0">
+                                                                            <span
+                                                                                class="text-color--def font-size--14 font-weight--medium line-height--20 text-numericSpacing--proportional text-numericSpacing--proportional text-wrap--wrap d-inline">
+                                                                                <span
+                                                                                    class="text-capitalizem sr-only">filter
+                                                                                    date</span>
+                                                                            </span>
+
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="cursor-text">
+                                                                        <div class="box-root pressureBase">
+                                                                            <button
+                                                                                class="btn btn-sm btn-primary pressureButton pressureButton-primary in-lineButton"
+                                                                                type="submit">
+                                                                                <span
+                                                                                    class="font-weight-medium text-capitalize">filter
+                                                                                    date</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                           
+                                        
+                                            <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                                <div
+                                                    class="h-100 slickscroll--2 box-root table-responsive overflow-y--auto dataTableResponsive">
+                                                    <table class="table table-hover db-objectListTable order-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-capitalize">Date Printed</th>
+                                                                <th class="text-capitalize">Account No</th>
+                                                                <th class="text-capitalize">Customer Name</th>
+                                                                <th class="text-capitalize">Date From</th>
+                                                                <th class="text-capitalize">Date to</th>
+                                                                <th class="text-capitalize">Pages</th>
+                                                                <th class="text-capitalize">Print Type</th>
+                                                                <th class="text-capitalize">Requester Branch</th>
+                                                                <th class="text-capitalize">Requester Name</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <%= for(audits) in pagination.Rows { %>
+                              
+                                                                <tr>
+                                                                    <td>
+                                                                        <%= audits.CreatedAt.Format("02.01.2006 15:04:05") %>
+                                                                    </td>                                                                    
+                                                                    <td>
+                                                                        <%= audits.AccountNumber %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.AccountName %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.QueryDateFrom.Format("02.01.2006") %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.QueryDateTo.Format("02.01.2006") %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.Pages %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.PrintType %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.RequesterBranch %>
+                                                                    </td>
+                                                                    <td>
+                                                                        <%= audits.RequestedBy %>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <% } %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                            <div
+                                                class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                                <div
+                                                    class="contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                                    <span>
+                                                        <%= len(pagination.Rows) %><span>
+                                                                <%= if(len(pagination.Rows)==1) { %> Report <% }else{ %>
+                                                                        Reports <% } %>
+                                                            </span>
+                                                    </span>
+                                                </div>
+                                                <%= custom_paginator(pagination) %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- WIDGET -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    
+    
+</body>
+
+</html>

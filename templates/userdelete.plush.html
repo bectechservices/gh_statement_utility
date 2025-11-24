@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>Statement Utility ~ Home ~ SCB</title>
+    <!-- plugins:css -->
+    <link
+      rel="stylesheet"
+      href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css"
+    />
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css" />
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css" />
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+  </head>
+
+  <body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+      <%= partial("partials/navbar.html") %>
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel no-siderBar-fullWidth">
+          <div class="content-wrapper">
+            <div class="box-root padding-top--8 padding-bottom--12">
+              <div
+                class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap"
+              >
+                <div
+                  class="d-flex align-items-center flex-row position-relative"
+                >
+                  <div
+                    class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                  >
+                    <div class="breadcrumb-item Is--pressable">
+                      <a
+                        class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                        href="/settings"
+                      >
+                        <span
+                          class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block"
+                        >
+                          <span>Settings</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-center flex-row position-relative"
+                >
+                  <div
+                    class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                  >
+                    <div class="breadcrumb-item Is--pressable">
+                      <a
+                        class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                        href="laseruser.html"
+                      >
+                        <span
+                          class="breadcrumb-itemLabel text-color--default font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block"
+                        >
+                          <span>Users</span>
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="d-flex align-items-center flex-row position-relative"
+                >
+                  <div
+                    class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                  >
+                    <div class="breadcrumb-item Is--disabled">
+                      <span
+                        class="breadcrumb-itemLabel text-color--blue font-size--14 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block"
+                      >
+                        <span>User details</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box-root">
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- SETTINGS WIDGETS -->
+                  <div class="box-root pb-2">
+                    <div
+                      class="card-root card--radius--all card--shadow--medium box-root box--bg--white"
+                    >
+                      <div
+                        class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20"
+                      >
+                        <div
+                          class="box-root d-flex flex-row justify-content-between flex-1-1--auto"
+                        >
+                          <div
+                            class="box-root d-flex align-items-center flex-100"
+                          >
+                            <img
+                              class="rounded-circle avatar-title"
+                              width="60"
+                              height="60"
+                              LetterAvatar="<%= user.FirstName %> - <%= user.LastName %>"
+                            />
+                            <div
+                              class="d-flex flex-column justify-content-center pl-2"
+                            >
+                              <span
+                                class="contentHeader-title d-inline text-color--dark font-size--22 text-numericSpacing--proportional text-wrap--wrap pl-2"
+                              >
+                                <span><%= user.FirstName %> - <%= user.LastName %></span>
+                              </span>
+                              <span
+                                class="contentHeader-title d-inline text-color--dark font-size--12 text-numericSpacing--proportional text-wrap--wrap pl-2 pt-1"
+                              >
+                                <span>AB Number:</span>
+                                <span><%= user.ABNumber%></span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="contentBlock box-root box--bg--white box-divider--light-bottom-1"
+                      >
+                        <div class="box-root margin-bottom--4">
+                          <div class="box-root padding-bottom--8">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                              <li class="nav-item">
+                                <a
+                                  class="nav-link box--bg--offset text-color--gray position-relative active box-divider--light-right-1"
+                                  id="home-tab"
+                                  data-toggle="tab"
+                                  href="#home"
+                                  role="tab"
+                                  aria-controls="home"
+                                  aria-selected="true"
+                                >
+                                  <span
+                                    class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional"
+                                  >
+                                    <span
+                                      class="tabtext-context text-color--dark"
+                                      >Details</span
+                                    >
+                                  </span>
+                                  <div
+                                    class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box-bg--primary"
+                                  ></div>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a
+                                  class="nav-link box--bg--offset text-color--gray position-relative box-divider--light-right-1"
+                                  id="profile-tab"
+                                  data-toggle="tab"
+                                  href="#profile"
+                                  role="tab"
+                                  aria-controls="profile"
+                                  aria-selected="false"
+                                >
+                                  <span
+                                    class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional"
+                                  >
+                                    <span
+                                      class="tabtext-context text-color--dark"
+                                      >Permissions</span
+                                    >
+                                  </span>
+                                  <div
+                                    class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box-bg--primary"
+                                  ></div>
+                                </a>
+                              </li>
+                              <li class="nav-item">
+                                <a
+                                  class="nav-link box--bg--offset text-color--gray position-relative box-divider--light-right-1"
+                                  id="role-tab"
+                                  data-toggle="tab"
+                                  href="#roles"
+                                  role="tab"
+                                  aria-controls="role"
+                                  aria-selected="false"
+                                >
+                                  <span
+                                    class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional"
+                                  >
+                                    <span
+                                      class="tabtext-context text-color--dark"
+                                      >Roles</span
+                                    >
+                                  </span>
+                                  <div
+                                    class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box-bg--primary"
+                                  ></div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                          <div
+                            class="tab-pane fade show active"
+                            role="tabpanel"
+                            id="home"
+                            aria-labelledby="home-tab"
+                          >
+                            <div class="box-root">
+                              <div
+                                class="d-grid grid-root--3-col pb-4 padding-horizontal--18 padding-vertical--8 border"
+                                style="max-width: 55rem;"
+                              >
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >Name</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span><%= user.FirstName %> - <%= user.LastName %></span>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >Email</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span><%= user.Email %></span>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >branch</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span
+                                                  ><%= user.Branch.Name %></span
+                                                >
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >signed up</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span
+                                                  ><%=
+                                                  user.CreatedAt.Format("January
+                                                  02 2006, 3:04PM")%></span
+                                                >
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >last login</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span
+                                                  ><%=
+                                                  last_login.CreatedAt.Format("January
+                                                  02 2006, 3:04PM")%></span
+                                                >
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >Last password
+                                                      change</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span
+                                                  ><%=
+                                                  user.PasswordLastChanged.Format("January
+                                                  02 2006, 3:04PM")%></span
+                                                >
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="box-root pb-2">
+                                  <div
+                                    class="card-root box-root box--bg--white border"
+                                  >
+                                    <div
+                                      class="contentBlock box-root padding-bottom--4"
+                                    >
+                                      <div
+                                        class="d-flex flex-column flex-1-1--0 box--bg--white"
+                                      >
+                                        <div class="box-root flex-1-1--0">
+                                          <div
+                                            class="padding-all--20 d-flex flex-column justify-content-start h-100"
+                                          >
+                                            <div
+                                              class="d-flex flex-row justify-content-between"
+                                            >
+                                              <div
+                                                class="d-flex align-items-baseline position-relative"
+                                              >
+                                                <div
+                                                  class="textAligner font-size--14 flex-0-0--auto"
+                                                ></div>
+                                                <div
+                                                  class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+                                                >
+                                                  <span
+                                                    class="text-color--gray font-size--12 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+                                                    style="margin-top:-1px;"
+                                                  >
+                                                    <span class="text-uppercase"
+                                                      >Status</span
+                                                    >
+                                                  </span>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div
+                                              class="box-root margin-top--4 margin-bottom--20"
+                                            >
+                                              <span
+                                                class="text-color--martinique font-size--16 text-wrap--wrap text-numericSpacing--proportional d-inline"
+                                              >
+                                                <span
+                                                  ><%= if(user.Locked) { %>
+                                                  Locked <%} else { %> Active <%
+                                                  } %></span
+                                                >
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="tab-pane fade"
+                            id="profile"
+                            role="tabpanel"
+                            aria-labelledby="profile-tab"
+                          >
+                            <div class="box-root padding-vertical--12">
+                              <div
+                                class="form-group mb-0 padding-horizontal--18 padding-vertical--4"
+                              >
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <label
+                                      class="font-size--13 font-weight-medium"
+                                    >
+                                      <span
+                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap"
+                                        >Permissions</span
+                                      >
+                                    </label>
+                                  </div>
+                                  <div class="col-md-5">
+                                    <div class="box-root padding-vertical--2">
+                                      <div
+                                        class="card card-root box--bg--white border"
+                                      >
+                                        <div
+                                          class="contentBlock box-root box--bg--white"
+                                          style="max-height:200px;overflow-y:auto"
+                                        >
+                                          <table class="table order-table">
+                                            <thead>
+                                              <tr>
+                                                <th
+                                                  class="box--bg--white box-divider--light-bottom-1"
+                                                  style="position:sticky;top:0;"
+                                                >
+                                                  Permssion
+                                                </th>
+                                                <th
+                                                  class="box--bg--white box-divider--light-bottom-1"
+                                                  style="width: 25%;position:sticky;top:0;"
+                                                >
+                                                  Access Grant
+                                                </th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <%= for(role) in user.Permissions
+                                              { %>
+                                              <tr>
+                                                <td>
+                                                  <%= role.Permission.Name %>
+                                                </td>
+                                                <td>
+                                                  <input
+                                                    type="checkbox"
+                                                    checked
+                                                    disabled
+                                                  />
+                                                </td>
+                                              </tr>
+                                              <% } %>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="tab-pane fade"
+                            id="roles"
+                            role="tabpanel"
+                            aria-labelledby="role-tab"
+                          >
+                            <div class="box-root padding-vertical--12">
+                              <div
+                                class="form-group mb-0 padding-horizontal--18 padding-vertical--4"
+                              >
+                                <div class="row">
+                                  <div class="col-md-2">
+                                    <label
+                                      class="font-size--13 font-weight-medium"
+                                    >
+                                      <span
+                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap"
+                                        >Roles</span
+                                      >
+                                    </label>
+                                  </div>
+                                  <div class="col-md-5">
+                                    <div class="box-root padding-vertical--2">
+                                      <div
+                                        class="card card-root box--bg--white border"
+                                      >
+                                        <div
+                                          class="contentBlock box-root box--bg--white"
+                                          style="max-height:200px;overflow-y:auto"
+                                        >
+                                          <table class="table order-table">
+                                            <thead>
+                                              <tr>
+                                                <th
+                                                  class="box--bg--white box-divider--light-bottom-1"
+                                                  style="position:sticky;top:0;"
+                                                >
+                                                  Role
+                                                </th>
+                                                <th
+                                                  class="box--bg--white box-divider--light-bottom-1"
+                                                  style="width: 25%;position:sticky;top:0;"
+                                                >
+                                                  Access Grant
+                                                </th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <%= for(role) in user.Roles { %>
+                                              <tr>
+                                                <td><%= role.Role.Name %></td>
+                                                <td>
+                                                  <input
+                                                    type="checkbox"
+                                                    checked
+                                                    disabled
+                                                  />
+                                                </td>
+                                              </tr>
+                                              <% } %>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16"
+                      ></div>
+                    </div>
+                  </div>
+                  <!-- SETTINGS WIDGET -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    
+    
+    <!-- End custom js for this page-->
+    <script>
+      (function(w, d) {
+        function LetterAvatar(name, size) {
+          name = name || "";
+          size = size || 60;
+
+          let nameSplit = String(name)
+              .toUpperCase()
+              .split(" "),
+            initials,
+            canvas,
+            context,
+            dataURI;
+
+          if (nameSplit.length == 1) {
+            initials = nameSplit[0] ? nameSplit[0].charAt(0) : "?";
+          } else {
+            initials = nameSplit[0].charAt(0) + nameSplit[1].charAt(0);
+          }
+
+          if (w.devicePixelRatio) {
+            size = size * w.devicePixelRatio;
+          }
+
+          canvas = d.createElement("canvas");
+          canvas.width = size;
+          canvas.height = size;
+          context = canvas.getContext("2d");
+
+          context.fillStyle = "#ff780f";
+          // context.fillStyle = "#a11730";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          context.font = Math.round(canvas.width / 2) + "px Arial";
+          context.textAlign = "center";
+          context.fillStyle = "#FFF";
+          context.fillText(initials, size / 2, size / 1.5);
+
+          dataURI = canvas.toDataURL();
+          canvas = null;
+
+          return dataURI;
+        }
+
+        LetterAvatar.transform = function() {
+          Array.prototype.forEach.call(
+            d.querySelectorAll("img[letterAvatar]"),
+            function(img, name) {
+              name = img.getAttribute("letterAvatar");
+              img.src = LetterAvatar(name, img.getAttribute("width"));
+              img.removeAttribute("letterAvatar");
+              img.setAttribute("alt", name);
+            }
+          );
+        };
+
+        window.LetterAvatar = LetterAvatar;
+
+        d.addEventListener("DOMContentLoaded", function(event) {
+          LetterAvatar.transform();
+        });
+      })(window, document);
+    </script>
+  </body>
+</html>

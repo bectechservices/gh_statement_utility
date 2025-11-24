@@ -1,0 +1,104 @@
+// @define Grid
+.grid-root {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.grid-item-gap {
+  height: 100%;
+}
+
+.grid-row-1-1 {
+  grid-row: 1 / span 1;
+}
+
+.grid-row-2-1 {
+  grid-row: 2 / span 1;
+}
+
+// @define Grid Scale
+$grid-gap-column: grid-gap-column !default;
+$grid-gap-row: grid-gap-row !default;
+$grid-item-Colstart: grid-item-columnStart !default;
+$grid-item-Colspan: grid-item-columnSpan !default;
+$grid-item-column-gap: grid-item-gap-column !default;
+$grid-item-row-gap: grid-item-gap-row !default;
+
+//@define Grid gap
+.grid-gap-column--2 {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+
+@for $i from 1 through 32 {
+  @if ($i % 2==0) {
+    .#{$grid-gap-column}--#{$i*2} {
+      margin-right: 0px + $i * -1;
+      margin-left: 0px + $i * -1;
+    }
+  }
+}
+
+.grid-gap-row--2 {
+  margin-top: -2px;
+}
+
+@for $i from 1 through 32 {
+  @if ($i % 2==0) {
+    .#{$grid-gap-row}--#{$i*2} {
+      margin-top: 0px + $i * -2;
+    }
+  }
+}
+
+//@define Grid Item Start
+@for $i from 1 through 12 {
+  .#{$grid-item-Colstart}--#{$i} {
+    grid-column-start: $i;
+  }
+}
+
+//@define Grid Item End
+@for $i from 1 through 12 {
+  .#{$grid-item-Colspan}--#{$i} {
+    grid-column-end: span $i;
+  }
+}
+
+//@define Grid Item gap
+@for $i from 1 through 32 {
+  @if ($i % 2==0) {
+    .#{$grid-item-column-gap}--#{$i*2} {
+      padding-right: 0px + $i;
+      padding-left: 0px + $i;
+    }
+  }
+}
+
+@for $i from 1 through 24 {
+  @if ($i % 2==0) {
+    .#{$grid-item-row-gap}--#{$i*2} {
+      padding-top: 0px + $i * 2;
+    }
+  }
+}
+
+//@end Grid Scale
+
+// @define 3 Column Grid
+.grid-root--3-col {
+  --gapBaseSize: 40px;
+  grid-template-rows: auto;
+  grid-gap: var(--gapBaseSize);
+
+  @media(min-width:670px) {
+    grid-gap: 20px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+
+  @media(min-width:880px) {
+    grid-template-rows: repeat(1, auto);
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

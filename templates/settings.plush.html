@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <title>STMT UTILITY ~ Settings ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="/assets/css/shared/style.css" />
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css" />
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body data-theme="absa-default" tabindex="-1" data-ui="chrome" style="background-color:white;">
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <main class="db-contentPane w-100 mx-auto my-0 position-relative">
+                    <div class="box-root">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- SETTINGS WIDGETS -->
+                                <div class="box-root pb-2">
+                                    <div class="card-root card--radius--all card--shadow--medium card--shadow--none border box-root box--bg--white"
+                                        style="padding-left: calc(var(--baseContentSize) + 2rem);padding-right: calc(var(--baseContentSize) + 2rem);box-shadow:none;border-bottom:none!important">
+                                        <div
+                                            class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                            <div
+                                                class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                <div
+                                                    class="box-root d-flex flex-column justify-content-center flex-100">
+                                                    <span
+                                                        class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap">
+                                                        <span>Settings</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                            <div class="grid-root grid-root--3-col gap-gap--0">
+                                                <div class="grid-item box-root box-divider--light-bottom-1">
+                                                    <div
+                                                        class="grid-item-gap grid-item-gap-column--32 grid-item-gap-row--16 box-divider--light-right-1">
+                                                        <div class="box-root padding-bottom--16">
+                                                            <div
+                                                                class="box-root d-flex align-items-baseline flex-row position-relative">
+                                                                <div
+                                                                    class="textAligner font-size--13 line-height--20 flex-0-0--auto">
+                                                                </div>
+                                                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                                                                    style="line-height:0">
+                                                                    <div class="padding-right--12">
+                                                                        <div class="avatar">
+                                                                            <div
+                                                                                class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-users align-middle">
+                                                                                    <path
+                                                                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+                                                                                    </path>
+                                                                                    <circle cx="9" cy="7" r="4">
+                                                                                    </circle>
+                                                                                    <path
+                                                                                        d="M23 21v-2a4 4 0 0 0-3-3.87">
+                                                                                    </path>
+                                                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75">
+                                                                                    </path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root">
+                                                                        <span
+                                                                            class="text-color--dark font-size--13 font-weight-medium line-height--20 text-numericSpacing--proportional text-uppercase text-wrap--wrap d-block"
+                                                                            style="margin-top:-1px">
+                                                                            <span>User Accounts</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ACTUAL MENU -->
+                                                        <%= if(user_can_access("users")) {%>
+                                                            <div class="box-root padding-bottom--16">
+                                                                <a class="d-flex unstyledLink buttonLink" href="/users">
+                                                                    <div
+                                                                        class="box-root d-flex align-items-center position-relative">
+                                                                        <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                            style="line-height: 0;">
+                                                                            <span
+                                                                                class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                <div class="padding-bottom--4">
+                                                                                    <span>Users</span>
+                                                                                </div>
+                                                                                <span
+                                                                                    class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                    <span>Manage users on the
+                                                                                        system</span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <% } %>
+
+
+                            <!-----------------Deleted users----------->
+                            <%= if(user_can_access("users-deleted")) {%>
+                                <div class="box-root padding-bottom--16">
+                                  <a
+                                    class="d-flex unstyledLink buttonLink"
+                                    href="/users-deleted"
+                                  >
+                                    <div
+                                      class="box-root d-flex align-items-center position-relative"
+                                    >
+                                      <div
+                                        class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                        style="line-height: 0;"
+                                      >
+                                        <span
+                                          class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap"
+                                        >
+                                          <div class="padding-bottom--4">
+                                            <span>Users Marked for Deletion</span>
+                                          </div>
+                                          <span
+                                            class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap"
+                                          >
+                                            <span
+                                              >Manage users to be deleted
+                                              Permanently on the system</span
+                                            >
+                                          </span>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </a>
+                                </div>
+                                <% } %>
+                                <!----------------------deleted users------------------!>
+    
+
+                                                                <!-- ACTUAL MENU -->
+                                                                <!-- ACTUAL MENU -->
+                                                                <%= if(user_can_access("roles")) {%>
+                                                                    <div class="box-root padding-bottom--16">
+                                                                        <a class="d-flex unstyledLink buttonLink"
+                                                                            href="/roles">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center position-relative">
+                                                                                <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                    style="line-height: 0;">
+                                                                                    <span
+                                                                                        class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                        <div class="padding-bottom--4">
+                                                                                            <span>User types</span>
+                                                                                        </div>
+                                                                                        <span
+                                                                                            class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                            <span>Manage roles to
+                                                                                                dictate access
+                                                                                                levels</span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                    <% } %>
+                                                                        <!-- ACTUAL MENU -->
+                                                                        <!-- ACTUAL MENU -->
+                                                                        <%= if(user_can_access("permissions")) {%>
+                                                                            <div class="box-root padding-bottom--16">
+                                                                                <a class="d-flex unstyledLink buttonLink"
+                                                                                    href="/permissions">
+                                                                                    <div
+                                                                                        class="box-root d-flex align-items-center position-relative">
+                                                                                        <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                            style="line-height: 0;">
+                                                                                            <span
+                                                                                                class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                                <div
+                                                                                                    class="padding-bottom--4">
+                                                                                                    <span>Access
+                                                                                                        Policies</span>
+                                                                                                </div>
+                                                                                                <span
+                                                                                                    class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                                    <span>Manage roles,
+                                                                                                        to be
+                                                                                                        provisioned or
+                                                                                                        deprovisioned</span>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                            <% } %>
+                                                                                <!-- ACTUAL MENU -->
+                                                    </div>
+                                                </div>
+                                                <div class="grid-item box-root box-divider--light-bottom-1">
+                                                    <div
+                                                        class="grid-item-gap grid-item-gap-column--32 grid-item-gap-row--16 box-divider--light-right-1">
+                                                        <div class="box-root padding-bottom--16">
+                                                            <div
+                                                                class="box-root d-flex align-items-baseline flex-row position-relative">
+                                                                <div
+                                                                    class="textAligner font-size--13 line-height--20 flex-0-0--auto">
+                                                                </div>
+                                                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                                                                    style="line-height:0">
+                                                                    <div class="padding-right--12">
+                                                                        <div class="avatar">
+                                                                            <div
+                                                                                class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-users align-middle">
+                                                                                    <path
+                                                                                        d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+                                                                                    </path>
+                                                                                    <circle cx="9" cy="7" r="4">
+                                                                                    </circle>
+                                                                                    <path
+                                                                                        d="M23 21v-2a4 4 0 0 0-3-3.87">
+                                                                                    </path>
+                                                                                    <path d="M16 3.13a4 4 0 0 1 0 7.75">
+                                                                                    </path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root">
+                                                                        <span
+                                                                            class="text-color--dark font-size--13 font-weight-medium line-height--20 text-numericSpacing--proportional text-uppercase text-wrap--wrap d-block"
+                                                                            style="margin-top:-1px">
+                                                                            <span>Branches</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ACTUAL MENU -->
+                                                        <%= if(user_can_access("branches")) {%>
+                                                            <div class="box-root padding-bottom--16">
+                                                                <a class="d-flex unstyledLink buttonLink"
+                                                                    href="/branches">
+                                                                    <div
+                                                                        class="box-root d-flex align-items-center position-relative">
+                                                                        <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                            style="line-height: 0;">
+                                                                            <span
+                                                                                class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                <div class="padding-bottom--4">
+                                                                                    <span>Branches</span>
+                                                                                </div>
+                                                                                <span
+                                                                                    class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                    <span>Manage branches on the
+                                                                                        system</span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <% } %>
+                                                                <!-- ACTUAL MENU -->
+                                                    </div>
+                                                </div>
+
+                                                <div class="grid-item box-root box-divider--light-bottom-1">
+                                                    <div
+                                                        class="grid-item-gap grid-item-gap-column--32 grid-item-gap-row--16">
+                                                        <div class="box-root padding-bottom--16">
+                                                            <div
+                                                                class="box-root d-flex align-items-baseline flex-row position-relative">
+                                                                <div
+                                                                    class="textAligner font-size--13 line-height--20 flex-0-0--auto">
+                                                                </div>
+                                                                <div class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto"
+                                                                    style="line-height:0">
+                                                                    <div class="padding-right--12">
+                                                                        <div class="avatar">
+                                                                            <div
+                                                                                class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+                                                                                <svg width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-shield">
+                                                                                    <path
+                                                                                        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">
+                                                                                    </path>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="box-root">
+                                                                        <span
+                                                                            class="text-color--dark font-size--13 font-weight-medium line-height--20 text-numericSpacing--proportional text-uppercase text-wrap--wrap d-block"
+                                                                            style="margin-top:-1px">
+                                                                            <span>Security and Audit Trail</span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ACTUAL MENU -->
+                                                        <%= if(user_can_access("password-policy")) {%>
+                                                            <div class="box-root padding-bottom--16">
+                                                                <a class="d-flex unstyledLink buttonLink"
+                                                                    href="/password-policy">
+                                                                    <div
+                                                                        class="box-root d-flex align-items-center position-relative">
+                                                                        <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                            style="line-height: 0;">
+                                                                            <span
+                                                                                class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                <div
+                                                                                    class="padding-bottom--4 text-capitalize">
+                                                                                    <span>Password Policy</span>
+                                                                                </div>
+                                                                                <span
+                                                                                    class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                    <span>Configure password policy for
+                                                                                        your
+                                                                                        organization</span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <% } %>
+                                                                <!-- ACTUAL MENU -->
+                                                                <!-- ACTUAL MENU -->
+                                                                <%= if(user_can_access("user-activity-audit")) {%>
+                                                                    <div class="box-root padding-bottom--16">
+                                                                        <a class="d-flex unstyledLink buttonLink"
+                                                                            href="/user-activity-audit">
+                                                                            <div
+                                                                                class="box-root d-flex align-items-center position-relative">
+                                                                                <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                    style="line-height: 0;">
+                                                                                    <span
+                                                                                        class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                        <div
+                                                                                            class="padding-bottom--4 text-capitalize">
+                                                                                            <span>Event-oriented
+                                                                                                log</span>
+                                                                                        </div>
+                                                                                        <span
+                                                                                            class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                            <span>Records describing
+                                                                                                application
+                                                                                                events</span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                    <% } %>
+                                                                        <!-- ACTUAL MENU -->
+                                                                        <!-- ACTUAL MENU -->
+                                                                        <%= if(user_can_access("user-management-audit"))
+                                                                            {%>
+                                                                            <div class="box-root padding-bottom--16">
+                                                                                <a class="d-flex unstyledLink buttonLink"
+                                                                                    href="/user-management-audit">
+                                                                                    <div
+                                                                                        class="box-root d-flex align-items-center position-relative">
+                                                                                        <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                            style="line-height: 0;">
+                                                                                            <span
+                                                                                                class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                                <div
+                                                                                                    class="padding-bottom--4 text-capitalize">
+                                                                                                    <span>User
+                                                                                                        Management
+                                                                                                        log</span>
+                                                                                                </div>
+                                                                                                <span
+                                                                                                    class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                                    <span>Records
+                                                                                                        describing user
+                                                                                                        acitivites</span>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </div>
+                                                                            <% } %>
+                                                                                <!-- ACTUAL MENU -->
+                                                                                <%= if(user_can_access("statement-audit"))
+                                                                                {%>
+                                                                                <div class="box-root padding-bottom--16">
+                                                                                    <a class="d-flex unstyledLink buttonLink"
+                                                                                        href="/statement-audit">
+                                                                                        <div
+                                                                                            class="box-root d-flex align-items-center position-relative">
+                                                                                            <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                                style="line-height: 0;">
+                                                                                                <span
+                                                                                                    class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                                    <div
+                                                                                                        class="padding-bottom--4 text-capitalize">
+                                                                                                        <span>Statement
+                                                                                                            Print
+                                                                                                            Audit</span>
+                                                                                                    </div>
+                                                                                                    <span
+                                                                                                        class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                                        <span>Log
+                                                                                                            of statement Printing
+                                                                                                            acitivites</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <% } %>  
+                                                                                <!-- ACTUAL MENU --->
+                                                                                <%= if(user_can_access("stamp-print-audit"))
+                                                                                {%>
+                                                                                <div class="box-root padding-bottom--16">
+                                                                                    <a class="d-flex unstyledLink buttonLink"
+                                                                                        href="/stamp-print-audit">
+                                                                                        <div
+                                                                                            class="box-root d-flex align-items-center position-relative">
+                                                                                            <div class="d-flex align-items-center justify-content-start flex-1-1--auto"
+                                                                                                style="line-height: 0;">
+                                                                                                <span
+                                                                                                    class="buttonLink-label text-color--blue font-size--14 font-weight-medium text-numericSpacing--proportional line-height--20 d-block text-wrap--wrap">
+                                                                                                    <div
+                                                                                                        class="padding-bottom--4 text-capitalize">
+                                                                                                        <span> PDF Stamped Statement
+                                                                                                            Print
+                                                                                                            Audit</span>
+                                                                                                    </div>
+                                                                                                    <span
+                                                                                                        class="text-color--default font-size--14 font-weight-normal line-height--20 text-numericSpacing--proportional text-wrap--wrap">
+                                                                                                        <span>Log
+                                                                                                            of PDF Stamped Statement Printing
+                                                                                                            acitivites</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <% } %>  
+                                                                                                                                                                                                                                            
+                                                    </div>                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- SETTINGS WIDGET -->
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+    </div>
+
+    <!-- plugins:js -->
+    
+    
+</body>
+
+</html>

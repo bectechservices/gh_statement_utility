@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>SCB ~ UTILITY ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+ 
+
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <style>
+        table, th, td {
+         border: 1px solid black;
+         border-collapse: collapse;
+       }
+       tr:nth-child(even) {
+         background-color: #D6EEEE;
+       }
+
+       #pdfPreview {
+            width: 100%;
+            height: 700px;
+            border: 1px solid #ccc;
+            /*display: none; /* Hide initially */
+        }
+        </style>
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+    
+</head>
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <main class="main-panel no-siderBar-fullWidth" tabindex="-1">
+                    <div class="content-wrapper">
+                        <div class="box-root padding-top--8 padding-bottom--12">
+                            <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--pressable">
+                                            <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                                href="/other-pdf-stampify">
+                                                <span
+                                                    class="breadcrumb-itemLabel text-color--default font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                    <span>Other Statement</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--disabled">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--blue font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>PDF Upload For Stamping</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- REGIONS-->
+                                    <div class="box-root pb-2">
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    #
+                                                        <div
+                                                            class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                            <div class="ButtonGroup box-root">
+                                                                <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                    style="margin-left:-8px;margin-top:-8px;">
+
+                                                                <div class="margin-top--8 margin-left--8">
+                                                                  <div class="box-root">
+                                                                      <button id="uploadBtn"
+                                                                          class="btn btn-light btn-fw pressureButton"
+                                                                          data-toggle="modal"
+                                                                          data-target="#staticBr">
+                                                                          <i class="mdi mdi-plus"></i>
+                                                                          <span
+                                                                              class="font-weight-medium text-color--dark">Generate Stamp on PDF</span>
+                                                                      </button>
+                                                                  </div>
+                                                              </div>                                                                                                                                     
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                            <div class="w3-col w3-half">
+                                                <div class="form-group">
+                                                    <input type="file" id="pdfFileInput" name="pdfFileInput" multiple />
+                                                    
+                                                </div>
+                                                <div id="other_pdf_data" class="mt-5 table-responsive"></div>
+                                              </div>
+                                        
+
+                                              
+                                              
+                                              <iframe id="pdfPreview" src="" hidden></iframe>
+                                            </div>  
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REGIONS-->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </main>
+            <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+
+
+
+    <!-- plugins:js -->
+    <script src="/assets/vendors/js/vendor.bundle.base.js" manageBr></script>
+    <script src="/assets/vendors/js/vendor.bundle.addons.js"></script>
+    <script src="/assets/js/app/main.js"></script>
+    <%= partial("partials/show_modals.html") %>
+    <%= javascriptTag("other-stamp-pdf.js") %>
+        
+
+</body>
+
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+  <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="<%= authenticity_token %>" />
+  <title>STMT ~ UTILITY ~ SCB</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="/assets/css/shared/style.css">
+  
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="/assets/css/app/style.css">
+  <!-- End Layout styles -->
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+  <link href="css/main.css" rel="stylesheet">
+  <style>
+    .v-context,
+    .v-context ul {
+      background-color: var(--white);
+      background-clip: padding-box;
+      border-radius: .25rem;
+      border: 1px solid rgba(0, 0, 0, .15);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      display: block;
+      margin: 0;
+      padding: 10px 0;
+      min-width: 10rem;
+      z-index: 10;
+      position: absolute;
+      list-style: none;
+      box-sizing: border-box;
+      max-height: calc(100% - 50px);
+      overflow-y: auto
+    }
+
+    .v-context>li,
+    .v-context ul>li {
+      margin: 0;
+      position: relative
+    }
+
+    .v-context>li>a,
+    .v-context ul>li>a {
+      display: block;
+      padding: .5rem 1.5rem;
+      font-weight: 400;
+      color: #212529;
+      text-decoration: none;
+      white-space: nowrap;
+      background-color: transparent;
+      border: 0
+    }
+
+    .v-context>li>a:focus,
+    .v-context>li>a:hover,
+    .v-context ul>li>a:focus,
+    .v-context ul>li>a:hover {
+      text-decoration: none;
+      color: #212529;
+      background-color: #f8f9fa
+    }
+
+    .v-context:focus,
+    .v-context>li>a:focus,
+    .v-context ul:focus,
+    .v-context ul>li>a:focus {
+      outline: 0
+    }
+
+    .v-context__sub>a:after {
+      content: "\203A";
+      float: right;
+      padding-left: 1rem
+    }
+
+    .v-context__sub>ul {
+      display: none
+    }
+
+    [v-cloak] {display: none}
+  </style>
+  <style>
+    input {
+      height: 37px;
+      padding: 9px 11px;
+    }
+     input[type="button"]{
+      padding: 8px;
+      font-size: 16px;
+      height: 41px;
+      cursor: pointer;
+    }
+    .date__picker {
+      position:relative;
+    }
+    .ui-datepicker-trigger{
+      position: absolute;
+      top: 3px;
+      right: 8px;
+    }
+    .form-group-actions {
+      margin-bottom: 0;
+      margin-top: 1.065em;
+    }
+
+    .table-data-label{
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 0.2px; 
+    }
+  </style>
+</head>
+
+<body data-theme="absa-default" data-sysname="cheque-sys" tabindex="-1" data-ui="chrome">
+  <div class="container-scroller chequeRequestPage" id="appRoot">
+    <div>
+      <div class="db-root">
+        <div class="box-root d-flex flex-column">
+          <div class="db-scrollWrapper">
+
+            <div class="db-mainWrapper">
+              <%= partial("partials/navbar.html") %>
+              <div class="db-mainPane overflow-x--hidden overflow-hidden position-relative box--bg--white"
+                tabindex="-1">
+                <main class="statementPage db-contentPane mx-auto my-0 position-relative" tabindex="-1">
+                    <div class="j_container" style="height:100%">
+                        <main style="margin-top:98px">
+                          <section class="section__container kip kipclear">
+                              <div class="j_row">
+                                <div class="col-12">
+                                  <header class="page__title">
+                                    <h4 class="title">
+                                      Generate Admin Statement
+                                    </h4>
+                                  </header>
+                                </div>
+                              </div>
+                              <div class="j_row">
+                                <div class="col-6">
+                                  <div class="j_row">
+                                    <div class="col-11">
+                                      <div class="form__wrapper" style="width:100%;padding: 5px 5px;">
+                                        <div class="table" style="width:100%">
+                                          <form id="accountDetailsForm">
+                                            <div class="table-row" style="display:table-row">
+                                              <div  class="table-cell" style="width:30%">
+                                                <label class="label font-heavy">Account Number</label>
+                                              </div>
+                                              <div class="table-cell cell-content">
+                                                <input id="accountNumber" class="form-control focus-form" type="text" :disabled="loading" v-model="search.accountnumber" @blur="loadAccountDates" required>
+                                                <span class="error" id="accno_err" style="color: red;"></span>
+                                              </div> 
+                                            </div>
+                                            <div class="table-row" style="display:table-row">
+                                              <div  class="table-cell" style="width:30%">
+                                                <label class="label font-heavy">Start Date</label>
+                                              </div>
+                                              <div class="table-cell cell-content date__picker">
+                                                <input id="startDate" class="form-control focus-form" type="date" :disabled="loading" v-model="search.startdate" required ref="startDate">
+                                                <span class="error" id="start_err" style="color: red;"></span>
+                                              </div> 
+                                            </div>
+                                            <div class="table-row" style="display:table-row">
+                                              <div  class="table-cell" style="width:30%">
+                                                <label class="label font-heavy">End Date</label>
+                                              </div>
+                                              <div class="table-cell cell-content date__picker">
+                                                <input id="endDate" class="form-control focus-form" type="date" :disabled="loading" v-model="search.enddate" required ref="endDate">
+                                                <span class="error" id="end_err" style="color: red;"></span>
+                                              </div> 
+                                            </div>
+                                          </form>
+                                        </div>
+                                      </div>
+                                      <!-- J'EN SAIS PAS -->
+                                      <div class='searchbtn'></div>
+                                      <div class='printbtn'></div>
+                                      <!-- J'EN SAIS PAS -->
+                                        <div class="form-group form-group-actions">
+                                         <!-- <form action="print/exportexcel.php" method="POST" id="excelbtn" > -->
+                                            <div class="table" style="width:100%;">
+                                              <div style="display:table-row;">
+                                                <div class="table-cell" style="width:25%">
+                                                  <button id="validateBtn" class="btn-block custombtn" @click="validate" :disabled="loading" data-color="green">Validate</button>
+                                                </div>
+                                                <div class="table-cell" style="width:25%">
+                                                  <input id="searchBtn" type="button" class="btn-block custombtn" data-color="green"
+                                                value="Search">
+                                                </div>
+                                                <div class="table-cell" style="width:25%">
+                                                  <input type="button" class="btn-block custombtn"  id="printBtn" data-color="green"
+                                                value="Display PDF">
+                                                </div>
+                                                <div class="table-cell" style="width:25%">
+                                                  <input type="button" class="btn-block custombtn" id="excelBtn" data-color="green"
+                                                value="Excel">
+                                                </div>
+                                            </div>
+                                         <!-- </form> -->
+                                        </div>
+                                        <!-- END FORM GROUP FOR BUTTON -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-5">
+                                  <div class="j_card details">
+                                    <div class="j_card__title " style="padding: 3px 0;">
+                                      <h3 style="padding-left:10px;"> Details </h3>
+                                    </div>
+                                    <div class="j_card__body" style="padding:7px 9px">
+                                      <div style="display:table;width:100%">
+                                        <div  class="table-j_row" style="display:table-row;">
+                                          <div  class="table-cell cell-label" style="width:23%">Name</div>
+                                          <div class="table-cell cell-content" id="customer_name"></div>
+                                        </div>
+                                        <div class="table-j_row" style="display:table-row;">
+                                          <div class="table-cell cell-label" style="width:23%">Branch</div>
+                                          <div class="table-cell cell-content" id="c_branch"></div>
+                                        </div>
+                                        <div class="table-j_row" style="display:table-row;">
+                                          <div class="table-cell cell-label" style="width:23%">Currency</div>
+                                          <div class="table-cell cell-content" id="c_currency"></div>
+                                        </div>
+                                        <div class="table-j_row" style="display:table-row;">
+                                          <div class="table-cell cell-label" style="width:23%">Total Credit</div>
+                                          <div class="table-cell cell-content" id="totalcredits"></div>
+                                        </div>
+                                        <div class="table-j_row" style="display:table-row;">
+                                          <div class="table-cell cell-label" style="width:23%">Total Debit</div>
+                                          <div class="table-cell cell-content" id="totaldebits"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <section style="margin-top:0.8em" hidden>
+                                <div class="j_row">
+                                  <div class="col-12">
+                                    <div class="j_card">
+                                      <div class="j_card__body" style="padding:8px">
+                                        <div class="table-data" >
+                                          <table style="width:98.7%">
+                                              <tr class="tr_bg">
+                                                  <td class="table-data-label center" style="width:11%; border:1px solid black">ENTRY DATE</td>
+                                                  <td class="table-data-label center" style="width:11%; border:1px solid black">VALUE DATE</td>
+                                                  <td class="table-data-label center" style="width:38.9%; border:1px solid black">PARTICULARS</td>
+                                                  <td class="table-data-label center" style="width:13.06%; border:1px solid black">WITHDRAWAL</td>
+                                                  <td class="table-data-label center" style="width:13.06%; border:1px solid black">DEPOSIT</td>
+                                                  <td class="table-data-label center" style="width:13.06%; border:1px solid black">BALANCE</td>
+                                              </tr>
+                                          </table>
+                                        </div>
+                                          <div class="j_card" style="max-height: 280px; overflow-y:auto;">
+                                            <span id="trans_details"></span>
+                                            <div id="Waiting" class="blindWaiting" style=" height:100%;margin-top: 30px;margin-bottom:20px;text-align: center;font-size:22px;">
+                                            Loading, please wait ... <img src="images/loading.gif">
+                                          </div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                        
+                              </section>
+
+
+                              <div id="tableCard" class="card shadow border-0 mb-3 mt-3" ></div>
+                          <section>
+                        </main>
+                      </div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button id="infoModalBtn" data-toggle="modal" data-target="#infoModal" hidden>Open Info Modal</button>
+
+    <div id="infoModal" class="modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Transaction Records Update</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="modalContent"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- plugins:js -->
+
+  <script src="/assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/assets/vendors/js/vendor.bundle.addons.js"></script>
+  <%= javascriptTag("admin-statements.js") %>
+
+</body>
+
+</html>

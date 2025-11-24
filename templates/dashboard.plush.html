@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+	<title>STMT Utility ~ Home ~ SCB</title>
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+	<!-- endinject -->
+	<!-- plugin css for this page -->
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<link rel="stylesheet" href="/assets/css/shared/style.css">
+	<!-- endinject -->
+	<!-- Layout styles -->
+	<link rel="stylesheet" href="/assets/css/app/style.css">
+	<!-- End Layout styles -->
+	<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body data-theme="absa-default">
+	<div class="container-scroller" id="appRoot">
+		<%= partial("partials/navbar.html") %>
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel no-siderBar-fullWidth">
+				<div class="content-wrapper">
+					<div class="box-root">
+						<div class="row align-items-center">
+							<div class="col-md-11 mx-auto">
+								<div class="position-relative mb-space--12">
+									<div class="dashboard_cardStats d-grid grid-root--3-col pb-4">
+
+										<!-- STAT WIDGETS -->
+										<div class="box-root pb-2">
+											<a class="text-decoration--none Tent Tent--hasAction" href="/users">
+												<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+													<div class="contentBlock box-root padding-bottom--4">
+														<div class="d-flex flex-column flex-1-1--0 box--bg--white">
+															<div class="box-root flex-1-1--0">
+																<div class="padding-all--20 d-flex flex-column justify-content-start h-100">
+																	<div class="d-flex flex-row justify-content-between">
+																		<div class="d-flex align-items-baseline position-relative">
+																			<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																			<div
+																				class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline">
+																				<span
+																					class="text-color--default font-size--18 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+																					style="margin-top:-1px;">
+																					<span class="text-capitalize">Users</span>
+																				</span>
+																			</div>
+																		</div>
+																		<span class="d-flex">
+																			<div class="d-flex flex-row align-items-baseline position-relative">
+																				<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																				<div
+																					class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+																					style="line-height: 0;">
+																					<span
+																						class="text-color--blue font-size--14 font-weight-medium text-nowrap d-block text-numericSpacing--proportional"
+																						style="margin-top:-1px;">
+																						<div class="avatar">
+																							<div
+																								class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+																									viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+																									stroke-linecap="round" stroke-linejoin="round"
+																									class="feather feather-users align-middle">
+																									<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+																									<circle cx="9" cy="7" r="4"></circle>
+																									<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+																									<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+																								</svg>
+																							</div>
+																						</div>
+																					</span>
+																				</div>
+																			</div>
+																		</span>
+																	</div>
+																	<div class="box-root margin-top--4 margin-bottom--20">
+																		<span
+																			class="text-color--blue font-size--26 text-wrap--wrap text-numericSpacing--proportional d-inline">
+																			<span><%= total_allusers %></span>
+																		</span>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+													<div
+														class="contentFooter Tent__action box-root w-100 d-flex align-items-center flex-row justify-content-center padding-horizontal--20 padding-vertical--6 text-center position-absolute left-0 bottom-0 box-bg--accent-darker">
+														<span
+															class="text-white font-size--14 text-wrap--wrap text-numericSpacing--proportional d-inline">
+															<span>View users</span>
+															<span>
+																<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+																	width="18px" height="18px">
+																	<path d="M0 0h24v24H0z" fill="none" />
+																	<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg>
+															</span>
+														</span>
+													</div>
+												</div>
+											</a>
+										</div>
+										<div class="box-root pb-2">
+											<a class="text-decoration--none Tent Tent--hasAction" href="/branches">
+												<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+													<div class="contentBlock box-root padding-bottom--4">
+														<div class="d-flex flex-column flex-1-1--0 box--bg--white">
+															<div class="box-root flex-1-1--0">
+																<div class="padding-all--20 d-flex flex-column justify-content-start h-100">
+																	<div class="d-flex flex-row justify-content-between">
+																		<div class="d-flex align-items-baseline position-relative">
+																			<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																			<div
+																				class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline">
+																				<span
+																					class="text-color--default font-size--18 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+																					style="margin-top:-1px;">
+																					<span class="text-capitalize">Branches </span>
+																				</span>
+																			</div>
+																		</div>
+																		<span class="d-flex">
+																			<div class="d-flex flex-row align-items-baseline position-relative">
+																				<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																				<div
+																					class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+																					style="line-height: 0;">
+																					<span
+																						class="text-color--blue font-size--14 font-weight-medium text-nowrap d-block text-numericSpacing--proportional"
+																						style="margin-top:-1px;">
+																						<div class="avatar">
+																							<div
+																								class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+
+																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+																									viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+																									stroke-linecap="round" stroke-linejoin="round"
+																									class="feather feather-file-text">
+																									<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+																									</path>
+																									<polyline points="14 2 14 8 20 8"></polyline>
+																									<line x1="16" y1="13" x2="8" y2="13"></line>
+																									<line x1="16" y1="17" x2="8" y2="17"></line>
+																									<polyline points="10 9 9 9 8 9"></polyline>
+																								</svg>
+																							</div>
+																						</div>
+																					</span>
+																				</div>
+																			</div>
+																		</span>
+																	</div>
+																	<div class="box-root margin-top--4 margin-bottom--20">
+																		<span
+																			class="text-color--blue font-size--26 text-wrap--wrap text-numericSpacing--proportional d-inline">
+																			<span><%= total_onboardedbranches %></span>
+																		</span>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+													<div
+														class="contentFooter Tent__action box-root w-100 d-flex align-items-center flex-row justify-content-center padding-horizontal--20 padding-vertical--6 text-center position-absolute left-0 bottom-0 box-bg--accent-darker">
+														<span
+															class="text-white font-size--14 text-wrap--wrap text-numericSpacing--proportional d-inline">
+															<span>View branches</span>
+															<span class="d-none">
+																<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+																	width="18px" height="18px">
+																	<path d="M0 0h24v24H0z" fill="none" />
+																	<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg>
+															</span>
+													</div>
+												</div>
+											</a>
+										</div>
+										
+										<div class="box-root pb-2">
+											<a class="text-decoration--none Tent Tent--hasAction" href="/statement-audit">
+												<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+													<div class="contentBlock box-root padding-bottom--4">
+														<div class="d-flex flex-column flex-1-1--0 box--bg--white">
+															<div class="box-root flex-1-1--0">
+																<div class="padding-all--20 d-flex flex-column justify-content-start h-100">
+																	<div class="d-flex flex-row justify-content-between">
+																		<div class="d-flex align-items-baseline position-relative">
+																			<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																			<div
+																				class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline">
+																				<span
+																					class="text-color--default font-size--18 font-weight-medium text-wrap--wrap d-block text-numericSpacing--proportional"
+																					style="margin-top:-1px;">
+																					<span class="text-capitalize">Total Statement Request</span>
+																				</span>
+																			</div>
+																		</div>
+																		<span class="d-flex">
+																			<div class="d-flex flex-row align-items-baseline position-relative">
+																				<div class="textAligner font-size--14 flex-0-0--auto"></div>
+																				<div
+																					class="d-flex flex-row justify-content-start flex-1-1--auto align-items-baseline"
+																					style="line-height: 0;">
+																					<span
+																						class="text-color--blue font-size--14 font-weight-medium text-nowrap d-block text-numericSpacing--proportional"
+																						style="margin-top:-1px;">
+																						<div class="avatar">
+																							<div
+																								class="avatar-title rounded-circle d-flex w-100 h-100 align-items-center justify-content-center text-white box-bg--accent-darker">
+
+																								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+																									viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+																									stroke-linecap="round" stroke-linejoin="round"
+																									class="feather feather-file-text">
+																									<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+																									</path>
+																									<polyline points="14 2 14 8 20 8"></polyline>
+																									<line x1="16" y1="13" x2="8" y2="13"></line>
+																									<line x1="16" y1="17" x2="8" y2="17"></line>
+																									<polyline points="10 9 9 9 8 9"></polyline>
+																								</svg>
+																							</div>
+																						</div>
+																					</span>
+																				</div>
+																			</div>
+																		</span>
+																	</div>
+																	<div class="box-root margin-top--4 margin-bottom--20">
+																		<span
+																			class="text-color--blue font-size--26 text-wrap--wrap text-numericSpacing--proportional d-inline">
+																			<span><%= total_statement_audited %></span>
+																		</span>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+													</div>
+													<div
+														class="contentFooter Tent__action box-root w-100 d-flex align-items-center flex-row justify-content-center padding-horizontal--20 padding-vertical--6 text-center position-absolute left-0 bottom-0 box-bg--accent-darker">
+														<span
+															class="text-white font-size--14 text-wrap--wrap text-numericSpacing--proportional d-inline">
+															<span>View requests</span>
+															<span>
+																<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+																	width="18px" height="18px">
+																	<path d="M0 0h24v24H0z" fill="none" />
+																	<path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" /></svg>
+															</span>
+													</div>
+												</div>
+											</a>
+										</div>
+										
+										<!-- STAT WIDGETS -->
+
+									</div>
+									<div class="box-root">
+										<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+											<div
+												class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+												<div class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+													<div class="box-root d-flex flex-column justify-content-center flex-100">
+														<span
+															class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap text-capitalize">
+															<span>Recent audit activities</span>
+														</span>
+													</div>
+												</div>
+											</div>
+											<div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+												<div class="box-root margin-bottom--4">
+													<div class="box-root padding-bottom--8">
+														<ul class="nav nav-tabs" id="myTab" role="tablist">
+															<li class="nav-item">
+																<a class="nav-link box--bg--offset text-color--gray position-relative active box-divider--light-right-1"
+																	id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+																	aria-selected="true">
+																	<span
+																		class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional">
+																		<span class="tabtext-context text-color--dark">Activity Log</span>
+																	</span>
+																	<div
+																		class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box-bg--primary">
+																	</div>
+																</a>
+															</li>
+															<li class="nav-item">
+																<a class="nav-link box--bg--offset text-color--gray position-relative box-divider--light-right-1"
+																	id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+																	aria-selected="false">
+																	<span
+																		class="text-center font-size--14 font-weight-medium line-height--20 text-nowrap text-numericSpacing--proportional">
+																		<span class="tabtext-context text-color--dark">Account Log</span>
+																	</span>
+																	<div
+																		class="contentTab-bar contentTab-bar--default box-root position-absolute pos-right--0 pos-bottom--0 box-bg--primary">
+																	</div>
+																</a>
+															</li>
+
+														</ul>
+													</div>
+												</div>
+												<div class="tab-content" id="myTabContent">
+													<div class="tab-pane fade show active" role="tabpanel" id="home" aria-labelledby="home-tab">
+														<div class="box-root">
+															<table class="table table-hover db-objectListTable order-table" >
+																<thead>
+																	<tr>
+																		<th class="text-capitalize">type</th>
+																		<th class="text-capitalize">Date-Time</th>
+																		<th class="text-capitalize">who</th>
+																	</tr>
+																</thead>
+																<tbody>
+                                                                    <%= for(activity) in account_log{%>
+                                                                        <tr>
+                                                                            <td><%= activity.Activity%></td>
+                                                                            <td>
+                                                                                <span><%= activity.CreatedAt.Format("02.01.2006") %></span><span class="text-color--gray">&nbsp;<%= activity.CreatedAt.Format("3:04PM") %></span>
+                                                                            </td>
+                                                                            <td class="text-capitalize"><%= activity.User.FirstName %>-<%= activity.User.LastName %></td>
+                                                                        </tr>
+                                                                    <% } %>
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+														<div class="box-root">
+															<table class="table table-hover db-objectListTable order-table">
+															  <thead>
+																<tr>
+																  <th class="text-capitalize">Activity By</th>
+																  <th class="text-capitalize">Activity For</th>
+																  <th class="text-capitalize">Description</th>
+																  <th class="text-capitalize">Date-Time</th>
+																</tr>
+															  </thead>
+															  <tbody>
+																<%= for(audit) in audits{%>
+																  <tr>
+																	<td class="text-capitalize"><%= audit.By.FirstName %>-<%= audit.By.LastName %></td>
+																	<td class="text-capitalize"><%= audit.For.FirstName %> - <%= audit.For.LastName %></td>
+																	<td class="text-capitalize"><%= audit.Description %></td>
+																	<td>
+																	  <span><%= audit.CreatedAt.Format("02.01.2006") %></span><span class="text-color--gray">&nbsp;<%= audit.CreatedAt.Format("3:04 PM") %></span>
+																	</td>
+																  </tr>
+																<% } %>
+															  </tbody>
+															</table>
+														  </div>
+													</div>
+												</div>
+											</div>
+											<div
+												class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					<!----
+							<div class="col-md-4">
+								
+								<div class="box-root pb-2">
+									<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+										<div
+											class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+											<div class="box-root d-flex flex-row justify-content-between">
+												<div class="box-root d-flex flex-column justify-content-center flex-100">
+													<span
+														class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap">
+														<span> Server Disk status</span>
+													</span>
+												</div>
+											</div>
+										</div>
+
+										<div class="contentBlock box-root">
+											<div class="d-flex flex-column flex-1-1--0 box--bg--offset">
+												<div class="box-root box-divider--light-bottom-1 flex-1-1--0">
+
+
+														<article class="DonutChart__legend margin-top--32 w-100 mx-auto" role="contentinfo">
+															<ul class="DonutChart__legend-list">
+																<li
+																	class="DonutChart__legend-listItem d-flex justify-content-between align-items-center line-height--24 font-size--16 font-weight-medium text-color--martinique">
+																	<div class="DonutChart__legend-listItemDot position-relative flex-0-0--auto mr-2"
+																		style="color:#f77a52"></div>
+																	<div
+																		class="DonutChart__legendItemLabel position-relative flex-1-1--0 text-capitalize">
+																		<span>Used Space</span>
+																	</div>
+																	<div class="DonutChart__legendItemValue">
+																		<span class="text-uppercase text-color--dark"><%= used_disk_space %></span>
+																	</div>
+																</li>
+																<li
+																	class="DonutChart__legend-listItem d-flex justify-content-between align-items-center line-height--24 font-size--16 font-weight-medium text-color--martinique margin-top--12">
+																	<div class="DonutChart__legend-listItemDot position-relative flex-0-0--auto mr-2">
+																	</div>
+																	<div
+																		class="DonutChart__legendItemLabel position-relative flex-1-1--0 text-capitalize">
+																		<span>Free space</span>
+																	</div>
+																	<div class="DonutChart__legendItemValue">
+																		<span class="text-uppercase text-color--dark"><%= free_disk_space %></span>
+																	</div>
+																</li>
+															</ul>
+														</article>
+									</div>
+								</div>
+								<div class="box-root pb-2">
+									<div class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+										<div
+											class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+											<div class="box-root d-flex flex-row justify-content-between">
+												<div class="box-root d-flex flex-column justify-content-center flex-100">
+													<span
+														class="contentHeader-title d-inline text-color--dark font-size--18 text-numericSpacing--proportional text-wrap--wrap">
+														<span>Server Storage</span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="contentBlock box-root box--bg--white">
+											<div class="box-root d-flex flex-row flex-grow--1">
+												<div class="box-divider--light-right-1 d-flex flex-1-1--0">
+													<div class="w-100 padding-vertical--8" style="min-height:225px;">
+														<figure class="DonutChart position-relative d-flex flex-column align-items-center">
+															<div
+																class="DonutChart__chartLabel position-absolute d-flex flex-column align-items-center justify-content-center">
+																<span class="font-size--16 user-select-none">DISK</span>
+																<span class="font-size--16 user-select-none">SPACE</span>
+																<span class="font-size--16 user-select-none"><%= total_disk_size %></span>
+															</div>
+															<svg class="ct_progress DonutChart__chart" data-value="percentage_used">
+																<circle class="progress__meter" fill="none" stroke-width="40" />
+																<circle class="progress__value" fill="none" stroke-width="40" />
+															</svg>
+														</figure>
+														<article class="DonutChart__legend margin-top--32 w-100 mx-auto" role="contentinfo">
+															<ul class="DonutChart__legend-list">
+																<li
+																	class="DonutChart__legend-listItem d-flex justify-content-between align-items-center line-height--24 font-size--16 font-weight-medium text-color--martinique">
+																	<div class="DonutChart__legend-listItemDot position-relative flex-0-0--auto mr-2"
+																		style="color:#f77a52"></div>
+																	<div
+																		class="DonutChart__legendItemLabel position-relative flex-1-1--0 text-capitalize">
+																		<span>Used Space</span>
+																	</div>
+																	<div class="DonutChart__legendItemValue">
+																		<span class="text-uppercase text-color--dark"><%= used_disk_space %></span>
+																	</div>
+																</li>
+																<li
+																	class="DonutChart__legend-listItem d-flex justify-content-between align-items-center line-height--24 font-size--16 font-weight-medium text-color--martinique margin-top--12">
+																	<div class="DonutChart__legend-listItemDot position-relative flex-0-0--auto mr-2">
+																	</div>
+																	<div
+																		class="DonutChart__legendItemLabel position-relative flex-1-1--0 text-capitalize">
+																		<span>Free space</span>
+																	</div>
+																	<div class="DonutChart__legendItemValue">
+																		<span class="text-uppercase text-color--dark"><%= free_disk_space %></span>
+																	</div>
+																</li>
+															</ul>
+														</article>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							----->
+								<!-- SERVER MGMT WIDGET -->
+							</div>  
+						</div>
+					</div>
+				</div>
+				<!-- content-wrapper ends -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+
+    <%= partial("partials/logout.html") %>
+
+	<!-- plugins:js -->
+	
+	
+	<script>
+		let CTX = 200;
+		let RADIUS = CTX / 2;
+		let DIAMETER = RADIUS;
+		const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+		let CTXValue = document.querySelector('.progress__value');
+		let Value = parseInt(document.querySelector('.DonutChart__chart').dataset.value);
+		let CTChart = document.querySelector('.DonutChart__chart');
+		let CTChartLabel = document.querySelector('.DonutChart__chartLabel');
+		let donutSize = document.querySelectorAll('.DonutChart__chart circle'),
+			i;
+		setAttributes(CTChart, {
+			'width': CTX,
+			'height': CTX
+		})
+		for (i = 0; i < donutSize.length; ++i) {
+			setAttributes(donutSize[i], {
+				'r': `${RADIUS - 20}`,
+				'cx': `${DIAMETER}px`,
+				'cy': `${DIAMETER}px`,
+				'style': `transform-origin: ${DIAMETER}px ${DIAMETER}px`
+			});
+		}
+		setAttributes(CTChartLabel, {
+			'style': `width:${RADIUS + 20}px;height:${RADIUS + 20}px;top:20%;box-shadow:0 2px 30px 2px rgba(0,0,0,0.45)`,
+		})
+
+		function setAttributes(el, attrs) {
+			for (var key in attrs) {
+				el.setAttribute(key, attrs[key]);
+			}
+		}
+		(function CTXprogress(value) {
+			let progress = Value / 100;
+			let dashoffset = CIRCUMFERENCE * (1 - progress);
+			console.log('progress:', Value + '%', '|', 'offset:', dashoffset);
+			CTXValue.style.strokeDashoffset = dashoffset;
+		})();
+		CTXValue.style.strokeDasharray = CIRCUMFERENCE;
+	</script>
+</body>
+
+</html>

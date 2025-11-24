@@ -1,0 +1,13 @@
+.helperText {
+  opacity: var(--j);
+  transition: opacity 400ms ease-in-out;
+  will-change: opacity;
+
+  &-isActive {
+    opacity: var(--notj);
+  }
+}
+
+// input:not([type="checkbox"]):focus+.helperText-isActive {
+//   opacity: var(--notj);
+// }

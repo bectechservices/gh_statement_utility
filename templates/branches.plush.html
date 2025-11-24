@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ Branches ~ SCB</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <!-- End Layout styles -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body data-theme="absa-default">
+    <!-- partial -->
+    <div class="container-scroller" id="appRoot">
+        <%= partial("partials/navbar.html") %>
+            <div class="container-fluid page-body-wrapper">
+                <main class="main-panel no-siderBar-fullWidth" tabindex="-1">
+                    <div class="content-wrapper">
+                        <div class="box-root padding-top--8 padding-bottom--12">
+                            <div class="ct_Breadcrumb d-flex align-items-center flex-row flex-wrap">
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--pressable">
+                                            <a class="unstyledLink breadcrumb-item--target d-flex align-items-center"
+                                                href="/settings">
+                                                <span
+                                                    class="breadcrumb-itemLabel text-color--default font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                    <span>Settings</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-row position-relative">
+                                    <div
+                                        class="d-flex align-items-center flex-row justify-content-start flex-1-1--auto">
+                                        <div class="breadcrumb-item Is--disabled">
+                                            <span
+                                                class="breadcrumb-itemLabel text-color--blue font-size--18 font-weight-medium line-height--16 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                <span>Branches</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-root">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- BRANCHES-->
+                                    <div class="box-root pb-2">
+                                        <div
+                                            class="card-root card--radius--all card--shadow--medium box-root box--bg--white">
+                                            <div
+                                                class="contentHeaderBox box-root box--bg--white d-flex flex-column box-divider--light-bottom-1 padding-vertical--12 padding-horizontal--20">
+                                                <div
+                                                    class="box-root d-flex flex-row justify-content-between flex-1-1--auto">
+                                                    <%= partial("partials/search.html") %>
+                                                        <div
+                                                            class="contentHeader-end box-root margin-left--16 d-flex align-items-center">
+                                                            <div class="ButtonGroup box-root">
+                                                                <div class="d-flex align-items-center justify-content-start flex-nowrap"
+                                                                    style="margin-left:-8px;margin-top:-8px;">
+                                                                    <div class="margin-top--8 margin-left--8">
+                                                                        <div class="box-root">
+                                                                            <button
+                                                                                class="btn btn-light btn-fw pressureButton"
+                                                                                data-toggle="modal"
+                                                                                data-target="#manageBr">
+                                                                                <i class="mdi mdi-plus"></i>
+                                                                                <span
+                                                                                    class="font-weight-medium text-color--dark">Add
+                                                                                    branch</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="margin-top--8 margin-left--8">
+                                                                        <div class="box-root">
+                                                                            <a class="btn btn-light btn-fw pressureButton"
+                                                                                href="/export-branches">
+                                                                                <i class="mdi mdi-file-excel"></i>
+                                                                                <span
+                                                                                    class="font-weight-medium text-color--dark">Export
+                                                                                    branches</span>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="contentBlock box-root box--bg--white box-divider--light-bottom-1">
+                                            <div
+                                                class="h-100 slickscroll--2 box-root table-responsive overflow-y--auto dataTableResponsive">
+                                                <table class="table table-hover db-objectListTable order-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Branch</th>
+                                                            <th>Code</th>
+                                                            <th>Bank Name</th>
+                                                            <th>Address/Street Name</th>
+                                                            <th class="text-center">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="branchesListElement">
+                                                        <%= for(branch) in pagination.Rows { %>
+                                                            <tr>
+                                                                <td>
+                                                                    <%= branch.Name %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= branch.Code %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= branch.BankName %>
+                                                                </td>
+                                                                <td>
+                                                                    <%= branch.StreetName %>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                <div class="box-root">
+                                                                    <button class="btn dbTableActionButton"
+                                                                        onclick='editBranch(<%= json(branch) %>)'
+                                                                        data-toggle="modal" data-target="#editBr">
+                                                                        <span>Edit</span>
+                                                                    </button>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <div
+                                            class="contentFooter box-root box--bg--white box-divider--light-top-1 d-flex align-items-stretch flex-row justify-content-end padding-horizontal--20 padding-vertical--16">
+                                            <div
+                                                class="contentFooter-start d-flex align-items-center justify-content-start flex-1-1--auto">
+                                                <span></span>
+                                            </div>
+                                            <%= custom_paginator(pagination) %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- BRANCHES-->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </main>
+            <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <div class="modal fade" id="manageBr" tabindex="-1" role="dialog" aria-labelledby="Manage Branch"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="box-root" method="POST">
+                    <%= csrf() %>
+                        <div class="modal-header">
+                            <h5 class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                                id="adduserLabel">Manage Branches
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="box-root">
+                            <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                                style="max-height:calc(100vh - 196px)">
+                                <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                                    <div class="box-root">
+                                        <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                                            <span
+                                                class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                                <span>Branch Details</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3"><label class="font-size--13 font-weight-medium"
+                                                    for="br[name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                                </label></div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="br[name]"
+                                                            placeholder="Enter branch name" name="name"
+                                                            value='<%= old_input("name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="br[code]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Code</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="br[code]"
+                                                            placeholder="Enter branch code" name="code"
+                                                            value='<%= old_input("code") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("code")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("code") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="br[bank_name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Bank Name</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="br[bank_name]"
+                                                            placeholder="Enter Bank Name" name="bank_name"
+                                                            value='<%= old_input("bank_name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("bank_name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("bank_name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="br[street_name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Address/Street Name</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="br[street_name]"
+                                                            placeholder="Enter Address/Street Name" name="street_name"
+                                                            value='<%= old_input("street_name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("street_name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("street_name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-light pressureButton"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save
+                                branch
+                            </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editBr" tabindex="-1" role="dialog" aria-labelledby="Edit Branch" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="box-root" method="POST">
+                    <%= csrf() %>
+                        <input type="hidden" name="_method" value="PATCH" />
+                        <div class="modal-header">
+                            <h5 class="modal-title text-color--dark line-height--24 d-inline text-wrap--wrap text-numericSpacing--proportional font-size--16 font-weight-medium"
+                                id="adduserLabel">Edit Branch
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="box-root">
+                            <div class="modal-body contentBlock padding-bottom--12 padding-top--4 box--bg--offset overflow-y--auto"
+                                style="max-height:calc(100vh - 196px)">
+                                <div class="formLayout box-root box--bg--offset mw-0 m-0">
+                                    <div class="box-root">
+                                        <div class="box-root padding-top--16 padding-bottom--8 padding-horizontal--18">
+                                            <span
+                                                class="text-color--dark text-numericSpacing--proportional font-size--14 font-weight-medium d-inline line-height--24 text-wrap--wrap text-capitalize">
+                                                <span>Branch Details</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="id" id="edit_branch_id" />
+                                    <div class=" form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3"><label class="font-size--13 font-weight-medium"
+                                                    for="edit_br[name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Name</span>
+                                                </label></div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="edit_br[name]"
+                                                            placeholder="Enter branch name" name="edit_name"
+                                                            value='<%= old_input("edit_name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("edit_name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("edit_name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="edit_br[code]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Code</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="edit_br[code]"
+                                                            placeholder="Enter branch code" name="edit_code"
+                                                            value='<%= old_input("edit_code") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("edit_code")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("edit_code") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="edit_br[bank_name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Bank Name</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="edit_br[bank_name]"
+                                                            placeholder="Enter Bank Name" name="edit_bank_name"
+                                                            value='<%= old_input("edit_bank_name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("edit_bank_name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("edit_bank_name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group padding-horizontal--18 padding-vertical--4">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="font-size--13 font-weight-medium" for="edit_br[street_name]">
+                                                    <span
+                                                        class="font-size--13 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Address/Street Name</span>
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="cursor-text">
+                                                    <div class="box-root pressureBase">
+                                                        <input type="text" class="form-control" id="edit_br[street_name]"
+                                                            placeholder="Enter street name" name="edit_street_name"
+                                                            value='<%= old_input("edit_street_name") %>'>
+                                                    </div>
+                                                    <%= if(input_has_error("edit_street_name")) {%>
+                                                        <div
+                                                            class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+                                                            <div class="padding-top--4">
+                                                                <div
+                                                                    class="box-root d-flex flex-row align-items-center position-relative">
+                                                                    <div
+                                                                        class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+                                                                        <div class="padding-right--8">
+                                                                            <span class="text-color--red600">
+                                                                                <i class="mdi mdi-alert"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                        <span
+                                                                            class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+                                                                            <%= input_error_message("edit_street_name") %>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <%}%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-light pressureButton"
+                                data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary pressureButton pressureButton-primary">Save
+                                changes
+                            </button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- plugins:js -->
+    
+    
+    <script src="/assets/js/app/main.js"></script>
+    <%= partial("partials/show_modals.html") %>
+        <script>
+            const branchesListElem = document
+                .getElementById('branchesListElement');
+            const branches = JSON.parse('<%= json(pagination.Rows) %>');
+
+            function searchBranch(branch) {
+                let html = '';
+                branches.filter((_branch) => {
+                    return _branch.name
+                        .toLowerCase().includes(
+                            branch.toLowerCase()
+                        ) || _branch.code
+                            .toLowerCase().includes(
+                                branch.toLowerCase()
+                            ) || _branch.bank_name
+                            .toLowerCase().includes(
+                                branch.toLowerCase()
+                            ) || _branch.street_name
+                            .toLowerCase().includes(
+                                branch.toLowerCase()
+                            )
+                }).forEach((_branch) => {
+                    html += `
+                     <tr>
+                        <td>${_branch.name}</td>
+                        <td>${_branch.code}</td>
+                        <td>${_branch.bank_name}</td>
+                        <td>${_branch.street_name}</td>
+                        <td>
+                            <div class="box-root">
+                                <button class="btn dbTableActionButton" onclick='editBranch(${JSON.stringify(_branch)})' data-toggle="modal" data-target="#editBr">
+                                    <span>Edit</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+            `
+                });
+                branchesListElem.innerHTML = html;
+            }
+
+            function editBranch(branch) {
+                document.getElementById('edit_branch_id').value = branch.id;
+                document.getElementById('edit_br[name]').value = branch.name;
+                document.getElementById('edit_br[code]').value = branch.code;
+                document.getElementById('edit_br[bank_name]').value = branch.bank_name;
+                document.getElementById('edit_br[street_name]').value = branch.street_name;
+            }
+        </script>
+</body>
+
+</html>

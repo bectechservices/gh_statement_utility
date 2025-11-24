@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <title>STMT UTILITY ~ Login ~ SCB</title>
+    <link rel="stylesheet" href="/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="/assets/css/shared/style.css">
+    <link rel="stylesheet" href="/assets/css/app/style.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <link rel="icon" href="assets/images/scb.png"/>
+	<meta name="msapplication-TileImage" content="assets/images/scb.png">
+</head>
+
+<body class="box--bg--white h-100--vh" data-theme="absa-default">
+	<div class="box--bg--white h-100 overflow-hidden" id="appRoot">
+		<div class="box container-full h-100">
+			<div class="canvas canvas--bg w-100 h-100 position-relative">
+				<a class="canvas--link" href="javascript:void(0);"></a>
+				<section class="auth-canvas h-100 overflow-x--hidden overflow-y--auto">
+					<div class="auth-canvas-layout d-grid h-100">
+						<div class="box-root auth-canvas-grid d-grid justify-content-center">
+							<div class="canvas-bodyContext">
+								<div class="canvas-bodyContext-Wrapper user-select--none">
+									<div class="canvas-bodyContext-Wrapper">
+										<div class="contextContent w-100 h-100">
+											<div class="context h-100">
+												<div class="d-flex align-items-center h-100">
+													<div class="org_logo org_logo-md org_logo-white logo-entrance w-50 position-relative">
+													</div>
+													<div
+														class="text-left text-white text-numericSpacing--proportional text-wrap--wrap font-size--26 line-height--28 margin-bottom--4 padding-left--12">
+														<span class="text-capitalize">STATEMENT UTILITY </span>
+														<div class="font-size--12 margin-top--4">Ghana</div>
+													</div>
+												</div>
+												<!-- ACCESS WARNING -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="canvas-authContext d-flex flex-column">
+								<div class="Route position-relative">
+									<section class="authContextContent">
+										<div class="border-box CardLayout-Container authPage">
+											<div class="CardLayout-Toaster-Container d-flex flex-column position-relative">
+												<%= if(input_has_error("ab_number") && (input_error_message("ab_number") == "Account Locked")){ %>
+												<section class="CardLayout__toaster position-relative margin-left--16 margin-right--16" id="account_notice">
+													<div
+														class="CardLayout__toaster-info w-100 d-flex flex-row align-items-stretch font-size--16 padding-vertical--8 padding-left--16 padding-right--8 user-select--none box-bg--accent-darker"
+														role="alert">
+														<div class="icon margin-right--4" focusable="false" role="img" aria-label="information">
+															<i class="mdi mdi-information font-size--24 text-white"></i>
+														</div>
+														<div class="toast-Message-Body flex-1-1--auto align-self-center">
+															<div
+																class="toast-Message-Body-Content d-inline-block box-root padding-top--4 padding-right--16 padding-bottom--4 pl-0 flex-1-1--auto text-white font-size--14">
+																<span class="msg-title font-weight--medium">Your account has been locked &nbsp;</span>
+																<span><u>Please contact your
+																		administrator for help.</u></span>
+															</div>
+														</div>
+														<div class="toast-Message-Action d-flex align-items-start padding-left--8 padding-right--8">
+															<button class="text-white unstyledLink font-size--16" type="button" aria-label="Close" onclick="hideNotice()">
+																x
+															</button>
+														</div>
+													</div>
+												</section>
+												<% } %>
+
+
+												<%= if((input_has_error("ab_number") && input_error_message("ab_number")  == "Time and Date Restriction")){ %>
+													<section class="CardLayout__toaster position-relative margin-left--16 margin-right--16" id="account_notice">
+														<div
+															class="CardLayout__toaster-info w-100 d-flex flex-row align-items-stretch font-size--16 padding-vertical--8 padding-left--16 padding-right--8 user-select--none box-bg--accent-darker"
+															role="alert">
+															<div class="icon margin-right--4" focusable="false" role="img" aria-label="information">
+																<i class="mdi mdi-information font-size--24 text-white"></i>
+															</div>
+															<div class="toast-Message-Body flex-1-1--auto align-self-center">
+																<div
+																	class="toast-Message-Body-Content d-inline-block box-root padding-top--4 padding-right--16 padding-bottom--4 pl-0 flex-1-1--auto text-white font-size--14">
+																	<span class="msg-title font-weight--medium">Your Are Not Allowed to Log in at this TIME or DAY. &nbsp;</span>
+																	<span><u>Please contact your
+																			administrator for Assistance.</u></span>
+																</div>
+															</div>
+															<div class="toast-Message-Action d-flex align-items-start padding-left--8 padding-right--8">
+																<button class="text-white unstyledLink font-size--16" type="button" aria-label="Close" onclick="hideNotice()">
+																	x
+																</button>
+															</div>
+														</div>
+													</section>
+													<% } %>
+
+												<section
+													class="box-root d-flex flex-column position-relative box--bg--white CardLayout CardLayout--toaster-open">
+													<div class="authLoginContent [ margin-bottom--24 ]">
+														<div class="box-root overflow-visible">
+															<form class="authForm authLogin_form box-root" id="authLoginForm" action="/login"
+																method="POST" novalidate="novalidate">
+																<%= csrf() %>
+																<div class="box-root margin-bottom--30">
+																	<div
+																		class="text-left text-numericSpacing--proportional text-color--dark text-wrap--wrap font-size--30 line-height--28 margin-bottom--18">
+																		<span class="text-capitalize">Log in</span>
+																	</div>
+																	<p
+																		class="text-left text-numericSpacing--proportional text-color--default text-wrap--wrap font-size--16 line-height--20 margin-bottom--12">
+																		<span>Welcome back! Enter credentials to continue.</span>
+																	</p>
+																</div>
+																<fieldset class="padding-vertical--10 m-0 border-0">
+																	<div class="form-group mb-0 padding-vertical--16">
+																		<div clas="box-root">
+																			<div class="d-flex flex-row justify-content-between align-items-center mb-2">
+																				<label class="font-size--14 font-weight-medium mb-0" for="auth[abNumber]">
+																					<span
+																						class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">AB
+																						number</span>
+																				</label>
+																			</div>
+																		</div>
+																		<div class="cursor-text">
+																			<div class="box-root pressureBase">
+																				<input type="text" class="form-control form-control-lg br--0"
+																					id="auth[abNumber]" name="ab_number" value='<%= old_input("ab_number") %>' />
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-group mb-0 padding-vertical--16">
+																		<div clas="box-root">
+																			<div class="d-flex flex-row justify-content-between align-items-center mb-2">
+																				<label class="font-size--14 font-weight-medium mb-0"
+																					for="auth[passwordhasVisibility]">
+																					<span
+																						class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap">Password</span>
+																				</label>
+																				<div class="box-root" tab-index="-1" focusable="false">
+																					<div class="d-flex align-items-center">
+																						<div class="padding-horizontal--4">
+																							<input type="checkbox" id="auth[togglePasswordVisible]"
+																								onclick="toggleVisible()" tabindex="-1">
+																						</div>
+																						<label class="font-size--14 font-weight-medium mb-0"
+																							for="auth[togglePasswordVisible]">
+																							<span
+																								class="font-size--14 text-color--def text-numericSpacing--proportional d-inline text-wrap--wrap user-select--none">Show
+																								password</span>
+																						</label>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="cursor-text">
+																			<div class="box-root pressureBase">
+																				<input type="password" class="password form-control form-control-lg br--0"
+																					id="auth[passwordhasVisibility]" name="password"
+																					value='<%= old_input("password") %>' />
+																				<%= if((input_has_error("ab_number") && input_error_message("ab_number") == "Account Locked") || input_has_error("password")){ %>
+																				<div
+																					class="box-root box-hideIfEmpty margin-top--2 pointer-events--auto helperText helperText-isActive">
+																					<div class="padding-top--4">
+																						<div class="box-root d-flex flex-row align-items-center position-relative">
+																							<div
+																								class="box-root d-flex flex-row flex-1-1--auto align-items-center justify-content-start">
+																								<div class="padding-right--8">
+																									<span class="text-color--red600">
+																										<i class="mdi mdi-alert"></i>
+																									</span>
+																								</div>
+																								<span
+																									class="font-size--14 text-color--red700 font-weight-medium line-height--20 text-numericSpacing--proportional text-wrap--wrap d-block">
+																									Incorrect AbNumber or password.
+																								</span>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<% } %>
+
+			
+																			</div>
+																		</div>
+								
+																	</div>
+																	<div class="box-root padding-bottom--12">
+																		<div class="ButtonGroup box-root">
+																			<div class="d-flex align-items-center justify-content-start flex-nowrap"
+																				style="margin-left:-8px;margin-top:-8px;">
+																				<div class="margin-top--8 margin-left--8 w-100">
+																					<div class="box-root d-flex justify-content-end">
+																						<button
+																							class="btn-withShadow border-radius--20 btn btn-padded btn-sm min-width--150 btn-primary pressureButton pressureButton-primary rounded-pill">
+																							<span class="font-weight-medium text-capitalize">Log in</span>
+																						</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="CardLayout__footer CardLayout__footer-hasSeperator margin-top--12">
+																		<div class="box-root">
+																			<div class="d-flex flex-column justify-content-start flex-nowrap"
+																				style="margin-left:-12px;margin-top:-12px;">
+																				<div class="box-root box-hideIfEmpty margin-top--12 margin-left--12">
+																					<div class="padding-top--10">
+																						<div
+																							class="box-root flex-row d-flex align-items-center justify-content-start flex-1-1--auto"
+																							style="line-height: 0;">
+																							<div class="box-root">
+																								<a href="/forgot-password" class="btn btn-light">
+																									<span
+																										class="text-color-brand--primary font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional d-block">
+																										Forgot password?
+																									</span>
+																								</a>
+																							</div>
+																							<div class="box-root">
+																								<a href="/psid-reset" class="btn btn-light">
+																									<span
+																										class="text-color-brand--primary font-size--14 font-weight-medium line-height--20 text-numericSpacing--proportional d-block">
+																										PSID Reset?
+																									</span>
+																								</a>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</fieldset>
+																<!-- CRSF TOKEN -->
+															</form>
+														</div>
+													</div>
+												</section>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	function hideNotice() {
+		document.getElementById('account_notice').style.display = 'none';
+	}
+</script>
+<!-- plugins:js -->
+<script src="/assets/js/app/passwordVisibilityToggle.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

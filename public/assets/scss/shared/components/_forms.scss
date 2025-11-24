@@ -1,0 +1,121 @@
+/* Forms */
+
+.input-group-append,
+.input-group-prepend {
+  background: $input-bg;
+  color: $input-placeholder-color;
+  width: auto;
+  border: none;
+
+  .input-group-text {
+    background: transparent;
+    border-color: $border-color;
+  }
+}
+
+.form-control {
+  display: inline-block;
+  border: 2px solid $border-color;
+  font-family: $type-1;
+  font-size: 14px;
+  color: var(--text-color-dark);
+  padding: 0 .75rem;
+  line-height: 20px;
+  font-weight: 300;
+
+  &.form-control-lg {
+    padding: $input-btn-padding-y-lg .75rem;
+    height: calc(1.5em + 1.25rem + 2px);
+
+    &.in-lineSelect {
+      padding: 0.25rem 0.5rem;
+      height: 33px;
+    }
+  }
+
+  &.form-control-sm {
+    padding: $input-btn-padding-y-sm .75rem;
+  }
+}
+
+textarea.form-control {
+  height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+select {
+  &.form-control {
+    padding: 0.4375rem 0.75rem;
+  }
+}
+
+.form-group {
+  label {
+    line-height: 1;
+    vertical-align: top;
+    cursor: pointer;
+  }
+
+  &.has-danger {
+    .form-control {
+      border-color: theme-color(danger);
+    }
+  }
+
+  .file-upload-default {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .file-upload-info {
+    background: transparent;
+  }
+}
+
+.buttonBarrange_Context {
+  &:focus-within {
+    box-shadow: 0 24px 22px -8px rgba(0, 0, 0, 0.05);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: 0.18s linear;
+  }
+
+  & .buttonBarrange_Context--single {
+    border-right-width: 2px;
+    border-bottom-right-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+
+    &:focus {
+      box-shadow: -1px 24px 22px -8px rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  & .buttonBarrange_Context--1 {
+    border-right-color: var(--white);
+    border-right-width: 0;
+    border-bottom-left-radius: 4px !important;
+
+    &:focus {
+      border-right-width: 2px;
+      box-shadow: -1px 24px 22px -8px rgba(0, 0, 0, 0.10);
+    }
+  }
+
+  & .buttonBarrange_Context--2 {
+    border-left-color: var(--white);
+    border-left-width: 0;
+    border-bottom-right-radius: 4px !important;
+
+    &:focus {
+      border-left-width: 2px;
+      box-shadow: 2px 24px 22px -8px rgba(0, 0, 0, 0.10);
+    }
+  }
+}
+
+
+.select2-container:nth-child(1) {
+  background-color: red !important;
+  width: 100px !important;
+}

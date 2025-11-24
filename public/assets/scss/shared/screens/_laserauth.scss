@@ -1,0 +1,188 @@
+:root {
+	--baseNumber: 4;
+}
+
+@media screen and (min-width:768px) {
+	.canvas {
+		background-color: #f4f4f4;
+		background-size: cover;
+	}
+
+	.canvas--bg {
+		background-image: url(../../../../assets/images/canvas/canvas-1.jpg);
+	}
+
+	.auth-canvas {
+		background-color: rgba(0, 0, 0, .5);
+	}
+}
+
+.org_logo.org_logo-white {
+	border-right: 2px solid hsla(46, 100%, 80%, 0.12);
+	background: url(../../../../assets/images/absa-logo-white.svg) no-repeat scroll 50% transparent;
+}
+
+.auth-canvas-layout {
+	grid-template-rows: 60px minmax(min-content, 1fr) 35px;
+	grid-template-columns: 100%;
+
+	& .auth-canvas-grid {
+		grid-row: 1/4;
+	}
+}
+
+.auth-canvas-grid {
+	grid-template-rows: 1fr;
+	grid-template-columns: repeat(12, 1fr);
+	grid-gap: 0 calc((var(--baseNumber) * 1px) * 4);
+	gap: 0 calc((var(--baseNumber) * 1px) * 4);
+	max-width: 1280px;
+	width: 100%;
+	padding-left: calc((var(--baseNumber) * 1px) * 4);
+	padding-right: 14px;
+}
+
+@media screen and (min-width: 768px) {
+	.auth-canvas-grid {
+		background: transparent;
+		margin: 0 auto;
+		grid-gap: 0 calc((var(--baseNumber) * 1px) * 6);
+		gap: 0 calc((var(--baseNumber) * 1px) * 6);
+		padding-left: 0;
+		padding-right: 0;
+
+		& .canvas-bodyContext {
+			grid-column: 1/6;
+		}
+
+		& .canvas-authContext {
+			grid-column: 3/11;
+			justify-content: center;
+
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.auth-canvas-grid {
+		& .canvas-authContext {
+			grid-column: 6/12;
+		}
+
+		& .canvas-bodyContext {
+			&-Wrapper {
+				display: flex;
+				position: fixed;
+				align-items: center;
+				top: -30px;
+				bottom: 0;
+				width: 340px;
+			}
+		}
+
+		.contextContent {
+			align-self: center;
+		}
+	}
+}
+
+@media screen and (min-width: 1280px) {
+	.auth-canvas-grid {
+		grid-gap: 0 calc((var(--baseNumber) * 1px) * 8);
+		gap: 0 calc((var(--baseNumber) * 1px) * 8);
+
+		& .canvas-authContext {
+			grid-column: 7/12;
+		}
+
+		& .canvas-bodyContext {
+			&-Wrapper {
+				width: 400px;
+			}
+		}
+	}
+}
+
+.canvas-bodyContext {
+	grid-column: 1/6;
+	grid-row: 1;
+}
+
+.canvas-authContext {
+	grid-row: 1;
+	grid-column: 1/13;
+}
+
+.contextContent {
+	flex-grow: 1;
+}
+
+@media screen and (min-width:768px) {
+	.CardLayout-Container {
+		padding: calc((var(--baseNumber) * 1px) * 4) 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+@media screen and (max-height:900px) and (min-width:768px) {
+	.Route .CardLayout__toaster {
+		margin-right: 0;
+		margin-left: 0;
+	}
+}
+
+.CardLayout__toaster {
+	&-info {
+		border-radius: 0;
+
+		@media screen and (min-width:768px) {
+			border-top-left-radius: calc(var(--baseNumber) * 1px);
+			border-top-right-radius: calc(var(--baseNumber) * 1px);
+		}
+	}
+}
+
+.CardLayout {
+	padding: 24px 0 40px;
+	min-height: 100%;
+	border-radius: calc(var(--baseNumber) * 1px);
+
+	@media screen and(min-width:768px) {
+		min-height: 550px;
+		padding: 24px 56px 40px;
+	}
+
+	@media screen and (min-width:1024px) {
+		padding: 36px 56px;
+	}
+
+	&.CardLayout--toaster-open {
+		border-radius: 0;
+	}
+}
+
+.toast-Message-Action {
+	flex: 0 0 auto;
+	border-left-color: hsla(0, 0%, 100%, .2);
+	border-left-width: 1px;
+	border-left-style: solid;
+}
+
+
+.logo-entrance {
+	opacity: 0;
+	animation: fade-In 1s linear forwards;
+}
+@keyframes fade-In {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+

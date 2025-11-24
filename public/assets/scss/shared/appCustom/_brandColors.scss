@@ -1,0 +1,91 @@
+[data-theme="absa-default"] {
+	.text-color--red700 {
+		--red-700: var(--color-error);
+		color: var(--red-700);
+	}
+
+	.text-color-brand--primary {
+		color: #f85b51;
+	}
+}
+
+// @theme-colors
+$bg-colors:(accent:(base:var(--color-accent),
+		dark:var(--color-accent-dark),
+		darker:var(--color-accent-darker),
+	),
+	primary:(base:var(--color-primary),
+		dark: var(--color-primary-dark),
+	),
+	contrast:(base:var(--color-bg),
+		low: var(--color-contrast-low),
+		lower: var(--color-contrast-lower),
+		medium: var(--color-contrast-medium),
+	));
+
+
+.box-bg {
+	@include modifiers ($bg-colors, 'background-color', $prefix:'--');
+}
+
+.btn {
+	background-clip: padding-box;
+
+	&.btn-withShadow {
+		--shadow: rgba(10, 22, 50, .24);
+		box-shadow: 0 2px 8px -1px var(--shadow);
+	}
+
+	transition: transform .2s ease,
+	box-shadow .2s ease;
+
+	&:active {
+		transform: scale(.95);
+	}
+
+	&.in-lineButton {
+		padding: 0.6rem 1.2rem;
+	}
+}
+
+
+.btn-primary {
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	border-color: transparent;
+	@include fontSmooth;
+
+	&:hover {
+		background-color: var(--color-primary-dark);
+		border-width: 1px;
+		border-style: solid;
+		border-color: transparent;
+	}
+
+	&:focus {
+		box-shadow: 0px 0px 0px 2px alpha(var(--color-primary), 0.2);
+	}
+
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active,
+	.show>&.dropdown-toggle {
+		background-color: var(--color-primary-dark);
+		border-color: var(--color-primary-dark);
+	}
+}
+
+.btn-accent {
+	background-color: var(--color-accent);
+	color: var(--color-white);
+	border-color: inherit;
+	@include fontSmooth;
+
+	&:hover {
+		background-color: var(--color-accent-dark);
+	}
+
+	&:focus {
+		box-shadow: 0px 0px 0px 2px alpha(var(--color-accent), 0.2);
+	}
+}

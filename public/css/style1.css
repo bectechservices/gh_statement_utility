@@ -1,0 +1,504 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+
+}
+
+body{
+    margin: 0px;
+    font-family: Calibri,Arial;
+    background: rgba(242, 242, 242, 0.2);
+}
+label{
+    font-size: 16pt;
+    color: black;
+    text-align: left;
+}
+.blinds{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    opacity: 0.8;
+    background-color:#ccc;
+    display: block;
+}
+
+.blindContent{
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px #666;
+    display: block;
+}
+
+.blindContent1{
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 20px #666;
+    display: block;
+}
+
+
+.blindWaiting{
+    position: fixed;
+    z-index: 1000;
+    box-shadow: 2px 2px 20px #fff;
+    display: none;
+}
+
+.blindsDetail{
+    text-align: center;
+    font-size: 13pt;
+}
+
+.blindsDetail select{
+    text-align: center;
+    font-size: 11pt;
+    padding-left:10px;
+    padding-right:10px;
+    height: 30px;
+    display: block;
+}
+
+.blindsDetail_1 input[type='submit']{
+    text-align:center;
+    width: 150px;
+    height: 45px;
+    border: 1px solid #bbb;
+    font-size: 15pt;
+}
+
+.blindsDetail_1 input[type='submit']:hover{
+    background-color:white;
+}
+
+.blindsDetail input[type='button']{
+    text-align:center;
+    width: 150px;
+    height: 45px;
+    border: 1px solid #bbb;
+    font-size: 15pt;
+}
+
+.blindsDetail input[type='button']:hover{
+    background-color:white;
+}
+
+.blindContent h1{
+    margin: 0;
+    font-size: 20pt;
+    color: white;
+    text-shadow: 2px 2px 2px #222;
+    background-color: black;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/*header{
+    width: 100%;
+    min-height: 150px;
+    box-shadow: 2px -12px 50px #000;
+    z-index: 99;
+    display: block;
+}*/
+
+header .mainTop{
+    width: 100%;
+    max-height: 50px;
+    border-bottom: 1px #aaa dashed;
+}
+
+header .mainTop b{
+    color: black;
+    font-size: 24pt;
+    text-shadow: black 0px 0px 2px;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+header .span1{
+    border: 1px solid #ccc;
+    min-width: 30%;
+    max-height: 90px;
+    height: 90px;
+    display: inline;
+    float: left;
+    margin-left: 3%;
+    margin-left: 3%;
+    margin-top: 3px;
+}
+header .span2{
+    border: 1px solid #ccc;
+    width: 60%;
+    max-height: 90px;
+    height: 90px;
+    display: inline;
+    float: left;
+    margin-left: 3%;
+    margin-left: 3%;
+    margin-top: 3px;
+}
+.span-row{
+    width: 100%;
+    font-size: 12pt;
+    clear:both;
+}
+.span-row label{
+    display: inline;
+    float: left;
+    text-align: right;
+    width: 60px;
+    vertical-align: middle;
+}
+.span-row select{
+    display: inline;
+    float: left;
+    text-align: left;
+    width: 200px;
+    margin-left: 5px;
+    height: 30px;
+}
+.span-row i,label{
+    vertical-align: top;
+}
+.selectedClass{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.selectedSubject{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.mainContent{
+    position: relative;
+    width: 100%;
+    overflow: none;
+    z-index: 1;
+}
+
+.contentHolder{
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
+    max-height: 450px;
+    overflow: auto;
+}
+.static{
+    max-height: 350px;
+    width:100%;
+    overflow-y: scroll;
+    overflow-x: none;
+}
+.pad{
+    text-align: center;
+    padding: 3px 6px;
+}
+.contentHeading{
+    text-align: center;
+    background-color: #bbb;
+    border: 1px solid #444;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+.r0 {
+    background-color: white;
+    padding: 2px 5px;
+}
+
+.a{
+    min-width: 70px;
+    max-width: 70px;
+    width: 70px;
+    text-align:right;
+}
+.b{
+    max-width: 110px;
+    min-width: 110px;
+    width: 110px;
+    text-align:center;
+}
+.c{
+    max-width: 250px;
+    min-width: 250px;
+    width: 250px;
+    text-align:left;
+}
+
+.r1 {
+    background-color: #ddd;
+    padding: 2px 5px;
+}
+
+.mySubmit{
+    margin: auto o;
+    margin-left: 15%;
+    margin-top: 50px;
+}
+
+#submit{
+    position: relative;
+    border: 1px solid #aaa;
+    font-size: 12pt;
+    width: 150px;
+    height: 40px;
+    background-color:#339900;
+    color: #ffffff;
+}
+
+#submit:hover{
+    background-color: white;
+    color: black;
+}
+
+.errMsg{
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 80%;
+    padding-top: 10px;
+    margin-left: 10%;
+    padding-bottom: 10px;
+    margin-top: 2%;
+    border: 2px solid red;
+    background-color: #faa;
+    font-size: 20pt;
+    text-align:center;
+    display: block;
+}
+.error {
+    color: #FF0000;
+    font-size:12px;
+    margin-left: 5px;
+}
+
+.Unsuccessful{
+    color:white;
+    text-shadow:#333 1px 1px 1px;
+}
+.wrapper-demo{
+    width: 550px;
+    height: 350px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 5%;
+    border-radius: 7px;
+    border: 2px solid #ddd;
+    box-shadow: 0 2px 50px 2px rgba(125,125,125,0.10);
+}
+
+.wrapper-demo-setting{
+    width:490px;
+    height:300px;
+    margin: 0 auto;
+    margin-top: 5%;
+    border: 3px solid #ddd;
+    box-shadow: #333 1px 1px 20px;
+}
+
+.wrapper-demo1
+{
+    width:70%;
+    margin-left: 5px;
+    margin-bottom: 1px; 
+    clear: both;
+}
+
+.header{
+    color: black;
+    font-size: 20pt;
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: #111 1px 1px 1px;
+}
+
+.pagetitle{
+    position: absolute;
+    top: 130px;
+}
+.accno{
+    position: absolute;
+    top: 192px;
+    left: -30px;
+    font-size: 10pt;
+}
+
+.startdate{
+    position: absolute;
+    top: 240px;
+    left: -30px;
+    font-size: 10pt;
+}
+
+.enddate{
+    position: absolute;
+    top: 288px;
+    left: -30px;
+    font-size: 10pt;
+}
+.searchbtn{
+    position: absolute;
+    top: 336px;
+    left: 180px;
+    font-size: 16pt;
+}
+.printbtn{
+    position: absolute;
+    top: 336px;
+    left: 308px;
+    font-size: 16pt;
+}
+.table-data{
+    position: absolute;
+    top: 365px;
+    left: 10px;
+}
+
+.logout{
+    position: absolute;
+    top: 25px;
+    left: 890px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.row{
+    width: 100%;
+    padding-top:10px;
+    padding-bottom: 8px;
+    display: block;
+    clear: both;
+    margin-left:-55px;
+}
+
+label{
+    text-align:right;
+    display: inline;
+    float: left;
+    width: 200px;
+    vertical-align: middle;
+}
+input[type='text'],input[type='password']{
+    text-align:left;
+    display: inline;
+    float: left;
+    width: 250px;
+    height: 25px;
+    margin-left:10px;
+}
+input[type='submit']{
+    text-align:center;
+    display: inline;
+    float: left;
+    width: 150px;
+    height: 45px;
+    margin-left:45%;
+    margin-top: 20px;
+    border: 1px solid #bbb;
+    background-color:#339900;
+    color: white;
+}
+
+input[type='submit']:hover{
+    background-color: white;
+    color: black;
+}
+
+input[type='button']{
+    text-align: center;
+    display: inline;
+    width: 125px;
+    height: 30px;
+    border: 1px solid #bbb;
+    background-color:#339900;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+input[type='button']:hover{
+    background-color: white;
+    color: black;
+}
+fonts{
+    text-align:center;
+    color: white;
+    font-weight: bold;
+}
+
+.textbox
+{
+    BORDER-RIGHT: #12afff 1px solid;
+    BORDER-TOP: #12afff 1px solid;
+    BORDER-LEFT: #12afff 1px solid;
+    BORDER-BOTTOM: #12afff 1px solid;
+    FONT-SIZE: 16px;
+    color:#6c6c6c;
+    background:#e7fcfe;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+.textbox .textbox_1
+{
+    width: 125px;   
+}
+.tr_bg{
+    background-color: #0091c1;
+}
+.tr_bg_1{
+    background-color: #bbb;
+}
+.wrapper-demo1 fieldset{
+    position: absolute;
+    top: 144px;
+    height: 206px;
+    width: 422px;
+    left: 590px; 
+    border-radius: 15px;
+    border-color: #0091c1;
+}
+
+.tr_td
+{
+    BORDER-RIGHT: #12afff 1px solid;
+    BORDER-TOP: #12afff 1px solid;
+    BORDER-LEFT: #12afff 1px solid;
+    BORDER-BOTTOM: #12afff 1px solid;
+    FONT-SIZE: 11px;
+    color: #6c6c6c;
+    background: #e7fcfe;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.dt{
+    FONT-SIZE: 15px;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#wrap { 
+    width: 100%; 
+    margin: 0 auto; 
+}
