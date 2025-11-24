@@ -1,8 +1,8 @@
 package middlewares
 
 import (
+	"gh-statement-app/models"
 	"log"
-	"ng-statement-app/models"
 	"strings"
 
 	"net/http"

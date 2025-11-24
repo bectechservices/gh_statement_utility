@@ -1,4 +1,4 @@
-module ng-statement-app
+module gh-statement-app
 
 go 1.16
 

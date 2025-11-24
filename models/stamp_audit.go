@@ -1,7 +1,7 @@
 package models
 
 import (
-	"ng-statement-app/pagination"
+	"gh-statement-app/pagination"
 	"time"
 
 	"github.com/gofrs/uuid"

@@ -2,11 +2,11 @@ package actions
 
 import (
 	"fmt"
+	"gh-statement-app/constants"
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 	"log"
 	"net/http"
-	"ng-statement-app/constants"
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
 	"strings"
 
 	"github.com/gobuffalo/buffalo"

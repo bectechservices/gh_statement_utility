@@ -1,7 +1,7 @@
 package requests
 
 import (
-	"ng-statement-app/models"
+	"gh-statement-app/models"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gofrs/uuid"

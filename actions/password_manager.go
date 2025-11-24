@@ -1,11 +1,11 @@
 package actions
 
 import (
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
 	"os"
 	"path/filepath"
 

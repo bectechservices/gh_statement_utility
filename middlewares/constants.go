@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"ng-statement-app/constants"
+	"gh-statement-app/constants"
 
 	"github.com/gobuffalo/buffalo"
 )

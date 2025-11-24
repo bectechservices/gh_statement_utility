@@ -1,8 +1,8 @@
 package actions
 
 import (
+	"gh-statement-app/models"
 	"log"
-	"ng-statement-app/models"
 
 	"github.com/robfig/cron"
 )

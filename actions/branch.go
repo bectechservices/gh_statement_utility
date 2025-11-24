@@ -1,9 +1,9 @@
 package actions
 
 import (
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 	"net/http"
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
 	"strings"
 
 	"github.com/gobuffalo/buffalo"

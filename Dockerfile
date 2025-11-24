@@ -5,8 +5,8 @@ FROM gobuffalo/buffalo:v0.16.21 as builder
 ENV GO111MODULE on
 ENV GOPROXY http://proxy.golang.org
 
-RUN mkdir -p /src/ng-statement-app
-WORKDIR /src/ng-statement-app
+RUN mkdir -p /src/gh-statement-app
+WORKDIR /src/gh-statement-app
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .

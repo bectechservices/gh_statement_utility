@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/nulls"

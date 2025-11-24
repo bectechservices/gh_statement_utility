@@ -2,7 +2,7 @@ package models
 
 import (
 	"encoding/json"
-	"ng-statement-app/pagination"
+	"gh-statement-app/pagination"
 	"time"
 
 	"github.com/gobuffalo/nulls"

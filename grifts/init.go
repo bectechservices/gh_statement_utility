@@ -1,7 +1,7 @@
 package grifts
 
 import (
-	"ng-statement-app/actions"
+	"gh-statement-app/actions"
 
 	"github.com/gobuffalo/buffalo"
 )

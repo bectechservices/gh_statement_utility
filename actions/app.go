@@ -1,7 +1,7 @@
 package actions
 
 import (
-	"ng-statement-app/middlewares"
+	"gh-statement-app/middlewares"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/envy"

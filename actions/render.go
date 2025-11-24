@@ -2,11 +2,11 @@ package actions
 
 import (
 	"fmt"
+	"gh-statement-app/middlewares"
+	"gh-statement-app/models"
+	dbPaginator "gh-statement-app/pagination"
 	"html/template"
 	"net/http"
-	"ng-statement-app/middlewares"
-	"ng-statement-app/models"
-	dbPaginator "ng-statement-app/pagination"
 	"time"
 
 	"github.com/gobuffalo/buffalo"

@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"ng-statement-app/pagination"
+	"gh-statement-app/pagination"
 
 	"github.com/gofrs/uuid"
 	"gorm.io/gorm"

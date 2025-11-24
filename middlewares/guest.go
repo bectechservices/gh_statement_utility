@@ -1,8 +1,8 @@
 package middlewares
 
 import (
+	"gh-statement-app/models"
 	"net/http"
-	"ng-statement-app/models"
 
 	"github.com/gobuffalo/buffalo"
 )

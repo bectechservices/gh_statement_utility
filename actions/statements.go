@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"time"
 
-	"ng-statement-app/models"
+	"gh-statement-app/models"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/buffalo/render"

@@ -3,10 +3,10 @@ package models
 import (
 	"encoding/json"
 	"fmt"
+	"gh-statement-app/constants"
+	"gh-statement-app/mailers"
+	"gh-statement-app/pagination"
 	"log"
-	"ng-statement-app/constants"
-	"ng-statement-app/mailers"
-	"ng-statement-app/pagination"
 	"strings"
 	"time"
 

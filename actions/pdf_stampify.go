@@ -3,9 +3,9 @@ package actions
 import (
 	"encoding/base64"
 	"fmt"
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 	"net/http"
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
 	"os"
 	"path/filepath"
 	"strconv"

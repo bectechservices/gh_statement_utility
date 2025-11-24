@@ -3,8 +3,8 @@ package actions
 import (
 	"net/http"
 
-	"ng-statement-app/constants"
-	"ng-statement-app/requests"
+	"gh-statement-app/constants"
+	"gh-statement-app/requests"
 
 	"github.com/gobuffalo/buffalo"
 )

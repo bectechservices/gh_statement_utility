@@ -2,9 +2,9 @@ package actions
 
 import (
 	"fmt"
+	"gh-statement-app/models"
+	"gh-statement-app/requests"
 	"net/http"
-	"ng-statement-app/models"
-	"ng-statement-app/requests"
 
 	"github.com/gobuffalo/buffalo"
 )

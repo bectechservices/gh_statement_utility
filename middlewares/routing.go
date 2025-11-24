@@ -3,8 +3,8 @@ package middlewares
 import (
 	"errors"
 	"fmt"
+	"gh-statement-app/models"
 	"net/http"
-	"ng-statement-app/models"
 	"strings"
 
 	"github.com/gobuffalo/buffalo"

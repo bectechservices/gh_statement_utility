@@ -2,8 +2,8 @@ package middlewares
 
 import (
 	"fmt"
-	"ng-statement-app/constants"
-	"ng-statement-app/models"
+	"gh-statement-app/constants"
+	"gh-statement-app/models"
 
 	"github.com/gobuffalo/buffalo"
 )

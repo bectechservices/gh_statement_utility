@@ -1,5 +1,5 @@
-name = "ng-statement-app"
-bin = "bin/ng-statement-app"
+name = "gh-statement-app"
+bin = "bin/gh-statement-app"
 vcs = "git"
 with_pop = true
 with_sqlite = false

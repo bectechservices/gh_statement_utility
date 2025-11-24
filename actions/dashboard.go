@@ -1,8 +1,8 @@
 package actions
 
 import (
+	"gh-statement-app/models"
 	"net/http"
-	"ng-statement-app/models"
 
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"

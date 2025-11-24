@@ -2,12 +2,12 @@ package actions
 
 import (
 	"fmt"
+	"gh-statement-app/models"
+	"gh-statement-app/pagination"
+	"gh-statement-app/requests"
 	"io"
 	"math/rand"
 	"net/http"
-	"ng-statement-app/models"
-	"ng-statement-app/pagination"
-	"ng-statement-app/requests"
 	"reflect"
 	"strconv"
 	"strings"

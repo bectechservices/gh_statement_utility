@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"ng-statement-app/actions"
-	"ng-statement-app/models"
+	"gh-statement-app/actions"
+	"gh-statement-app/models"
 )
 
 // main is the starting point for your Buffalo application.
